@@ -1,25 +1,19 @@
-import urllib.request
 from pathlib import Path
 
 import pandas as pd
-from dbfread import DBF
-from pyreaddbc import dbc2dbf
 
-URL = "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/EXANBR26.dbc"
+from datasus_lib import extrair_dbc
 
-NOME_BASE = "sinan_sarampo_exames_2026"
+CAMINHO_TEMPLATE = "dissemin/publicos/SINAN/DADOS/PRELIM/EXANBR{ano}.dbc"
+
+ANOS = [f"{a:02d}" for a in range(7, 27)]
 
 RAW_DIR = Path(__file__).parent / "raw"
 PROCESSED_DIR = Path(__file__).parent / "processed"
 
-ARQUIVO_DBC = RAW_DIR / f"{NOME_BASE}.dbc"
-ARQUIVO_DBF = RAW_DIR / f"{NOME_BASE}.dbf"
-ARQUIVO_CSV_RAW = RAW_DIR / f"{NOME_BASE}.csv"
-ARQUIVO_CSV = PROCESSED_DIR / f"{NOME_BASE}.csv"
+NOME_BASE_COMBINADO = "sinan_sarampo_exames_2007_2026"
 
 # De-para de colunas do SINAN (ficha de Sarampo/Rubéola - EXAN) para nomes legíveis.
-# Mantém apenas as colunas que existem de fato no extrato baixado do DATASUS;
-# colunas não mapeadas permanecem com o nome original.
 COLUMN_MAP = {
     # 1. Identificação da notificação
     "TP_NOT": "tipo_notificacao",
@@ -141,41 +135,19 @@ COLUMN_MAP = {
 }
 
 
-def baixar_dbc(url: str, destino: Path) -> None:
-    print("Iniciando download...")
-    urllib.request.urlretrieve(url, destino)
-    print("Download concluído.")
-
-
-def converter_para_dbf(origem: Path, destino: Path) -> None:
-    print("Convertendo .dbc para .dbf...")
-    dbc2dbf(str(origem), str(destino))
-
-
-def renomear_colunas(df: pd.DataFrame) -> pd.DataFrame:
-    return df.rename(columns=COLUMN_MAP)
-
-
-def exportar_para_csv(origem: Path, destino_raw: Path, destino_processado: Path) -> pd.DataFrame:
-    print("Lendo .dbf e gerando CSV...")
-    tabela = DBF(str(origem), encoding="iso-8859-1")
-    df_raw = pd.DataFrame(iter(tabela))
-    df_raw.to_csv(destino_raw, index=False, encoding="utf-8")
-
-    df = renomear_colunas(df_raw)
-    df.to_csv(destino_processado, index=False, encoding="utf-8")
-    return df
-
-
 def main() -> None:
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+    dataframes = []
+    for ano in ANOS:
+        caminho = CAMINHO_TEMPLATE.format(ano=ano)
+        nome_base = f"sinan_sarampo_exames_20{ano}"
+        df_ano = extrair_dbc(caminho, nome_base, COLUMN_MAP, RAW_DIR, PROCESSED_DIR)
+        dataframes.append(df_ano)
 
-    baixar_dbc(URL, ARQUIVO_DBC)
-    converter_para_dbf(ARQUIVO_DBC, ARQUIVO_DBF)
-    df = exportar_para_csv(ARQUIVO_DBF, ARQUIVO_CSV_RAW, ARQUIVO_CSV)
+    df_combinado = pd.concat(dataframes, ignore_index=True)
+    arquivo_combinado = PROCESSED_DIR / f"{NOME_BASE_COMBINADO}.csv"
+    df_combinado.to_csv(arquivo_combinado, index=False, encoding="utf-8")
 
-    print(f"Processo finalizado! Arquivo gerado: {ARQUIVO_CSV} ({len(df)} registros)")
+    print(f"Série histórica combinada gerada: {arquivo_combinado} ({len(df_combinado)} registros)")
 
 
 if __name__ == "__main__":
