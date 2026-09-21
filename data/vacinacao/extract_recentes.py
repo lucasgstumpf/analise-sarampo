@@ -1,8 +1,10 @@
+import sys
 import urllib.error
 from pathlib import Path
 
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from datasus_lib import extrair_csv_zip_filtrado
 
 RAW_DIR = Path(__file__).parent / "raw"

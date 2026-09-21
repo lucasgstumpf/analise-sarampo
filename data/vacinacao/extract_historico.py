@@ -1,7 +1,9 @@
+import sys
 from pathlib import Path
 
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from datasus_lib import extrair_dbf
 
 RAW_DIR = Path(__file__).parent / "raw"

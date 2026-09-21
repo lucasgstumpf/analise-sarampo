@@ -3,5 +3,7 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 
-data/raw/
-data/processed/
+data/sarampo/raw/
+data/sarampo/processed/
+data/vacinacao/raw/
+data/vacinacao/processed/
