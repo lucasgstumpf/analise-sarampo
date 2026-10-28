@@ -33,7 +33,10 @@ URL_TEMPLATE_SIPNI = "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/PNI/c
 MESES_ABREV = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 
 # Período a coletar. Meses ainda não publicados são registrados como "nao_publicado".
-PERIODO = [(2025, mes) for mes in range(1, 13)]  # jan-dez/2025
+# De jan/2025 até o mês corrente.
+_HOJE = datetime.now()
+PERIODO = [(ano, mes) for ano in range(2025, _HOJE.year + 1) for mes in range(1, 13)
+           if (ano, mes) <= (_HOJE.year, _HOJE.month)]
 TAMANHO_CHUNK = 200_000
 MAX_TENTATIVAS_DOWNLOAD = 5
 
@@ -44,7 +47,7 @@ def filtro_vacinas_sarampo(chunk: pd.DataFrame) -> pd.Series:
     return chunk["ds_nome"].str.contains("sarampo", case=False, na=False)
 
 
-NOME_BASE_COMBINADO_SIPNI = "sipni_doses_sarampo_sipni_2025_completo"
+NOME_BASE_COMBINADO_SIPNI = f"sipni_doses_sarampo_sipni_2025_{_HOJE.year}_completo"
 
 COLUMN_MAP_SIPNI = {
     "co_documento": "codigo_documento",

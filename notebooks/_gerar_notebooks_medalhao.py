@@ -1,4 +1,5 @@
-"""Gera os notebooks 05-07 (silver/gold da vacinação contra sarampo). Rodar da raiz do projeto."""
+"""Gera os notebooks 05-07 (qualidade e panorama da vacinação contra sarampo). Todos leem só
+data/gold/vacinacao. Rodar da raiz do projeto."""
 from pathlib import Path
 
 import nbformat as nbf
@@ -24,9 +25,7 @@ plt.rcParams.update({
 })
 pd.options.display.float_format = "{:,.2f}".format
 
-PROCESSED = Path("..") / "data" / "vacinacao" / "processed"
-SILVER = PROCESSED / "silver" / "vacinacao_sarampo_sipni.parquet"
-GOLD = PROCESSED / "gold"
+GOLD = Path("..") / "data" / "gold" / "vacinacao"
 
 
 def milhar(ax, eixo="y"):
@@ -50,30 +49,33 @@ def nb(cells, path):
 nb05 = [
     ("md", """# Camada Silver - Qualidade da base de vacinação contra sarampo
 
-Este notebook audita a **silver**: `data/vacinacao/processed/silver/vacinacao_sarampo_sipni.parquet`, uma linha por dose de vacina com componente de sarampo (SCR, SCRV, SR), de **jan/2025 a jun/2026**.
+Este notebook audita a **silver** (`data/silver/sipni_doses/vacinacao_sarampo_sipni.parquet`, uma linha por dose de vacina com componente de sarampo: SCR, SCRV, SR) a partir de **jan/2025**. Ele não lê a silver diretamente: usa as tabelas de qualidade que o passo 09 grava na gold, então roda só com a pasta `data/gold/`.
 
 Arquitetura em camadas (medalhão):
 
 | Camada | O que é | Onde / como é gerada |
 |---|---|---|
-| **Bronze** | CSVs mensais do SI-PNI/RNDS já filtrados para sarampo, sem tratamento | `processed/sipni_doses_sarampo_sipni_AAAA_mmm.csv` - `extract_recentes.py` |
-| **Silver** | Limpa, tipada, enxuta (56 -> 28 colunas), sem duplicatas e sem diluentes | `processed/silver/` - `processar_vacinacao.py` |
-| **Gold** | Tabelas agregadas pequenas, prontas para visualização e BI | `processed/gold/` - `gerar_gold.py` |
+| **Bronze** | CSVs mensais do SI-PNI/RNDS já filtrados para sarampo, sem tratamento | `data/bronze/sipni_doses/sipni_doses_sarampo_sipni_AAAA_mmm.csv` - `pipeline/03_bronze_sipni_doses.py` |
+| **Silver** | Limpa, tipada, enxuta (56 -> ~30 colunas), sem duplicatas e sem diluentes | `data/silver/sipni_doses/` - `pipeline/07_silver_sipni_doses.py` |
+| **Gold** | Tabelas agregadas pequenas, prontas para visualização e BI | `data/gold/vacinacao/` - `pipeline/09_gold_vacinacao.py` |
+
+Tabelas gold usadas aqui: `gold_resumo_geral`, `gold_qualidade_colunas`, `gold_funil_processamento`, `gold_idade_dose`, `gold_doses_por_paciente`, `gold_dose_descricao_ordem` e `gold_atraso_dias`.
 
 Ver [06-gold-panorama-vacinacao.ipynb](06-gold-panorama-vacinacao.ipynb) e [07-gold-criancas-municipios-atraso.ipynb](07-gold-criancas-municipios-atraso.ipynb) para as análises sobre a gold."""),
     ("md", "## 1. Setup"),
     ("code", SETUP + '''
-df = pd.read_parquet(SILVER)
-print(f"{df.shape[0]:,} linhas x {df.shape[1]} colunas | {SILVER.stat().st_size/1e6:,.0f} MB em disco | {df.memory_usage(deep=True).sum()/1e9:.1f} GB em RAM")
-df.head(3).T'''),
+resumo = pd.read_parquet(GOLD / "gold_resumo_geral.parquet").iloc[0]
+qual = pd.read_parquet(GOLD / "gold_qualidade_colunas.parquet").set_index("coluna")
+PERIODO = f"{resumo.primeiro_mes} a {resumo.ultimo_mes}"
+print(f"Silver: {resumo.doses:,} linhas (doses) x {len(qual)} colunas | {resumo.pacientes_distintos:,} pacientes distintos | meses {PERIODO}")
+qual[["tipo", "exemplo"]]'''),
     ("md", "## 2. Funil de processamento (bronze -> silver)\nQuantas linhas cada regra da silver removeu, por mês."),
-    ("code", '''resumo = pd.DataFrame(json.loads((PROCESSED / "_auditoria" / "processamento_resumo.json").read_text(encoding="utf-8"))).T
-resumo.index.name = "ano_mes"
-display(resumo)
-print("Total bronze:", f"{resumo.linhas_csv.sum():,}", "| diluentes removidos:", f"{resumo.diluentes_removidos.sum():,}",
-      "| duplicadas removidas:", f"{resumo.duplicadas_removidas.sum():,}", "| silver:", f"{resumo.linhas_finais.sum():,}")'''),
+    ("code", '''funil = pd.read_parquet(GOLD / "gold_funil_processamento.parquet").set_index("ano_mes")
+display(funil)
+print("Total bronze:", f"{funil.linhas_csv.sum():,}", "| diluentes removidos:", f"{funil.diluentes_removidos.sum():,}",
+      "| duplicadas removidas:", f"{funil.duplicadas_removidas.sum():,}", "| silver:", f"{funil.linhas_finais.sum():,}")'''),
     ("md", "## 3. Completude\nPercentual de valores ausentes por coluna. Colunas quase vazias (etnia, condição maternal etc.) só fazem sentido em subpopulações."),
-    ("code", '''nulos = (df.isna().mean() * 100).sort_values()
+    ("code", '''nulos = qual["pct_nulos"].sort_values()
 fig, ax = plt.subplots(figsize=(8, 8))
 ax.barh(nulos.index, nulos.values, color=[CATEGORICAL[1] if v > 5 else BLUE for v in nulos.values])
 titulo(ax, "% de valores ausentes por coluna da silver")
@@ -84,60 +86,65 @@ nulos[nulos > 0].round(2)'''),
     ("md", "## 4. Colunas categóricas\nCardinalidade e categorias dominantes: base para decidir o que vira filtro/cor nas visualizações."),
     ("code", '''cats = ["sexo_paciente", "raca_cor_paciente", "nacionalidade_paciente", "vacina_tipo", "sigla_vacina",
         "descricao_dose_vacina", "estrategia_vacinacao", "categoria_atendimento", "natureza_estabelecimento"]
-resumo_cat = pd.DataFrame({
-    "unicos": [df[c].nunique() for c in cats],
-    "mais_frequente": [df[c].value_counts().index[0] for c in cats],
-    "% mais_frequente": [100 * df[c].value_counts(normalize=True).iloc[0] for c in cats],
-}, index=cats)
+resumo_cat = qual.loc[cats, ["unicos", "mais_frequente", "pct_mais_frequente"]].rename(
+    columns={"pct_mais_frequente": "% mais_frequente"})
 resumo_cat'''),
     ("md", """## 5. Idade
 A idade vem em anos completos. Vacinação em massa de sarampo concentra-se em crianças pequenas; valores muito altos são candidatos a erro de digitação."""),
-    ("code", '''idade = df["idade_paciente"].dropna().astype(int)
+    ("code", '''idade = pd.read_parquet(GOLD / "gold_idade_dose.parquet")
+cont = idade.groupby(idade["idade_paciente"].clip(upper=100))["doses"].sum().sort_index()
 fig, ax = plt.subplots(figsize=(10, 4))
-cont = idade.clip(upper=100).value_counts().sort_index()
 ax.bar(cont.index, cont.values, color=BLUE, width=0.85)
 titulo(ax, "Doses por idade do paciente (>= 100 agrupado em 100)")
 ax.set_xlabel("Idade (anos)"); ax.set_ylabel("N de doses"); milhar(ax)
 ax.set_yscale("log")
 plt.tight_layout(); plt.show()
-print("Idade > 100 anos:", f"{(idade > 100).sum():,}", "| idade > 110:", f"{(idade > 110).sum():,}", "| idade ausente:", df["idade_paciente"].isna().sum())'''),
+print("Idade > 100 anos:", f"{resumo.idade_maior_100:,}", "| idade > 110:", f"{resumo.idade_maior_110:,}", "| idade ausente:", resumo.idade_ausente)'''),
     ("md", """## 6. Pacientes com muitas doses
 `codigo_paciente_anonimizado` permite seguir a mesma pessoa. Poucas doses por pessoa são esperadas (esquema de 2 doses). Valores extremos indicam **colisão de identificador** (mesmo hash para pessoas diferentes, p.ex. CPF/CNS inválido) e devem ser filtrados em análises por paciente."""),
-    ("code", '''por_paciente = df.groupby("codigo_paciente_anonimizado").size()
-dist = por_paciente.clip(upper=6).value_counts().sort_index()
+    ("code", '''por_paciente = pd.read_parquet(GOLD / "gold_doses_por_paciente.parquet").set_index("doses_na_janela")["pacientes"]
+dist = por_paciente.groupby(np.minimum(por_paciente.index, 6)).sum().sort_index()
 dist.index = [str(i) if i < 6 else "6+" for i in dist.index]
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.bar(dist.index, dist.values, color=BLUE)
-titulo(ax, "Pacientes por nº de doses na janela (jan/2025 - jun/2026)")
+titulo(ax, f"Pacientes por nº de doses na janela ({PERIODO})")
 ax.set_xlabel("N de doses do paciente"); ax.set_ylabel("N de pacientes"); milhar(ax)
 for i, v in enumerate(dist.values):
     ax.text(i, v, f"{v:,.0f}".replace(",", "."), ha="center", va="bottom", fontsize=9)
 plt.tight_layout(); plt.show()
-print("Pacientes únicos:", f"{por_paciente.size:,}")
-print("Pacientes com > 10 doses (provável colisão de ID):", f"{(por_paciente > 10).sum():,}", "-> doses:", f"{por_paciente[por_paciente > 10].sum():,}")'''),
+print("Pacientes únicos:", f"{por_paciente.sum():,}")
+print("Pacientes com > 10 doses (provável colisão de ID):", f"{resumo.pacientes_mais_10_doses:,}", "-> doses:", f"{resumo.doses_pacientes_mais_10_doses:,}")'''),
     ("md", """## 7. Descrição da dose x ordem real da dose
-16% das linhas trazem a dose só como "Dose", sem número. A silver calcula `ordem_dose_paciente` (1ª, 2ª... dose do paciente **dentro da janela**) para resolver isso. Limite: doses aplicadas antes de jan/2025 não aparecem, então a ordem é um **mínimo**."""),
-    ("code", '''ct = pd.crosstab(df["descricao_dose_vacina"], df["ordem_dose_paciente"].clip(upper=4))
+Parte das linhas traz a dose só como "Dose", sem número. A silver calcula `ordem_dose_paciente` (1ª, 2ª... dose do paciente **dentro da janela**) para resolver isso. Limite: doses aplicadas antes de jan/2025 não aparecem, então a ordem é um **mínimo**."""),
+    ("code", '''dd = pd.read_parquet(GOLD / "gold_dose_descricao_ordem.parquet")
+ct = dd.pivot_table(index="descricao_dose_vacina", columns="ordem_dose", values="doses", aggfunc="sum", fill_value=0)
 ct = ct.loc[ct.sum(axis=1).sort_values(ascending=False).index].head(8)
-ct.columns = ["1º na janela", "2º na janela", "3º na janela", "4º+ na janela"]
+ct.columns = ["1º na janela", "2º na janela", "3º na janela", "4º+ na janela"][: ct.shape[1]]
+print(f"Linhas com a descrição só \\"Dose\\": {dd.loc[dd.descricao_dose_vacina == 'Dose', 'doses'].sum() / dd.doses.sum() * 100:.1f}%")
 ct'''),
     ("md", "## 8. Registro no RNDS: atraso e datas inconsistentes"),
-    ("code", '''at = df["atraso_registro_dias"].dropna().astype(int)
-print("Datas de vacinação fora do mês do arquivo:", int(df["vacinacao_fora_do_mes"].sum()))
-print("Registro antes da vacinação (atraso < 0):", int((at < 0).sum()))
-print(at.describe(percentiles=[.5, .75, .9, .99]).round(1).to_string())'''),
+    ("code", '''at = pd.read_parquet(GOLD / "gold_atraso_dias.parquet").sort_values("atraso_registro_dias")
+dias, peso = at["atraso_registro_dias"].astype(float), at["doses"]
+acum = peso.cumsum() / peso.sum()
+quantil = lambda q: dias[acum >= q].iloc[0]
+media = (dias * peso).sum() / peso.sum()
+desvio = np.sqrt((peso * (dias - media) ** 2).sum() / (peso.sum() - 1))
+print("Datas de vacinação fora do mês do arquivo:", resumo.vacinacao_fora_do_mes)
+print("Registro antes da vacinação (atraso < 0):", resumo.atraso_negativo)
+print(pd.Series({"count": peso.sum(), "mean": media, "std": desvio, "min": dias.min(), "50%": quantil(.5),
+                 "75%": quantil(.75), "90%": quantil(.9), "99%": quantil(.99), "max": dias.max()}).round(1).to_string())'''),
     ("md", """## Conclusões da auditoria
 - A silver está **sem duplicatas** de documento e sem diluentes; o funil (seção 2) documenta tudo o que saiu.
-- A **data de vacinação sempre cai no mês do arquivo**, então `ano_mes` pode ser usado com segurança como período.
+- Confira na seção 8 quantas datas de vacinação caem fora do mês do arquivo antes de usar `ano_mes` como período.
 - Análises **por paciente** devem excluir pacientes com número absurdo de doses (colisão de ID).
 - Para **cobertura vacinal** ainda falta o denominador populacional (IBGE/SINASC); as tabelas gold contam doses e pacientes vacinados, não cobertura."""),
 ]
 
 # ---------------------------------------------------------------- 06 gold panorama
 nb06 = [
-    ("md", """# Camada Gold - Panorama da vacinação contra sarampo (jan/2025 - jun/2026)
+    ("md", """# Camada Gold - Panorama da vacinação contra sarampo (a partir de jan/2025)
 
-Análises sobre as tabelas agregadas da **gold** (`data/vacinacao/processed/gold/`), geradas por `gerar_gold.py` a partir da silver. Todas cabem em memória e carregam em segundos.
+Análises sobre as tabelas agregadas da **gold** (`data/gold/vacinacao/`), geradas por `pipeline/09_gold_vacinacao.py` a partir da silver. Todas cabem em memória e carregam em segundos.
 
 Ver a auditoria da base em [05-silver-qualidade-vacinacao.ipynb](05-silver-qualidade-vacinacao.ipynb). Aqui, **dose** significa dose aplicada (não pessoa) e a "n-ésima dose" combina a descrição do registro com a ordem do paciente na janela."""),
     ("md", "## 1. Setup e KPIs mensais"),
@@ -147,8 +154,9 @@ uf_mes = pd.read_parquet(GOLD / "gold_doses_uf_mes.parquet")
 dia = pd.read_parquet(GOLD / "gold_doses_dia.parquet")
 perfil = pd.read_parquet(GOLD / "gold_perfil.parquet")
 idade = pd.read_parquet(GOLD / "gold_idade_dose.parquet")
+PERIODO = f"{kpi.ano_mes.min()} a {kpi.ano_mes.max()}"
 
-print(f"Doses no período: {kpi.doses.sum():,} | pacientes-mês: {kpi.pacientes_unicos.sum():,}")
+print(f"Período: {PERIODO} | Doses no período: {kpi.doses.sum():,} | pacientes-mês: {kpi.pacientes_unicos.sum():,}")
 kpi'''),
     ("md", "## 2. Doses por mês e por dose"),
     ("code", '''ordem_dose = ["Dose zero", "1ª dose", "2ª dose", "3ª dose ou mais", "Reforço/adicional"]
@@ -187,7 +195,7 @@ plt.tight_layout(); plt.show()'''),
     ("code", '''uf = uf_mes.groupby("uf_paciente")["doses"].sum().sort_values()
 fig, ax = plt.subplots(figsize=(8, 8))
 ax.barh(uf.index.astype(str), uf.values, color=BLUE)
-titulo(ax, "Doses por UF do paciente (jan/2025 - jun/2026)")
+titulo(ax, f"Doses por UF do paciente ({PERIODO})")
 ax.set_xlabel("N de doses"); milhar(ax, "x"); ax.grid(axis="y", visible=False)
 plt.tight_layout(); plt.show()'''),
     ("md", """### Calendário por UF

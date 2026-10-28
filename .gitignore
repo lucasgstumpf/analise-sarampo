@@ -3,6 +3,19 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 
+# Dados gerados pelo pipeline: grandes e recriáveis com pipeline/executar_pipeline.py
+data/bronze/*
+data/silver/*
+# A gold vai para o git (todo o projeto roda os notebooks só com ela), em .parquet (~10 MB).
+# Os .csv da gold são cópias para abrir no Excel/BI e ficam fora, exceto os que os notebooks leem.
+data/gold/**/*.csv
+!data/gold/ibge/*.csv
+!data/gold/vacinacao/dim_municipios.csv
+# Malhas e população do IBGE são pequenas e continuam versionadas
+!data/bronze/ibge/
+!data/silver/ibge/
+
+# Estrutura antiga (antes do medalhão), caso ainda exista alguma cópia local
 data/sarampo/raw/
 data/sarampo/processed/
 data/vacinacao/raw/

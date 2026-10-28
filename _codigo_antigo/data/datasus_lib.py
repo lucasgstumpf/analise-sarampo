@@ -11,7 +11,11 @@ from pathlib import Path
 
 import pandas as pd
 from dbfread import DBF
-from pyreaddbc import dbc2dbf
+
+try:
+    from pyreaddbc import dbc2dbf
+except ImportError:  # pyreaddbc precisa de compilador C quando não há wheel pronta
+    from dbc_puro import dbc2dbf
 
 BASE_URL = "ftp://ftp.datasus.gov.br"
 

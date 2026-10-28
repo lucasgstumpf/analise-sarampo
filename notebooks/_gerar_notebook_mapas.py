@@ -26,9 +26,8 @@ plt.rcParams.update({
 })
 
 RAIZ = Path("..") / "data"
-GOLD = RAIZ / "vacinacao" / "processed" / "gold"
-SILVER = RAIZ / "vacinacao" / "processed" / "silver" / "vacinacao_sarampo_sipni.parquet"
-GEO = RAIZ / "geo"
+GOLD = RAIZ / "gold" / "vacinacao"
+GEO = RAIZ / "gold" / "ibge"  # malhas, lista de UFs e população por município (passo 12)
 
 # ---------------------------------------------------------------- geometrias (GeoJSON do IBGE, sem geopandas)
 def ler_geojson(caminho, chave_len):
@@ -134,15 +133,15 @@ cells = []
 md = lambda t: cells.append(("md", t))
 code = lambda t: cells.append(("code", t))
 
-md("""# Mapas do Brasil - Vacinação contra sarampo (jan/2025 a jun/2026)
+md("""# Mapas do Brasil - Vacinação contra sarampo (SI-PNI, a partir de jan/2025)
 
 Visualizações geográficas das doses de vacina com componente de sarampo, por UF e por município de residência do paciente.
 
 **Fontes**
-- Doses: tabelas gold e silver em `data/vacinacao/processed/` (ver [05](05-silver-qualidade-vacinacao.ipynb) a [08](08-eda-completa-vacinacao-sarampo.ipynb)).
-- Malhas de UF e município e população estimada por município (IBGE, 2026): baixadas por `data/geo/baixar_malhas.py`.
+- Doses: tabelas gold em `data/gold/vacinacao/` (ver [05](05-silver-qualidade-vacinacao.ipynb) a [08](08-eda-completa-vacinacao-sarampo.ipynb)).
+- Malhas de UF e município e população estimada por município (IBGE, 2026): em `data/gold/ibge/` (baixadas pelo passo 04, população tratada no 08, copiadas para a gold pelo 12).
 
-**Método:** os mapas são desenhados com `matplotlib` a partir do GeoJSON do IBGE (qualidade mínima, suficiente para escala nacional), sem depender de geopandas. Taxas usam a **população estimada de 2026 como denominador aproximado** para todo o período de 18 meses. Isso serve para comparar territórios entre si, mas não é cobertura vacinal (não há denominador por idade).
+**Método:** os mapas são desenhados com `matplotlib` a partir do GeoJSON do IBGE (qualidade mínima, suficiente para escala nacional), sem depender de geopandas. Taxas usam a **população estimada de 2026 como denominador aproximado** para todo o período. Isso serve para comparar territórios entre si, mas não é cobertura vacinal (não há denominador por idade).
 
 Índice: 1. Doses por 1.000 habitantes (UF) · 2. Mesma taxa por município · 3. Onde as doses se concentram (bolhas) · 4. Evolução por trimestre · 5. 2026 x 2025 · 6. Crianças com 2+ doses · 7. Adultos · 8. Atraso de registro · 9. Fluxos interestaduais · 10. Síntese""")
 
@@ -160,7 +159,10 @@ perfil = pd.read_parquet(GOLD / "gold_perfil.parquet")
 atraso = pd.read_parquet(GOLD / "gold_atraso_registro.parquet")
 coorte = pd.read_parquet(GOLD / "gold_coorte_criancas_municipio.parquet")
 
-print(f"{len(cod_mun)} municípios e {len(cod_uf)} UFs na malha | população total {pop['populacao'].sum():,} ({pop['ano'].iloc[0]})")
+fluxo_uf = pd.read_parquet(GOLD / "gold_fluxo_uf.parquet")
+PERIODO = f"{uf_mes['ano_mes'].min()} a {uf_mes['ano_mes'].max()}"
+
+print(f"Período: {PERIODO} | {len(cod_mun)} municípios e {len(cod_uf)} UFs na malha | população total {pop['populacao'].sum():,} ({pop['ano'].iloc[0]})")
 doses_uf = uf_mes.groupby("uf_paciente")["doses"].sum()
 doses_mun = mun_mes.groupby("codigo_municipio_paciente")["doses"].sum()
 print(f"Doses: {doses_uf.sum():,} | em UF sem malha (ex.: XX): {doses_uf[~doses_uf.index.isin(sigla_uf)].sum():,}")''')
@@ -177,7 +179,7 @@ rotular_uf(axes[0], None, so_sigla=True, escuro=set(abs_uf[abs_uf > b0[-2]].inde
 b = quantis(taxa_uf, 6)
 coropletico(axes[1], taxa_uf.to_dict(), bins=b, cmap="Blues", titulo="Doses por 1.000 habitantes", rotulo="Doses por 1.000 hab.", cbar_kw={"shrink": 0.5})
 rotular_uf(axes[1], taxa_uf.to_dict(), fmt="{:.0f}", limiar=b[-3])
-fig.suptitle("Vacinação contra sarampo por UF de residência (jan/2025 - jun/2026)", x=0.06, ha="left", fontweight="bold", fontsize=13)
+fig.suptitle(f"Vacinação contra sarampo por UF de residência ({PERIODO})", x=0.06, ha="left", fontweight="bold", fontsize=13)
 plt.tight_layout(); plt.show()
 t = taxa_uf.sort_values(ascending=False)
 print("Maiores taxas:", t.head(5).round(0).to_dict()); print("Menores taxas:", t.tail(5).round(0).to_dict())''')
@@ -225,13 +227,16 @@ for c, r in top5.iterrows():
 plt.tight_layout(); plt.show()''')
 
 md("""## 5. Evolução no tempo: um mapa por trimestre
-Todos os painéis usam a **mesma escala de cor** (doses por 1.000 hab. no trimestre), então mudanças de tom indicam mudança real de ritmo. O 2º tri de 2026 está completo até junho.""")
+Todos os painéis usam a **mesma escala de cor** (doses por 1.000 hab. no trimestre), então mudanças de tom indicam mudança real de ritmo. Confira se o último trimestre já está completo.""")
 code('''uf_mes["tri"] = pd.PeriodIndex(uf_mes["ano_mes"], freq="M").asfreq("Q").astype(str)
 tri = uf_mes.groupby(["tri", "uf_paciente"])["doses"].sum().unstack(0)
 tri = tri.loc[tri.index.isin(sigla_uf)]
 taxa = tri.div(pop_uf.reindex(tri.index), axis=0) * 1000
 bins = np.linspace(taxa.min().min() // 5 * 5, np.ceil(taxa.max().max() / 5) * 5, 8)
-fig, axes = plt.subplots(2, 3, figsize=(15, 10.5))
+linhas = int(np.ceil(taxa.shape[1] / 3))
+fig, axes = plt.subplots(linhas, 3, figsize=(15, 5.25 * linhas))
+for ax in axes.ravel()[taxa.shape[1]:]:
+    ax.set_visible(False)
 for ax, col in zip(axes.ravel(), taxa.columns):
     pc = coropletico(ax, taxa[col].to_dict(), bins=bins, cmap="Blues", titulo=col.replace("Q", " T"), colorbar=False)
 fig.subplots_adjust(right=0.9)
@@ -240,15 +245,17 @@ fig.suptitle("Ritmo de vacinação por trimestre e UF", x=0.06, ha="left", fontw
 plt.show()''')
 
 md("""## 6. 2026 x 2025: onde a vacinação cresceu ou caiu
-Variação percentual das doses no 1º semestre (jan-jun) de 2026 contra o de 2025, por UF. Escala divergente centrada em zero: **azul = cresceu, laranja = caiu**.""")
+Variação percentual das doses de 2026 contra 2025 nos mesmos meses (os meses que existem nos dois anos), por UF. Escala divergente centrada em zero: **azul = cresceu, laranja = caiu**.""")
 code('''s = uf_mes[uf_mes["uf_paciente"].isin(sigla_uf)].copy()
 s["ano"] = s["ano_mes"].str[:4].astype(int); s["mes"] = s["ano_mes"].str[5:].astype(int)
-s = s[s["mes"] <= 6].groupby(["uf_paciente", "ano"])["doses"].sum().unstack()
+MESES_COMUNS = sorted(set(s.loc[s["ano"] == 2025, "mes"]) & set(s.loc[s["ano"] == 2026, "mes"]))
+JANELA = f"meses {MESES_COMUNS[0]:02d}-{MESES_COMUNS[-1]:02d}"
+s = s[s["mes"].isin(MESES_COMUNS)].groupby(["uf_paciente", "ano"])["doses"].sum().unstack()
 var = ((s[2026] / s[2025] - 1) * 100).dropna()
 lim = np.ceil(np.abs(var).quantile(0.95) / 5) * 5
 bins = np.linspace(-lim, lim, 9)
 fig, axes = plt.subplots(1, 2, figsize=(15, 7), gridspec_kw={"width_ratios": [1.3, 1]})
-coropletico(axes[0], var.to_dict(), bins=bins, cmap="RdYlBu", extremos="both", titulo="Variação das doses: jan-jun/2026 vs jan-jun/2025 (%)", rotulo="%", fmt="{:+.0f}", cbar_kw={"shrink": 0.5})
+coropletico(axes[0], var.to_dict(), bins=bins, cmap="RdYlBu", extremos="both", titulo=f"Variação das doses: 2026 vs 2025 ({JANELA}) (%)", rotulo="%", fmt="{:+.0f}", cbar_kw={"shrink": 0.5})
 rotular_uf(axes[0], var.to_dict(), fmt="{:+.0f}%", so_sigla=False)
 ordem = var.sort_values()
 axes[1].barh(ordem.index, ordem.values, color=[CATEGORICAL[1] if x < 0 else BLUE for x in ordem.values])
@@ -305,9 +312,8 @@ print("Maior atraso:", pct_t.nlargest(4).round(1).to_dict(), "| menor:", pct_t.n
 
 md("""## 10. Fluxos interestaduais
 Doses aplicadas em uma UF a pacientes residentes em outra. Cada seta vai da **UF de residência para a UF onde a dose foi aplicada**, com espessura proporcional ao número de doses (30 maiores fluxos). Revela polos de atração (capitais, fronteiras) e deslocamentos por trabalho.""")
-code('''fl = pd.read_parquet(SILVER, columns=["uf_paciente", "uf_estabelecimento"]).dropna()
+code('''fl = fluxo_uf.dropna(subset=["uf_paciente", "uf_estabelecimento"])
 fl = fl[fl["uf_paciente"] != fl["uf_estabelecimento"]]
-fl = fl.groupby(["uf_paciente", "uf_estabelecimento"]).size().rename("doses").reset_index()
 fl = fl[fl["uf_paciente"].isin(sigla_uf) & fl["uf_estabelecimento"].isin(sigla_uf)]
 top = fl.nlargest(30, "doses")
 fig, ax = plt.subplots(figsize=(9.5, 9.5))
@@ -340,14 +346,14 @@ md("## 11. Síntese")
 code('''print("SÍNTESE GEOGRÁFICA")
 print(f"- Maior taxa por habitante (UF): {taxa_uf.idxmax()} ({taxa_uf.max():.0f} doses/1.000 hab.); menor: {taxa_uf.idxmin()} ({taxa_uf.min():.0f}).")
 print(f"- Mediana municipal: {dm['taxa'].median():.0f} doses/1.000 hab. (P10 = {dm['taxa'].quantile(.1):.0f}, P90 = {dm['taxa'].quantile(.9):.0f}).")
-print(f"- 1º semestre 2026 vs 2025: {(s[2026].sum() / s[2025].sum() - 1) * 100:+.1f}% no país; maior queda {var.idxmin()} ({var.min():+.0f}%), maior alta {var.idxmax()} ({var.max():+.0f}%).")
+print(f"- 2026 vs 2025 ({JANELA}): {(s[2026].sum() / s[2025].sum() - 1) * 100:+.1f}% no país; maior queda {var.idxmin()} ({var.min():+.0f}%), maior alta {var.idxmax()} ({var.max():+.0f}%).")
 print(f"- Crianças 1-4 anos com 2+ doses: de {ufp.min():.0f}% ({ufp.idxmin()}) a {ufp.max():.0f}% ({ufp.idxmax()}).")
 print(f"- Adultos 20-59 nas doses: de {pct_ad.min():.0f}% ({pct_ad.idxmin()}) a {pct_ad.max():.0f}% ({pct_ad.idxmax()}).")
 print(f"- Atraso > 30 dias: de {pct_t.min():.0f}% ({pct_t.idxmin()}) a {pct_t.max():.0f}% ({pct_t.idxmax()}).")''')
 
 md("""## Próximos passos
 1. **Cobertura por idade**: trocar a população total pela população de 1 a 4 anos (Censo 2022/SINASC) para calcular cobertura vacinal municipal de verdade.
-2. **Casos x vacinação**: sobrepor os casos confirmados (`data/sarampo/`) a estes mapas para identificar municípios com casos e baixa vacinação.
+2. **Casos x vacinação**: sobrepor os casos confirmados (`data/gold/sinan/`) a estes mapas para identificar municípios com casos e baixa vacinação.
 3. **Malha de maior resolução** (`qualidade=intermediaria` na API do IBGE) para mapas de região metropolitana.
 4. **Mapas interativos** (Plotly/Folium) a partir das mesmas tabelas gold.""")
 
