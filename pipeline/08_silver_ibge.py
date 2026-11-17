@@ -29,7 +29,7 @@ def main() -> None:
         "ano": [int(l["D3C"]) for l in linhas],
     })
     config.SILVER_IBGE.mkdir(parents=True, exist_ok=True)
-    pop.to_csv(config.SILVER_IBGE / "populacao_municipios.csv", index=False)
+    pop.to_csv(config.SILVER_IBGE / "populacao_municipios.csv", index=False, encoding="utf-8", lineterminator="\n")
     print(f"{len(pop)} municípios, população total {pop['populacao'].sum():,} ({pop['ano'].iloc[0]})")
 
 
