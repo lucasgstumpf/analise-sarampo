@@ -1,0 +1,913 @@
+{
+  "camada": "gold",
+  "gerado_em": "2026-11-17T21:57:59+00:00",
+  "parametros": {
+    "data_corte": "2026-11-08",
+    "data_corte_explicita": true,
+    "ano_inicial_sipni_doses": 2020,
+    "ano_populacao_ibge": 2026
+  },
+  "codigo": {
+    "commit": "6e1ad9e5bec75ebea516bc3e266e0257db5cb9cc",
+    "alteracoes_locais": false
+  },
+  "ambiente": {
+    "python": "3.14.10",
+    "sistema": "Linux x86_64",
+    "pacotes": {
+      "pandas": "3.0.5",
+      "numpy": "2.5.2",
+      "pyarrow": "26.0.1",
+      "dbfread": "2.0.7",
+      "duckdb": "2.0.0",
+      "numba": "0.68.1"
+    },
+    "conversor_dbc": "comum/dbc_rapido.py (numba)"
+  },
+  "arquivos": [
+    {
+      "caminho": "demografia/gold_cobertura_nominal_municipio_ano.csv",
+      "bytes": 2314396,
+      "sha256": "46075196e6e3ee1e493795c2bff5f6b21c327a6ed0e824d8c6f1f5ff8038dc9d"
+    },
+    {
+      "caminho": "demografia/gold_cobertura_nominal_municipio_ano.parquet",
+      "bytes": 440615,
+      "sha256": "0786ff946bcbc37d3ffb6556562cdb8339fd04ce8be1d22f04090910f7b8fb3e",
+      "linhas": 39098,
+      "schema": {
+        "ano": "int64",
+        "codigo_municipio": "string",
+        "codigo_uf": "string",
+        "doses_d1": "int64",
+        "doses_d2": "int64",
+        "populacao_alvo": "double",
+        "cobertura_d1_percentual": "double",
+        "cobertura_d2_percentual": "double",
+        "ano_sinasc_populacao_alvo": "int64",
+        "situacao_sinasc": "large_string",
+        "meses_com_dados": "int64"
+      }
+    },
+    {
+      "caminho": "demografia/gold_cobertura_nominal_uf_ano.csv",
+      "bytes": 12408,
+      "sha256": "34b9e07c2fe295d4c86dba2d835b637144b97dea01fa78541b72ca042e9687aa"
+    },
+    {
+      "caminho": "demografia/gold_cobertura_nominal_uf_ano.parquet",
+      "bytes": 12100,
+      "sha256": "e23a7b6be1d741576ad5992dd63683a8cda33ec17b259f05880fa152f8c84b38",
+      "linhas": 196,
+      "schema": {
+        "ano": "int64",
+        "codigo_uf": "large_string",
+        "uf": "large_string",
+        "doses_d1": "int64",
+        "doses_d2": "int64",
+        "populacao_alvo": "double",
+        "cobertura_d1_percentual": "double",
+        "cobertura_d2_percentual": "double",
+        "ano_sinasc_populacao_alvo": "int64",
+        "situacao_sinasc": "large_string",
+        "meses_com_dados": "int64"
+      }
+    },
+    {
+      "caminho": "demografia/gold_nascidos_vivos_municipio_ano.csv",
+      "bytes": 5383898,
+      "sha256": "8ddc4d2ce65cb510fc8191908bb3d10c87c4a9622681c2ebe78a3efc9aa08498"
+    },
+    {
+      "caminho": "demografia/gold_nascidos_vivos_municipio_ano.parquet",
+      "bytes": 562474,
+      "sha256": "9a338d5de99274e4a12bbd124c18f884227e52c39c2118788127695e988cc9cb",
+      "linhas": 181336,
+      "schema": {
+        "ano": "int64",
+        "codigo_municipio": "large_string",
+        "codigo_uf": "large_string",
+        "situacao": "large_string",
+        "nascidos_vivos": "int64"
+      }
+    },
+    {
+      "caminho": "demografia/gold_nascidos_vivos_uf_ano.csv",
+      "bytes": 26271,
+      "sha256": "dcb1d8daf46db8812b49344d3739cd9014181cde4a18f93ebbd27f8f57e0bedd"
+    },
+    {
+      "caminho": "demografia/gold_nascidos_vivos_uf_ano.parquet",
+      "bytes": 7415,
+      "sha256": "3d63700078bc12aed7a01b572b14e59d3c6c5a1a30ae623bb3f25477dd5717b6",
+      "linhas": 924,
+      "schema": {
+        "ano": "int64",
+        "situacao": "large_string",
+        "codigo_uf": "large_string",
+        "nascidos_vivos": "int64",
+        "uf": "large_string"
+      }
+    },
+    {
+      "caminho": "demografia/gold_populacao_municipio_ano.csv",
+      "bytes": 14329716,
+      "sha256": "e367638df080e04f25148d794ca8de05646610fa20a9cccadc0dfdace663759f"
+    },
+    {
+      "caminho": "demografia/gold_populacao_municipio_ano.parquet",
+      "bytes": 2400236,
+      "sha256": "9f5d25f601bf8a1534e20948f1af651f0c6219ab20c4189889032dec4359f5f7",
+      "linhas": 239603,
+      "schema": {
+        "ano": "int64",
+        "codigo_municipio": "large_string",
+        "codigo_uf": "large_string",
+        "fonte": "large_string",
+        "populacao_total": "int64",
+        "populacao_menor_1": "int64",
+        "populacao_1_ano": "int64",
+        "populacao_1_a_4": "int64",
+        "populacao_menor_5": "int64"
+      }
+    },
+    {
+      "caminho": "demografia/gold_populacao_uf_ano.csv",
+      "bytes": 84602,
+      "sha256": "dfe42c40854269127d7411e6bb8f1d0f328df9e9a5da179fc70e2d8df5c1280a"
+    },
+    {
+      "caminho": "demografia/gold_populacao_uf_ano.parquet",
+      "bytes": 30092,
+      "sha256": "9612c28d05eec9e0842ec5feed2955631e312de4b8085f3c05d5c9db2e485a6e",
+      "linhas": 1287,
+      "schema": {
+        "ano": "int64",
+        "fonte": "large_string",
+        "codigo_uf": "large_string",
+        "populacao_total": "int64",
+        "populacao_menor_1": "int64",
+        "populacao_1_ano": "int64",
+        "populacao_1_a_4": "int64",
+        "populacao_menor_5": "int64",
+        "uf": "large_string"
+      }
+    },
+    {
+      "caminho": "demografia/gold_serie_cobertura_uf_ano.csv",
+      "bytes": 80069,
+      "sha256": "012c6cbf2433092b4b11f4b17656243a5c7768a3dce49d8c2651f79c3bac7ffe"
+    },
+    {
+      "caminho": "demografia/gold_serie_cobertura_uf_ano.parquet",
+      "bytes": 18994,
+      "sha256": "6f7c0b4967e46329cafcbac9261d49a32d934aff8eff7ca82ca70122272b3f8a",
+      "linhas": 1295,
+      "schema": {
+        "ano": "int64",
+        "dose": "large_string",
+        "codigo_uf": "large_string",
+        "uf": "large_string",
+        "doses_aplicadas": "double",
+        "populacao_alvo": "double",
+        "cobertura_percentual": "double",
+        "fonte": "large_string"
+      }
+    },
+    {
+      "caminho": "ibge/municipios.json",
+      "bytes": 3605638,
+      "sha256": "5efffedf8772dc8654322affafac4e3e8b001839e7c2af5cab4eb1094dcd6240"
+    },
+    {
+      "caminho": "ibge/populacao_municipios.csv",
+      "bytes": 98192,
+      "sha256": "dc23ae4bf6433e4345daa157cb9a3124c50476e78011b95fee33753047698c85"
+    },
+    {
+      "caminho": "ibge/uf.json",
+      "bytes": 98502,
+      "sha256": "07c671aa87aa1ab296c446de6294df9827112782537b996c0a160284907e7c0f"
+    },
+    {
+      "caminho": "ibge/uf_meta.json",
+      "bytes": 2446,
+      "sha256": "7ca1368dea3af83cba1af84ae8a7e88f1173c97586831d086cc8b3c1ba9c6596"
+    },
+    {
+      "caminho": "sinan/gold_serie_casos_obitos_uf_ano.csv",
+      "bytes": 44575,
+      "sha256": "0bc2db7b4787f61bbc31e9b51b0d64409d78e31691a10fcc17b6615e873cefef"
+    },
+    {
+      "caminho": "sinan/gold_serie_casos_obitos_uf_ano.parquet",
+      "bytes": 8615,
+      "sha256": "d570ad2a2ed62d0211aa2b6b1ad87206576639533eb8ae4bea6bef0ec48117bf",
+      "linhas": 1036,
+      "schema": {
+        "nivel": "large_string",
+        "codigo": "large_string",
+        "ano": "int64",
+        "casos_confirmados": "int64",
+        "obitos": "int64",
+        "fonte": "large_string",
+        "casos_oficial_ms": "int64",
+        "obitos_oficial_ms": "int64"
+      }
+    },
+    {
+      "caminho": "sinan/gold_sinan_notificacoes.csv",
+      "bytes": 34430406,
+      "sha256": "637e3979dbed1c4b1e8064f0d2441d976ca6fa621255b9642b6e9523c701b399"
+    },
+    {
+      "caminho": "sinan/gold_sinan_notificacoes.parquet",
+      "bytes": 3969871,
+      "sha256": "785418cf501d957b2c1bb8cbd40534324d0b0072ea3a57127afecdb8d70edbd0",
+      "linhas": 255858,
+      "schema": {
+        "ano_arquivo": "int64",
+        "ano_notificacao": "int64",
+        "semana_epidemiologica_notificacao": "int64",
+        "uf_notificacao": "int64",
+        "municipio_notificacao": "int64",
+        "uf_residencia": "int64",
+        "municipio_residencia": "int64",
+        "idade": "int64",
+        "raca_cor": "int64",
+        "escolaridade": "int64",
+        "situacao_gestacional": "int64",
+        "tosse": "int64",
+        "coriza": "int64",
+        "conjuntivite": "int64",
+        "artralgia": "int64",
+        "linfadenopatia": "int64",
+        "hospitalizado": "int64",
+        "historico_vacinal": "int64",
+        "situacao_vacinal": "int64",
+        "classificacao_final": "int64",
+        "criterio_confirmacao": "int64",
+        "caso_autoctone": "int64",
+        "uf_provavel_infeccao": "int64",
+        "evolucao_caso": "int64",
+        "data_notificacao": "timestamp[us]",
+        "data_primeiros_sintomas": "timestamp[us]",
+        "data_inicio_exantema": "timestamp[us]",
+        "data_ultima_dose": "timestamp[us]",
+        "data_obito": "timestamp[us]",
+        "data_encerramento": "timestamp[us]",
+        "sexo": "large_string",
+        "idade_anos": "double",
+        "faixa_etaria": "large_string"
+      }
+    },
+    {
+      "caminho": "sinan/gold_sinan_qualidade_colunas.csv",
+      "bytes": 67772,
+      "sha256": "0d1c1d810db072acdc029c63f01f03fc37a77557f31d8cd2e6375f6bbc0dab45"
+    },
+    {
+      "caminho": "sinan/gold_sinan_qualidade_colunas.parquet",
+      "bytes": 14161,
+      "sha256": "c1067a080b96c5f0318b813562070609b93e3961c1cd6709a8cec013b95d5c58",
+      "linhas": 2140,
+      "schema": {
+        "ano_arquivo": "int64",
+        "coluna": "large_string",
+        "pct_vazios": "double"
+      }
+    },
+    {
+      "caminho": "sipni_historico/gold_hist_cobertura_d1_uf_ano.csv",
+      "bytes": 38337,
+      "sha256": "3eddef1bbc52506e0f13a1f3d1501d157ed26668f636b267275f011584867cca"
+    },
+    {
+      "caminho": "sipni_historico/gold_hist_cobertura_d1_uf_ano.parquet",
+      "bytes": 14134,
+      "sha256": "89151cdda2dbc74c5a318fb35ba9fbaad9de799b9200c8e0f09205fb8f8fb547",
+      "linhas": 707,
+      "schema": {
+        "ano": "int64",
+        "codigo_uf": "large_string",
+        "uf": "large_string",
+        "imunobiologico": "large_string",
+        "doses_aplicadas": "int64",
+        "populacao_alvo": "double",
+        "cobertura_d1_percentual": "double"
+      }
+    },
+    {
+      "caminho": "sipni_historico/gold_hist_cobertura_municipio_ano.csv",
+      "bytes": 16173296,
+      "sha256": "ea3f598aae9c02502bb34620a8c058aa23597c7c0ff69ac950cd752cd99bcc1f"
+    },
+    {
+      "caminho": "sipni_historico/gold_hist_cobertura_municipio_ano.parquet",
+      "bytes": 1671070,
+      "sha256": "f6279e9573073871f96e22377709742cc93868f45246959a9aaae8b4ef17073c",
+      "linhas": 244103,
+      "schema": {
+        "ano": "int64",
+        "codigo_uf": "large_string",
+        "codigo_municipio": "large_string",
+        "codigo_imunobiologico": "large_string",
+        "imunobiologico": "large_string",
+        "dose_original": "large_string",
+        "faixa_etaria_original": "large_string",
+        "doses_aplicadas": "int64",
+        "populacao_alvo": "double",
+        "cobertura_vacinal_percentual": "double",
+        "indicador_d1_sarampo": "bool"
+      }
+    },
+    {
+      "caminho": "sipni_historico/gold_hist_doses_municipio_ano.csv",
+      "bytes": 52056082,
+      "sha256": "3d0becc16a404be02ad3cbb8c87024b94dcc480dce69f0f715e9215c82b0038a"
+    },
+    {
+      "caminho": "sipni_historico/gold_hist_doses_municipio_ano.parquet",
+      "bytes": 2135267,
+      "sha256": "48bb5e12bd36aa5519dd8cb6f5b3447d15c4c65255a403cbdcc45d9d6a7df7ac",
+      "linhas": 621929,
+      "schema": {
+        "ano": "int64",
+        "codigo_uf": "large_string",
+        "codigo_municipio": "large_string",
+        "codigo_imunobiologico": "large_string",
+        "imunobiologico": "large_string",
+        "vacina_tipo": "large_string",
+        "codigo_dose": "large_string",
+        "dose": "large_string",
+        "doses_aplicadas": "int64"
+      }
+    },
+    {
+      "caminho": "sipni_historico/gold_hist_doses_uf_mes.csv",
+      "bytes": 356570,
+      "sha256": "7296876cdf7fe242cf148ba8cfbde181d83bcffbfcd20c71904c5fcc91f0bd04"
+    },
+    {
+      "caminho": "sipni_historico/gold_hist_doses_uf_mes.parquet",
+      "bytes": 41249,
+      "sha256": "8fb7adf684c016552f9496638169bb2025b8b9db7d814301a371315f001a0952",
+      "linhas": 9099,
+      "schema": {
+        "ano_mes": "large_string",
+        "codigo_uf": "large_string",
+        "uf": "large_string",
+        "vacina_tipo": "large_string",
+        "doses_aplicadas": "int64"
+      }
+    },
+    {
+      "caminho": "sipni_historico/gold_serie_anual_doses_uf.csv",
+      "bytes": 113944,
+      "sha256": "7d69816ced713a0e8e3aa5f18a0d9279705bf4f503ecfc91026bc2fd49e00cb7"
+    },
+    {
+      "caminho": "sipni_historico/gold_serie_anual_doses_uf.parquet",
+      "bytes": 13816,
+      "sha256": "fd82c4afb2ddfa6522964bfd1fa560da509cdfc92d424319e11d34da51c4e391",
+      "linhas": 2112,
+      "schema": {
+        "ano": "int64",
+        "uf": "large_string",
+        "vacina_tipo": "large_string",
+        "doses_aplicadas": "int64",
+        "fonte": "large_string"
+      }
+    },
+    {
+      "caminho": "sipni_historico/gold_serie_fontes.csv",
+      "bytes": 2501,
+      "sha256": "5534b31550c6eec4ad26b1b35f41e99abeb125b362199e486cb3351d66c797b8"
+    },
+    {
+      "caminho": "sipni_historico/gold_serie_fontes.parquet",
+      "bytes": 4231,
+      "sha256": "dd706c1355a8541decf194a8ea70f51baa3ae010485bad345c92e16734594bf4",
+      "linhas": 33,
+      "schema": {
+        "ano": "int64",
+        "fonte": "large_string",
+        "granularidade": "large_string",
+        "situacao": "large_string",
+        "tem_doses": "bool",
+        "tem_cobertura": "bool"
+      }
+    },
+    {
+      "caminho": "sipni_todas_vacinas/gold_imunobiologicos_mes.csv",
+      "bytes": 567082,
+      "sha256": "5398efa1885dbbd146feaf18143fc816f033a8b61c602b76a13e5b79ea42b467"
+    },
+    {
+      "caminho": "sipni_todas_vacinas/gold_imunobiologicos_mes.parquet",
+      "bytes": 44523,
+      "sha256": "ff70218dc3a7fcee1dbd8ee528a953c120c257feb369c5353f131567a28090df",
+      "linhas": 7928,
+      "schema": {
+        "ano_mes": "large_string",
+        "ds_nome": "large_string",
+        "sg_imunobiologico": "large_string",
+        "contem_sarampo": "bool",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "sipni_todas_vacinas/gold_perfil_colunas_bruto.csv",
+      "bytes": 416281,
+      "sha256": "77074a75d19d7cac325337ee3970eb6c2bd0e10b0c196755d5d2d8c12239626c"
+    },
+    {
+      "caminho": "sipni_todas_vacinas/gold_perfil_colunas_bruto.parquet",
+      "bytes": 53476,
+      "sha256": "32ff0c4f7c8c6bfe4d543cb79ddd609d9c7d929cfe08465bd012164322000784",
+      "linhas": 4536,
+      "schema": {
+        "ano_mes": "large_string",
+        "coluna": "large_string",
+        "nome_legivel": "large_string",
+        "linhas": "int64",
+        "vazios": "int64",
+        "pct_vazios": "double",
+        "distintos": "double",
+        "distintos_acima_do_limite": "bool",
+        "exemplo": "large_string"
+      }
+    },
+    {
+      "caminho": "vacinacao/dim_municipios.csv",
+      "bytes": 126717,
+      "sha256": "084f677e587ad220af69a0d19b37c32f25e2c3f4299db007963aaabff55f779d"
+    },
+    {
+      "caminho": "vacinacao/dim_municipios.parquet",
+      "bytes": 60416,
+      "sha256": "1474f946f03e6aa7d0ea61c438f5f5f91642471081fcaf61eba2ec97f8880a1a",
+      "linhas": 5601,
+      "schema": {
+        "codigo_municipio": "int64",
+        "municipio": "large_string",
+        "uf": "large_string"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_atraso_dias.csv",
+      "bytes": 23492,
+      "sha256": "c62b2092cf56acc91e68ff6bae086ceb76f8e34981df4078bbf563edd16c2118"
+    },
+    {
+      "caminho": "vacinacao/gold_atraso_dias.parquet",
+      "bytes": 18646,
+      "sha256": "b01af447dc4eb0ff0337080173b388e23b55ebb743dd39beba7ade520c311655",
+      "linhas": 2402,
+      "schema": {
+        "atraso_registro_dias": "int32",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_atraso_registro.csv",
+      "bytes": 212715,
+      "sha256": "80ee73a3ec49a9c4318aec8de1608bf7c81c2d35b0469e59de40f9bdbd5c7e51"
+    },
+    {
+      "caminho": "vacinacao/gold_atraso_registro.parquet",
+      "bytes": 31167,
+      "sha256": "faa0d9ebbf5cd263b7a45403543be0ccbb52cb6f6f6341150659eb4970a05c88",
+      "linhas": 8257,
+      "schema": {
+        "ano_mes": "large_string",
+        "uf_paciente": "large_string",
+        "faixa_atraso": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_categoria_atendimento.csv",
+      "bytes": 41595,
+      "sha256": "6da7b0c6e46ce70ca0e6f41418f65cc5ad8186a627fcedbaf8e74ff7517576a4"
+    },
+    {
+      "caminho": "vacinacao/gold_categoria_atendimento.parquet",
+      "bytes": 6890,
+      "sha256": "47f2060f2b48fcc15801ed0133be21bd92c17edb4aced40b125473ab8c4da6d7",
+      "linhas": 1244,
+      "schema": {
+        "ano_mes": "large_string",
+        "categoria_atendimento": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_coorte_criancas_municipio.csv",
+      "bytes": 214365,
+      "sha256": "9da853a5c4c48e47e48789390bfc54fffe110d9dd0408e27516b09bfc2357213"
+    },
+    {
+      "caminho": "vacinacao/gold_coorte_criancas_municipio.parquet",
+      "bytes": 115366,
+      "sha256": "78850b44f428a083a4219f59f6f494b9d42557baa775ccea9fedbdf8b84b20c2",
+      "linhas": 5579,
+      "schema": {
+        "uf_paciente": "large_string",
+        "codigo_municipio_paciente": "large_string",
+        "criancas_vacinadas": "int64",
+        "criancas_com_2_ou_mais_doses": "int64",
+        "municipio": "large_string",
+        "prop_com_2_ou_mais": "double"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_dose_descricao_ordem.csv",
+      "bytes": 149029,
+      "sha256": "035a95262295aa4e795e168eef8a36e4a012e831f1de0367ddbc26bd1be7be97"
+    },
+    {
+      "caminho": "vacinacao/gold_dose_descricao_ordem.parquet",
+      "bytes": 16859,
+      "sha256": "96e9c649ca586c833675c0ac2490538cfab5a4a85e717d714d86031624ee0e78",
+      "linhas": 5585,
+      "schema": {
+        "ano_mes": "large_string",
+        "descricao_dose_vacina": "large_string",
+        "ordem_dose": "int32",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_doses_dia.csv",
+      "bytes": 1287420,
+      "sha256": "ac34524dfe0daccdac81cf760b729dda075da5ce2b392d11028a83ae5465e710"
+    },
+    {
+      "caminho": "vacinacao/gold_doses_dia.parquet",
+      "bytes": 82075,
+      "sha256": "158cf876357440b1f80dfbb09ef79822d103eb87f427969deafcaef6e022ccfc",
+      "linhas": 23896,
+      "schema": {
+        "data_vacinacao": "timestamp[us]",
+        "ano_mes": "large_string",
+        "dose_grupo": "large_string",
+        "vacina_tipo": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_doses_por_paciente.csv",
+      "bytes": 235,
+      "sha256": "e23703f7dbe3f7c6429aedbc586c1511cea3170981bcf09f41386c37e95e8f78"
+    },
+    {
+      "caminho": "vacinacao/gold_doses_por_paciente.parquet",
+      "bytes": 2045,
+      "sha256": "cebe6d05d0709924035669290a571d0bb311c9ef5a2a73484fe9780e0a4e1308",
+      "linhas": 34,
+      "schema": {
+        "doses_na_janela": "int64",
+        "pacientes": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_doses_uf_mes.csv",
+      "bytes": 909883,
+      "sha256": "2ac3e9b9d695775a77c04eab54fb16b5d207f05646818935e07f0b4e849b844b"
+    },
+    {
+      "caminho": "vacinacao/gold_doses_uf_mes.parquet",
+      "bytes": 55125,
+      "sha256": "a70ea98e438f39365b82438801b95349fa22163b2594a930a044f6e1619f4b1c",
+      "linhas": 19790,
+      "schema": {
+        "ano_mes": "large_string",
+        "uf_paciente": "large_string",
+        "vacina_tipo": "large_string",
+        "dose_grupo": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_estabelecimento.csv",
+      "bytes": 5470629,
+      "sha256": "66d217b85e1c7da43d0069df417ead6340d07237b53ec43b28c158fbf5286419"
+    },
+    {
+      "caminho": "vacinacao/gold_estabelecimento.parquet",
+      "bytes": 177039,
+      "sha256": "110466ebff30a8388cf72dc76069ef4c79cc75e3c4228523e1254ef7df8d7fc1",
+      "linhas": 75231,
+      "schema": {
+        "ano_mes": "large_string",
+        "uf_estabelecimento": "large_string",
+        "tipo_estabelecimento": "large_string",
+        "natureza_estabelecimento": "large_string",
+        "estrategia_vacinacao": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_estabelecimento_cnes.csv",
+      "bytes": 3442176,
+      "sha256": "100083f9b733afde4129deaeadd3d7a1f0ab725fc7742abf7499e7e76f0e4487"
+    },
+    {
+      "caminho": "vacinacao/gold_estabelecimento_cnes.parquet",
+      "bytes": 407759,
+      "sha256": "866b9352fc9ff15cd145188165eb66effb304d1f587ac2bcf04038ab99900510",
+      "linhas": 52836,
+      "schema": {
+        "codigo_cnes_estabelecimento": "large_string",
+        "uf_estabelecimento": "large_string",
+        "tipo_estabelecimento": "large_string",
+        "natureza_estabelecimento": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_estrategia_faixa.csv",
+      "bytes": 5232789,
+      "sha256": "12677cb2062c36aa222179235c9329240c9aa8a45cb53870b8912f63e4ab52eb"
+    },
+    {
+      "caminho": "vacinacao/gold_estrategia_faixa.parquet",
+      "bytes": 153168,
+      "sha256": "b131ecbe26d5dadbc727187fec57f5d655c70ede47265a0a8e7c2359ae0858f0",
+      "linhas": 70146,
+      "schema": {
+        "ano_mes": "large_string",
+        "faixa_etaria": "large_string",
+        "tipo_estabelecimento": "large_string",
+        "natureza_estabelecimento": "large_string",
+        "estrategia_vacinacao": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_fluxo_uf.csv",
+      "bytes": 8116,
+      "sha256": "6f3b9d242813b3f65e96ccc149b006dfa23bd8c94fc5d06b326b1be4853691b4"
+    },
+    {
+      "caminho": "vacinacao/gold_fluxo_uf.parquet",
+      "bytes": 5422,
+      "sha256": "f7700522df4162f5cb6d3537dcb00fe79d36807cafa018dad30c1ae2681aaf53",
+      "linhas": 759,
+      "schema": {
+        "uf_paciente": "large_string",
+        "uf_estabelecimento": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_funil_processamento.csv",
+      "bytes": 2418,
+      "sha256": "c90d80efaaab0eb946cfc0aa70bd2c7e175469648720811679a5a6e8a2dda174"
+    },
+    {
+      "caminho": "vacinacao/gold_funil_processamento.parquet",
+      "bytes": 5397,
+      "sha256": "ed2be92bc74e2c9d1fc1b26f306448db93289a801254b5e4be7b9dfac5b8aad1",
+      "linhas": 81,
+      "schema": {
+        "ano_mes": "large_string",
+        "linhas_csv": "int64",
+        "diluentes_removidos": "int64",
+        "duplicadas_removidas": "int64",
+        "linhas_finais": "int64",
+        "vacinacao_fora_do_mes": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_idade_dose.csv",
+      "bytes": 1992942,
+      "sha256": "bd610d3a6230f4e652c6fb5dea580eff7cae64866c9b80ee40bbb8fc0460bac5"
+    },
+    {
+      "caminho": "vacinacao/gold_idade_dose.parquet",
+      "bytes": 96669,
+      "sha256": "5e2fddd40a174404b196b2761fbe6c261b7696d097380fb2979592c2e7330e49",
+      "linhas": 44060,
+      "schema": {
+        "ano_mes": "large_string",
+        "idade_paciente": "int16",
+        "dose_grupo": "large_string",
+        "vacina_tipo": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_intervalo_doses.csv",
+      "bytes": 1383550,
+      "sha256": "0b958333b88455d60430c4be6bc541445ebbd25d7989226f0877d87bfe2917dd"
+    },
+    {
+      "caminho": "vacinacao/gold_intervalo_doses.parquet",
+      "bytes": 248367,
+      "sha256": "b7c68c536aca3b20693c5ba1547a14d5dde4f27a082a94462e0149b8ebe80216",
+      "linhas": 141023,
+      "schema": {
+        "idade_primeira_dose": "int16",
+        "intervalo_dias": "int32",
+        "pacientes": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_kpis_mensais.csv",
+      "bytes": 4344,
+      "sha256": "0e2d2866b74f7f4d32363e2e046ec73eaca17e0a8086c936ea6350f1b8055879"
+    },
+    {
+      "caminho": "vacinacao/gold_kpis_mensais.parquet",
+      "bytes": 8731,
+      "sha256": "b6b5576c20f8748c0dd5016574a5e634a7977c904f7a90654351cda17f61c37c",
+      "linhas": 81,
+      "schema": {
+        "ano_mes": "large_string",
+        "doses": "int64",
+        "pacientes_unicos": "int64",
+        "pct_criancas_1a4": "double",
+        "pct_rotina": "double",
+        "mediana_atraso_dias": "double",
+        "pct_registro_ate_7d": "double",
+        "ufs": "int64",
+        "municipios": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_municipio_mes.csv",
+      "bytes": 20251468,
+      "sha256": "677d0d26ea7a6868283dca5bb7447505264bd9be6602ef6a0127b6aced5f7eee"
+    },
+    {
+      "caminho": "vacinacao/gold_municipio_mes.parquet",
+      "bytes": 2787443,
+      "sha256": "e316b35fc125cc683a3b01a38d13621ea059c038da49a16b0840149f4f7625f7",
+      "linhas": 449619,
+      "schema": {
+        "codigo_municipio_paciente": "large_string",
+        "ano_mes": "large_string",
+        "doses": "int64",
+        "doses_d1": "int64",
+        "doses_d2": "int64",
+        "doses_criancas_1a4": "int64",
+        "pacientes_unicos": "int64",
+        "municipio": "large_string",
+        "uf": "large_string"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_nacionalidade_etnia.csv",
+      "bytes": 16607,
+      "sha256": "dd70e9ade5b2cfe0373e0b63b81cd97d7433180965ee34efeb7cf67d4f746fe3"
+    },
+    {
+      "caminho": "vacinacao/gold_nacionalidade_etnia.parquet",
+      "bytes": 8890,
+      "sha256": "6670ad862d95348e27be610632a6f146de1b7b6fa66c06a001d66ceb5af6b159",
+      "linhas": 572,
+      "schema": {
+        "nacionalidade_paciente": "large_string",
+        "etnia_indigena_paciente": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_perfil.csv",
+      "bytes": 45173524,
+      "sha256": "fadc1b32d29b2776bfb29092e20a738614a35398768352473477c4b1c8998eb5"
+    },
+    {
+      "caminho": "vacinacao/gold_perfil.parquet",
+      "bytes": 1175554,
+      "sha256": "83e65a388666f230448fe94b997b41328d29fe709aa363778a40ec5c3d347b37",
+      "linhas": 671869,
+      "schema": {
+        "ano_mes": "large_string",
+        "uf_paciente": "large_string",
+        "sexo_paciente": "large_string",
+        "faixa_etaria": "large_string",
+        "raca_cor_paciente": "large_string",
+        "vacina_tipo": "large_string",
+        "dose_grupo": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_qualidade_colunas.csv",
+      "bytes": 2123,
+      "sha256": "82ac7527eef2a677fa98a1d53547ad422395ac22b68090e4115305827692dfd4"
+    },
+    {
+      "caminho": "vacinacao/gold_qualidade_colunas.parquet",
+      "bytes": 6235,
+      "sha256": "b12c5e7269cff19cb04220a3653ba4d38b702eb1fc835c31c01c1d8846fa49f6",
+      "linhas": 30,
+      "schema": {
+        "coluna": "large_string",
+        "tipo": "large_string",
+        "pct_nulos": "double",
+        "unicos": "int64",
+        "mais_frequente": "large_string",
+        "pct_mais_frequente": "double",
+        "exemplo": "large_string"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_resumo_geral.csv",
+      "bytes": 403,
+      "sha256": "2b6cf363ad2d5e3e994d7560429fd2a2102b355ca8583b165437ed6156008c2b"
+    },
+    {
+      "caminho": "vacinacao/gold_resumo_geral.parquet",
+      "bytes": 12149,
+      "sha256": "f7447ee1a662576eeb7c16c4eeeddf928be66fcc912668efa0f3585bb983d85e",
+      "linhas": 1,
+      "schema": {
+        "doses": "int64",
+        "pacientes_distintos": "int64",
+        "meses": "int64",
+        "primeiro_mes": "large_string",
+        "ultimo_mes": "large_string",
+        "data_vacinacao_min": "timestamp[us]",
+        "data_vacinacao_max": "timestamp[us]",
+        "municipios_residencia": "int64",
+        "estabelecimentos": "int64",
+        "etnias_indigenas": "int64",
+        "vacinacao_fora_do_mes": "int64",
+        "atraso_negativo": "int64",
+        "atraso_ausente": "int64",
+        "idade_ausente": "int64",
+        "idade_maior_100": "int64",
+        "idade_maior_110": "int64",
+        "pacientes_mais_10_doses": "int64",
+        "doses_pacientes_mais_10_doses": "int64"
+      }
+    },
+    {
+      "caminho": "vacinacao/gold_vacina_fabricante.csv",
+      "bytes": 22028862,
+      "sha256": "05cc1da87f7cb30ed3b1964b3efc887913133c266210de3030b831ab4f23267b"
+    },
+    {
+      "caminho": "vacinacao/gold_vacina_fabricante.parquet",
+      "bytes": 750376,
+      "sha256": "8867db3f45295f2d18bbe87ce72b45c8b7b8072b934c8dce3aa14d6d1caa33b5",
+      "linhas": 213231,
+      "schema": {
+        "ano_mes": "large_string",
+        "descricao_vacina": "large_string",
+        "sigla_vacina": "large_string",
+        "vacina_tipo": "large_string",
+        "fabricante_vacina": "large_string",
+        "doses": "int64"
+      }
+    },
+    {
+      "caminho": "validacao/gold_validacao_referencias.csv",
+      "bytes": 359071,
+      "sha256": "8ca9a4436f6d4813b161ea49de54dcc3cfe104ec561e7f671a24c10e13b39512"
+    },
+    {
+      "caminho": "validacao/gold_validacao_referencias.parquet",
+      "bytes": 28396,
+      "sha256": "54cf841c392b0086b30e848bec64904db944fa8f7b9a000fcb963044cb155e60",
+      "linhas": 2506,
+      "schema": {
+        "referencia": "large_string",
+        "metrica": "large_string",
+        "nivel": "large_string",
+        "codigo": "large_string",
+        "ano": "int64",
+        "valor_gold": "double",
+        "valor_referencia": "double",
+        "diferenca": "double",
+        "diferenca_pct": "double",
+        "tolerancia": "double",
+        "fonte_gold": "large_string",
+        "justificativa": "large_string",
+        "status": "large_string"
+      }
+    },
+    {
+      "caminho": "validacao/gold_validacao_resumo.csv",
+      "bytes": 457,
+      "sha256": "cb79081b5a2cc8b1e6359a4b4100e7a95512022fb6d426f5f88d5b555ef7b211"
+    },
+    {
+      "caminho": "validacao/gold_validacao_resumo.parquet",
+      "bytes": 3575,
+      "sha256": "6c4e1b64a5143e9f738f091d413080b5447b06ec97a7176b92b58494dbab9739",
+      "linhas": 12,
+      "schema": {
+        "metrica": "large_string",
+        "nivel": "large_string",
+        "EXPLICADA": "int64",
+        "OK": "int64",
+        "PRELIMINAR": "int64"
+      }
+    }
+  ]
+}
