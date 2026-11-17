@@ -24,7 +24,7 @@ estiver corrompido, ele é apagado e baixado do zero automaticamente (uma vez). 
 meses indicados são (re)processados, mesmo que já estejam concluídos.
 
 Saída: data/bronze/sipni_doses/sipni_doses_sarampo_sipni_{AAAA}_{mmm}.csv  (um por mês)
-       data/bronze/sipni_doses/sipni_doses_sarampo_sipni_2025_{AAAA}_completo.csv  (junção)
+       data/bronze/sipni_doses/sipni_doses_sarampo_sipni_{ANO_INICIAL}_{AAAA}_completo.csv  (junção, só com --combinar)
        data/bronze/sipni_doses/_auditoria/{manifesto.json, extract_recentes.log}
        data/bronze/sipni_doses/_perfil_bruto/imunobiologicos_{AAAA}_{mmm}.csv
        data/bronze/sipni_doses/_perfil_bruto/perfil_colunas_{AAAA}_{mmm}.csv
@@ -42,6 +42,7 @@ import urllib.error
 import urllib.request
 import zipfile
 import zlib
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
 
@@ -55,9 +56,11 @@ URL_TEMPLATE_SIPNI = "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/PNI/c
 
 SAIDA_DIR = config.BRONZE_SIPNI_DOSES
 AUDIT_DIR = config.BRONZE_SIPNI_DOSES_AUDITORIA
+# Um manifesto por fila: com --anos, cada processo grava o seu (manifesto_2020-2022.json...),
+# para que duas filas em paralelo não sobrescrevam o registro uma da outra.
 MANIFESTO = AUDIT_DIR / "manifesto.json"
 LOG_FILE = AUDIT_DIR / "extract_recentes.log"
-NOME_BASE_COMBINADO = f"sipni_doses_sarampo_sipni_2025_{config.ANO_FINAL_SIPNI_DOSES}_completo"
+NOME_BASE_COMBINADO = f"sipni_doses_sarampo_sipni_{config.ANO_INICIAL_SIPNI_DOSES}_{config.ANO_FINAL_SIPNI_DOSES}_completo"
 MAX_TENTATIVAS_DOWNLOAD = 5
 # Erros de leitura que indicam .zip danificado (e não problema no código ou nos dados).
 ZIP_CORROMPIDO = (zipfile.BadZipFile, zlib.error, EOFError)
@@ -80,6 +83,19 @@ def configurar_log() -> None:
 
 def agora() -> str:
     return datetime.now().isoformat(timespec="seconds")
+
+
+def pre_baixar(ano: int, mes: int) -> None:
+    """Baixa só o .zip de um mês para o staging, em segundo plano, enquanto o mês anterior é
+    filtrado (a filtragem é o gargalo; assim o download fica escondido atrás dela). Não toca
+    no manifesto: quem registra é processar_mes, que depois acha o .zip completo e segue."""
+    abrev = config.MESES_ABREV[mes - 1]
+    url = URL_TEMPLATE_SIPNI.format(mes=abrev, ano=ano)
+    try:
+        baixar_com_retomada(url, config.STAGING_DIR / f"vacinacao_{abrev}_{ano}_csv.zip", tamanho_remoto(url))
+        log.info("%d-%02d: pré-download concluído.", ano, mes)
+    except Exception as erro:  # não publicado, rede... processar_mes tenta de novo na vez dele
+        log.info("%d-%02d: pré-download não concluído (%s); fica para a vez do mês.", ano, mes, erro)
 
 
 # Manifesto de auditoria: uma entrada por mês, regravada de forma atômica a cada mudança
@@ -173,8 +189,8 @@ class PerfilBruto:
         pasta.mkdir(parents=True, exist_ok=True)
         contagem = self.contagem.astype("int64").rename("doses").reset_index()
         contagem.columns = ["ds_nome", "sg_imunobiologico", "doses"]
-        contagem.sort_values("doses", ascending=False).to_csv(
-            pasta / f"imunobiologicos_{ano}_{abrev}.csv", index=False, encoding="utf-8")
+        contagem.sort_values(["doses", "ds_nome", "sg_imunobiologico"], ascending=[False, True, True], kind="stable").to_csv(
+            pasta / f"imunobiologicos_{ano}_{abrev}.csv", index=False, encoding="utf-8", lineterminator="\n")
         perfil = pd.DataFrame({
             "coluna": list(self.distintos),
             "linhas": self.linhas,
@@ -183,7 +199,7 @@ class PerfilBruto:
             "distintos_acima_do_limite": [v is None for v in self.distintos.values()],
             "exemplo": [self.exemplo.get(c) for c in self.distintos],
         })
-        perfil.to_csv(pasta / f"perfil_colunas_{ano}_{abrev}.csv", index=False, encoding="utf-8")
+        perfil.to_csv(pasta / f"perfil_colunas_{ano}_{abrev}.csv", index=False, encoding="utf-8", lineterminator="\n")
 
 
 def filtrar_zip_para_csv(arquivo_zip: Path, destino: Path, perfil: PerfilBruto | None = None) -> tuple[int, int]:
@@ -205,7 +221,7 @@ def filtrar_zip_para_csv(arquivo_zip: Path, destino: Path, perfil: PerfilBruto |
                 if perfil is not None:
                     perfil.adicionar(chunk)
                 sel = renomear_colunas(chunk[filtro_vacinas_sarampo(chunk)], COLUNAS_SIPNI)
-                sel.to_csv(tmp, mode="w" if primeiro else "a", index=False, header=primeiro, encoding="utf-8")
+                sel.to_csv(tmp, mode="w" if primeiro else "a", index=False, header=primeiro, encoding="utf-8", lineterminator="\n")
                 primeiro = False
                 mantidas += len(sel)
     if primeiro:
@@ -268,22 +284,20 @@ def processar_mes(ano: int, mes: int, manifesto: dict, refazer: bool = False) ->
     log.info("%s: %d doses de sarampo em %d linhas; zip removido.", chave, mantidas, lidas)
 
 
-def combinar_meses(manifesto: dict) -> None:
-    """Junta os CSVs mensais concluídos num arquivo só. O caminho de cada mês é recalculado
-    a partir de config (e não lido do manifesto), para continuar funcionando se a pasta
-    do projeto mudar de lugar."""
+def combinar_meses() -> None:
+    """Junta num arquivo só os CSVs mensais do período que estão no disco. Opcional (--combinar):
+    nenhum passo lê a junção, que só duplica o espaço. Usa o que está no disco, e não o
+    manifesto, para que rodar o 03 para um mês só (--meses) não gere uma junção incompleta."""
     arquivos = [
-        arquivo_mensal(ano, mes)
-        for ano, mes in config.PERIODO_SIPNI_DOSES  # o manifesto pode acumular outros períodos
-        if manifesto.get(f"{ano}-{mes:02d}", {}).get("status") == "concluido"
-        and arquivo_mensal(ano, mes).exists() and arquivo_mensal(ano, mes).stat().st_size > 0
+        arquivo_mensal(ano, mes) for ano, mes in config.PERIODO_SIPNI_DOSES
+        if arquivo_mensal(ano, mes).exists() and arquivo_mensal(ano, mes).stat().st_size > 0
     ]
     destino = SAIDA_DIR / f"{NOME_BASE_COMBINADO}.csv"
     tmp = destino.with_suffix(".tmp")
     total = 0
     for arquivo in arquivos:
         for chunk in pd.read_csv(arquivo, dtype=str, chunksize=config.TAMANHO_CHUNK):
-            chunk.to_csv(tmp, mode="a" if total else "w", index=False, header=not total, encoding="utf-8")
+            chunk.to_csv(tmp, mode="a" if total else "w", index=False, header=not total, encoding="utf-8", lineterminator="\n")
             total += len(chunk)
     if arquivos:
         os.replace(tmp, destino)
@@ -294,8 +308,17 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Bronze das doses do SI-PNI (2025+).")
     parser.add_argument("--forcar", action="store_true", help="baixa de novo todos os meses do período")
     parser.add_argument("--meses", nargs="+", metavar="AAAA-MM", help="(re)processa só estes meses")
+    parser.add_argument("--anos", nargs="+", type=int, metavar="AAAA",
+                        help="só os meses destes anos, sem refazer os concluídos (para dividir em filas paralelas)")
+    parser.add_argument("--combinar", action="store_true", help="grava também a junção ..._completo.csv")
+    parser.add_argument("--sem-pre-download", action="store_true",
+                        help="não baixa o mês seguinte enquanto filtra o atual (usa metade do staging)")
     args = parser.parse_args()
     meses = config.PERIODO_SIPNI_DOSES
+    global MANIFESTO
+    if args.anos:
+        meses = [am for am in meses if am[0] in set(args.anos)]
+        MANIFESTO = AUDIT_DIR / f"manifesto_{min(args.anos)}-{max(args.anos)}.json"
     if args.meses:
         pedidos = {tuple(int(x) for x in m.split("-")) for m in args.meses}
         meses = [am for am in meses if am in pedidos]
@@ -306,14 +329,30 @@ def main() -> None:
     manifesto = carregar_manifesto()
     log.info("Início. Staging: %s | Meses: %s", config.STAGING_DIR, [f"{a}-{m:02d}" for a, m in meses])
 
-    for ano, mes in meses:
-        try:
-            processar_mes(ano, mes, manifesto, refazer=bool(args.meses))
-        except Exception as erro:  # registra e segue para o próximo mês; rerodar retoma
-            log.exception("%d-%02d falhou", ano, mes)
-            atualizar(manifesto, f"{ano}-{mes:02d}", status="falhou", erro=repr(erro))
+    def pendente(ano: int, mes: int) -> bool:
+        feito = manifesto.get(f"{ano}-{mes:02d}", {}).get("status") == "concluido" and arquivo_mensal(ano, mes).exists()
+        return config.FORCAR_DOWNLOAD or bool(args.meses) or not feito
 
-    combinar_meses(manifesto)
+    # Enquanto um mês é filtrado, o .zip do próximo já vai sendo baixado (no máximo um à frente,
+    # para o staging ter no máximo dois .zip). Antes de processar um mês, espera o download dele
+    # terminar, para as duas threads nunca escreverem o mesmo arquivo.
+    with ThreadPoolExecutor(max_workers=1) as fundo:
+        em_andamento = None
+        for i, (ano, mes) in enumerate(meses):
+            if em_andamento is not None:
+                em_andamento.result()
+                em_andamento = None
+            proximos = [am for am in meses[i + 1:i + 2] if pendente(*am)]
+            if proximos and not args.sem_pre_download:
+                em_andamento = fundo.submit(pre_baixar, *proximos[0])
+            try:
+                processar_mes(ano, mes, manifesto, refazer=bool(args.meses))
+            except Exception as erro:  # registra e segue para o próximo mês; rerodar retoma
+                log.exception("%d-%02d falhou", ano, mes)
+                atualizar(manifesto, f"{ano}-{mes:02d}", status="falhou", erro=repr(erro))
+
+    if args.combinar:
+        combinar_meses()
     resumo = {k: v.get("status") for k, v in sorted(manifesto.items())}
     log.info("Resumo: %s", resumo)
     if "falhou" in resumo.values():

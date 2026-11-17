@@ -4,7 +4,8 @@ Fonte: APIs públicas do IBGE.
     - Malhas GeoJSON do Brasil por UF e por município (qualidade mínima, suficiente para
       mapas em escala nacional).
     - Lista de UFs (código, sigla, nome, região).
-    - SIDRA, tabela 6579: população residente estimada por município, último ano disponível.
+    - SIDRA, tabela 6579: população residente estimada por município, no ano
+      config.ANO_POPULACAO_IBGE (fixo, para que baixar de novo traga o mesmo dado).
 
 Grava as respostas como vieram (descomprimindo o gzip quando a API manda comprimido).
 A conversão da população para CSV fica no passo 08. Arquivos que já existem são pulados
@@ -23,8 +24,8 @@ import config
 
 MALHAS = "https://servicodados.ibge.gov.br/api/v3/malhas/paises/BR?intrarregiao={nivel}&formato=application/vnd.geo%2Bjson&qualidade=minima"
 ESTADOS = "https://servicodados.ibge.gov.br/api/v1/localidades/estados"
-# Tabela 6579 (SIDRA): população residente estimada por município, último ano disponível.
-POPULACAO = "https://apisidra.ibge.gov.br/values/t/6579/n6/all/v/9324/p/last"
+# Tabela 6579 (SIDRA): população residente estimada por município, no ano de config.
+POPULACAO = f"https://apisidra.ibge.gov.br/values/t/6579/n6/all/v/9324/p/{config.ANO_POPULACAO_IBGE}"
 
 
 def baixar(url: str, destino: Path) -> None:
