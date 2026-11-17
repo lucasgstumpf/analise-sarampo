@@ -47,7 +47,7 @@ def ler_mensais(prefixo: str) -> pd.DataFrame:
 def salvar(nome: str, tabela: pd.DataFrame) -> None:
     tabela = tabela.reset_index(drop=True)
     tabela.to_parquet(GOLD_DIR / f"{nome}.parquet", index=False, compression="zstd")
-    tabela.to_csv(GOLD_DIR / f"{nome}.csv", index=False, encoding="utf-8")
+    tabela.to_csv(GOLD_DIR / f"{nome}.csv", index=False, encoding="utf-8", lineterminator="\n")
     print(f"{nome}: {len(tabela):,} linhas ({tabela['ano_mes'].nunique()} meses)")
 
 

@@ -32,12 +32,22 @@ Detalhe e qualidade (notebooks 04, 05, 08 e 09):
     gold_estabelecimento_cnes        doses por estabelecimento (CNES), com UF, tipo e natureza
     gold_vacina_fabricante           mês x descrição/sigla/tipo de vacina x fabricante
 
+Como a silver não cabe mais na memória (série 2020+), as agregações são consultas SQL do
+duckdb sobre o parquet, com as mesmas regras da versão em pandas:
+    - "dropna=False": os vazios formam um grupo próprio; "dropna=True": linhas com vazio em
+      alguma chave ficam de fora;
+    - médias de colunas com vazio (idade, atraso) ignoram os vazios, como o pandas;
+    - arredondamentos com np.round (metade para o par), como o pandas.
+As linhas saem ordenadas pelas chaves (vazios no fim).
+
 Saída: data/gold/vacinacao/{tabela}.{parquet,csv}
 Uso:   python pipeline/09_gold_vacinacao.py
 """
 
 import json
+import shutil
 
+import duckdb
 import numpy as np
 import pandas as pd
 import pyarrow as pa
@@ -49,208 +59,224 @@ SILVER = config.SILVER_SIPNI_DOSES / "vacinacao_sarampo_sipni.parquet"
 DIM_MUNICIPIOS = config.SILVER_SIPNI_DOSES / "dim_municipios.csv"
 RESUMO_PROCESSAMENTO = config.SILVER_SIPNI_DOSES_AUDITORIA / "processamento_resumo.json"
 GOLD_DIR = config.GOLD_VACINACAO
+TMP_DIR = config.DUCKDB_TMP / "09"
 
-ROTULO_DOSE = {0: "Dose zero", 1: "1ª dose", 2: "2ª dose", 3: "3ª dose ou mais", 4: "3ª dose ou mais"}
-FAIXAS_ATRASO = [-1, 0, 7, 30, 90, np.inf]
-ROTULOS_ATRASO = ["Mesmo dia", "1-7 dias", "8-30 dias", "31-90 dias", "> 90 dias"]
-# O mês fica como texto (usado em min/max); as demais colunas de texto viram categoria, o que
-# corta a RAM pela metade. Toda agregação por categoria usa observed=True (só valores presentes).
-TEXTO_SEM_CATEGORIA = {"ano_mes"}
-
-
-def ler_silver() -> tuple[pd.DataFrame, dict[str, str]]:
-    """Lê a silver já com o texto repetitivo como categoria (mesmos valores, menos memória) e
-    devolve também o tipo de cada coluna no parquet."""
-    tabela = pq.read_table(SILVER)
-    tipos = {campo.name: str(campo.type) for campo in tabela.schema}
-    texto = [campo.name for campo in tabela.schema
-             if (pa.types.is_string(campo.type) or pa.types.is_large_string(campo.type))
-             and campo.name not in TEXTO_SEM_CATEGORIA]
-    df = tabela.to_pandas(categories=texto, self_destruct=True, split_blocks=True)
-    del tabela
-    return df, tipos
-
-
-def classificar_dose(df: pd.DataFrame) -> pd.Series:
-    """Dose como aparece no cartão: usa o número da descrição; quando a descrição é só "Dose"
-    (sem número), usa a ordem da dose do paciente na janela; reforços/adicionais ficam à parte."""
-    reforco = df["descricao_dose_vacina"].str.contains("Refor|Adicional|Revacina", na=False) & df["dose_numero"].isna()
-    numero = df["dose_numero"].fillna(df["ordem_dose_paciente"].clip(upper=3)).astype(int)
-    dose = numero.map(ROTULO_DOSE).astype("string")
-    return dose.mask(reforco, "Reforço/adicional")
+# Dose como aparece no cartão: o número da descrição; quando a descrição é só "Dose" (sem
+# número), a ordem da dose do paciente na janela (até 3); reforços/adicionais ficam à parte.
+DOSE_GRUPO = """
+    CASE
+        WHEN coalesce(regexp_matches(descricao_dose_vacina, 'Refor|Adicional|Revacina'), false)
+             AND dose_numero IS NULL THEN 'Reforço/adicional'
+        ELSE CASE coalesce(dose_numero::INTEGER, least(ordem_dose_paciente, 3))
+            WHEN 0 THEN 'Dose zero' WHEN 1 THEN '1ª dose' WHEN 2 THEN '2ª dose'
+            WHEN 3 THEN '3ª dose ou mais' WHEN 4 THEN '3ª dose ou mais' END
+    END"""
+# pd.cut(atraso, [-1, 0, 7, 30, 90, inf]): intervalos fechados à direita.
+FAIXA_ATRASO = """
+    CASE
+        WHEN atraso_registro_dias IS NULL OR atraso_registro_dias <= -1 THEN NULL
+        WHEN atraso_registro_dias <= 0 THEN 'Mesmo dia'
+        WHEN atraso_registro_dias <= 7 THEN '1-7 dias'
+        WHEN atraso_registro_dias <= 30 THEN '8-30 dias'
+        WHEN atraso_registro_dias <= 90 THEN '31-90 dias'
+        ELSE '> 90 dias'
+    END"""
 
 
-def contar(df: pd.DataFrame, colunas: list[str], dropna: bool = False) -> pd.DataFrame:
+def conectar() -> duckdb.DuckDBPyConnection:
+    shutil.rmtree(TMP_DIR, ignore_errors=True)
+    TMP_DIR.mkdir(parents=True)
+    con = duckdb.connect()
+    con.execute(f"SET memory_limit='{config.DUCKDB_MEMORIA}'")
+    con.execute(f"SET temp_directory='{TMP_DIR}'")
+    con.execute("SET max_temp_directory_size='200GiB'")
+    # `linha` = posição na silver (ordem por data), para "o último valor" e "o primeiro exemplo".
+    con.execute(f"""
+        CREATE VIEW s AS
+        SELECT *, file_row_number AS linha,
+               {DOSE_GRUPO} AS dose_grupo,
+               {FAIXA_ATRASO} AS faixa_atraso
+        FROM read_parquet('{SILVER}', file_row_number=true)""")
+    return con
+
+
+def para_pandas(tabela: pa.Table) -> pd.DataFrame:
+    """Inteiros com vazio continuam inteiros (Int64) e texto vira 'string', como antes."""
+    mapa = {pa.int8(): pd.Int8Dtype(), pa.int16(): pd.Int16Dtype(), pa.int32(): pd.Int32Dtype(),
+            pa.int64(): pd.Int64Dtype(), pa.string(): pd.StringDtype(), pa.large_string(): pd.StringDtype()}
+    return tabela.to_pandas(types_mapper=mapa.get)
+
+
+def consulta(con, sql: str) -> pd.DataFrame:
+    return para_pandas(con.sql(sql).to_arrow_table())
+
+
+def contar(con, colunas: list[str], dropna: bool = False, origem: str = "s") -> pd.DataFrame:
     """Nº de doses (linhas da silver) por combinação de `colunas`."""
-    return df.groupby(colunas, dropna=dropna, as_index=False, observed=True).size().rename(columns={"size": "doses"})
+    chaves = ", ".join(colunas)
+    filtro = ("WHERE " + " AND ".join(f"{c} IS NOT NULL" for c in colunas)) if dropna else ""
+    ordem = ", ".join(f"{c} NULLS LAST" for c in colunas)
+    return consulta(con, f"SELECT {chaves}, count(*) AS doses FROM {origem} {filtro} GROUP BY ALL ORDER BY {ordem}")
 
 
-def qualidade_colunas(df: pd.DataFrame, tipos: dict[str, str]) -> pd.DataFrame:
+def salvar(nome: str, tabela: pd.DataFrame) -> None:
+    """Grava a tabela em GOLD_DIR como .parquet (zstd) e .csv (UTF-8)."""
+    tabela = tabela.reset_index(drop=True)
+    tabela.to_parquet(GOLD_DIR / f"{nome}.parquet", index=False, compression="zstd")
+    tabela.to_csv(GOLD_DIR / f"{nome}.csv", index=False, encoding="utf-8", lineterminator="\n")
+    print(f"{nome}: {len(tabela):,} linhas", flush=True)
+
+
+def municipio_mes(con, dim: pd.DataFrame) -> pd.DataFrame:
+    mun = consulta(con, """
+        SELECT codigo_municipio_paciente, ano_mes, count(*) AS doses,
+               count(*) FILTER (WHERE dose_grupo = '1ª dose') AS doses_d1,
+               count(*) FILTER (WHERE dose_grupo = '2ª dose') AS doses_d2,
+               count(*) FILTER (WHERE idade_paciente BETWEEN 1 AND 4) AS doses_criancas_1a4,
+               count(DISTINCT codigo_paciente_anonimizado) AS pacientes_unicos
+        FROM s WHERE codigo_municipio_paciente IS NOT NULL
+        GROUP BY ALL ORDER BY codigo_municipio_paciente, ano_mes""")
+    mun["codigo_municipio"] = pd.to_numeric(mun["codigo_municipio_paciente"])
+    return mun.merge(dim, on="codigo_municipio", how="left").drop(columns=["codigo_municipio"])
+
+
+def coorte_criancas(con, dim: pd.DataFrame) -> pd.DataFrame:
+    """Crianças de 1 a 4 anos: município/UF da dose mais recente com valor, nº de datas de dose."""
+    coorte = consulta(con, """
+        WITH por_crianca AS (
+            SELECT codigo_paciente_anonimizado,
+                   arg_max(codigo_municipio_paciente, linha) FILTER (WHERE codigo_municipio_paciente IS NOT NULL)
+                       AS codigo_municipio_paciente,
+                   arg_max(uf_paciente, linha) FILTER (WHERE uf_paciente IS NOT NULL) AS uf_paciente,
+                   count(DISTINCT data_vacinacao) AS doses
+            FROM s WHERE idade_paciente BETWEEN 1 AND 4
+            GROUP BY codigo_paciente_anonimizado)
+        SELECT uf_paciente, codigo_municipio_paciente, count(*) AS criancas_vacinadas,
+               count(*) FILTER (WHERE doses >= 2) AS criancas_com_2_ou_mais_doses
+        FROM por_crianca GROUP BY ALL
+        ORDER BY uf_paciente NULLS LAST, codigo_municipio_paciente NULLS LAST""")
+    coorte["codigo_municipio"] = pd.to_numeric(coorte["codigo_municipio_paciente"])
+    coorte = coorte.merge(dim[["codigo_municipio", "municipio"]], on="codigo_municipio", how="left")
+    coorte["prop_com_2_ou_mais"] = (coorte["criancas_com_2_ou_mais_doses"] / coorte["criancas_vacinadas"]).round(4)
+    return coorte.drop(columns=["codigo_municipio"])
+
+
+def kpis_mensais(con) -> pd.DataFrame:
+    kpi = consulta(con, """
+        SELECT ano_mes, count(*) AS doses, count(DISTINCT codigo_paciente_anonimizado) AS pacientes_unicos,
+               (count(*) FILTER (WHERE idade_paciente BETWEEN 1 AND 4))::DOUBLE / count(idade_paciente) AS crianca,
+               (count(*) FILTER (WHERE estrategia_vacinacao = 'Rotina'))::DOUBLE / count(*) AS rotina,
+               quantile_cont(atraso_registro_dias, 0.5) AS mediana_atraso_dias,
+               (count(*) FILTER (WHERE atraso_registro_dias <= 7))::DOUBLE / count(atraso_registro_dias) AS ate_7d,
+               count(DISTINCT uf_paciente) AS ufs, count(DISTINCT codigo_municipio_paciente) AS municipios
+        FROM s GROUP BY ano_mes ORDER BY ano_mes""")
+    for nova, antiga in [("pct_criancas_1a4", "crianca"), ("pct_rotina", "rotina"), ("pct_registro_ate_7d", "ate_7d")]:
+        kpi[nova] = np.round(100 * kpi.pop(antiga).astype(float), 2)
+    return kpi[["ano_mes", "doses", "pacientes_unicos", "pct_criancas_1a4", "pct_rotina", "mediana_atraso_dias",
+                "pct_registro_ate_7d", "ufs", "municipios"]]
+
+
+def resumo_geral(con) -> pd.DataFrame:
+    return consulta(con, """
+        WITH pp AS (SELECT count(*) AS n FROM s WHERE codigo_paciente_anonimizado IS NOT NULL
+                    GROUP BY codigo_paciente_anonimizado)
+        SELECT (SELECT count(*) FROM s) AS doses,
+               (SELECT count(*) FROM pp) AS pacientes_distintos,
+               count(DISTINCT ano_mes) AS meses, min(ano_mes) AS primeiro_mes, max(ano_mes) AS ultimo_mes,
+               min(data_vacinacao) AS data_vacinacao_min, max(data_vacinacao) AS data_vacinacao_max,
+               count(DISTINCT codigo_municipio_paciente) AS municipios_residencia,
+               count(DISTINCT codigo_cnes_estabelecimento) AS estabelecimentos,
+               count(DISTINCT etnia_indigena_paciente) AS etnias_indigenas,
+               count(*) FILTER (WHERE vacinacao_fora_do_mes) AS vacinacao_fora_do_mes,
+               count(*) FILTER (WHERE atraso_registro_dias < 0) AS atraso_negativo,
+               count(*) FILTER (WHERE atraso_registro_dias IS NULL) AS atraso_ausente,
+               count(*) FILTER (WHERE idade_paciente IS NULL) AS idade_ausente,
+               count(*) FILTER (WHERE idade_paciente > 100) AS idade_maior_100,
+               count(*) FILTER (WHERE idade_paciente > 110) AS idade_maior_110,
+               (SELECT count(*) FROM pp WHERE n > 10) AS pacientes_mais_10_doses,
+               (SELECT coalesce(sum(n), 0) FROM pp WHERE n > 10)::BIGINT AS doses_pacientes_mais_10_doses
+        FROM s""")
+
+
+def qualidade_colunas(con) -> pd.DataFrame:
     """Uma linha por coluna da silver: tipo (como está no parquet), % vazio, nº de valores
     distintos e o valor mais frequente (para colunas com até 5.000 valores distintos)."""
+    schema = pq.read_schema(SILVER)
+    total = con.execute("SELECT count(*) FROM s").fetchall()[0][0]
     linhas = []
-    for coluna in df.columns:
-        serie = df[coluna]
-        unicos = serie.nunique()
+    for campo in schema:
+        c = campo.name
+        nao_nulos, unicos, exemplo = con.execute(
+            f"SELECT count({c}), count(DISTINCT {c}), arg_min({c}, linha) FILTER (WHERE {c} IS NOT NULL) FROM s").fetchall()[0]
         frequente = pct_frequente = None
         if unicos and unicos <= 5000:
-            contagem = serie.value_counts(normalize=True)
-            frequente, pct_frequente = str(contagem.index[0]), round(100 * contagem.iloc[0], 2)
-        exemplo = serie.dropna()
+            valor, n = con.execute(
+                f"SELECT {c}, count(*) AS n FROM s WHERE {c} IS NOT NULL GROUP BY 1 ORDER BY n DESC, 1 LIMIT 1").fetchall()[0]
+            frequente, pct_frequente = str(valor), round(100 * n / nao_nulos, 2)
         linhas.append({
-            "coluna": coluna, "tipo": tipos[coluna], "pct_nulos": round(100 * serie.isna().mean(), 4),
+            "coluna": c, "tipo": str(campo.type), "pct_nulos": round(100 * (total - nao_nulos) / total, 4),
             "unicos": unicos, "mais_frequente": frequente, "pct_mais_frequente": pct_frequente,
-            "exemplo": str(exemplo.iat[0]) if len(exemplo) else None,
+            "exemplo": None if exemplo is None else str(exemplo),
         })
     return pd.DataFrame(linhas)
 
 
-def intervalo_entre_doses(df: pd.DataFrame) -> pd.DataFrame:
+def intervalo_entre_doses(con) -> pd.DataFrame:
     """Para pacientes com 2 a 10 doses na janela: dias entre a 1ª e a 2ª dose e idade na 1ª.
     (Mais de 10 doses indica provável colisão do identificador anonimizado.)"""
-    base = df.loc[df["doses_paciente_janela"].between(2, 10),
-                  ["codigo_paciente_anonimizado", "ordem_dose_paciente", "data_vacinacao", "idade_paciente"]]
-    base["paciente"] = base["codigo_paciente_anonimizado"].cat.codes  # número do paciente: junção mais leve
-    d1 = base[base["ordem_dose_paciente"] == 1].set_index("paciente")
-    d2 = base[base["ordem_dose_paciente"] == 2].set_index("paciente")
-    par = d1[["data_vacinacao", "idade_paciente"]].join(d2[["data_vacinacao"]], rsuffix="_2", how="inner")
-    par = pd.DataFrame({
-        "idade_primeira_dose": par["idade_paciente"],
-        "intervalo_dias": (par["data_vacinacao_2"] - par["data_vacinacao"]).dt.days.astype("Int32"),
-    })
-    return (par.groupby(["idade_primeira_dose", "intervalo_dias"], dropna=False, as_index=False)
-               .size().rename(columns={"size": "pacientes"}))
-
-
-def salvar(nome: str, tabela: pd.DataFrame) -> None:
-    """Grava a tabela em GOLD_DIR como .parquet (zstd) e .csv (UTF-8). Categorias voltam a ser texto."""
-    tabela = tabela.reset_index(drop=True)
-    for coluna in tabela.columns[tabela.dtypes == "category"]:
-        tabela[coluna] = tabela[coluna].astype("string")
-    tabela.to_parquet(GOLD_DIR / f"{nome}.parquet", index=False, compression="zstd")
-    tabela.to_csv(GOLD_DIR / f"{nome}.csv", index=False, encoding="utf-8")
-    print(f"{nome}: {len(tabela):,} linhas")
+    return consulta(con, """
+        WITH base AS (SELECT codigo_paciente_anonimizado AS p, ordem_dose_paciente AS o, data_vacinacao, idade_paciente
+                      FROM s WHERE doses_paciente_janela BETWEEN 2 AND 10 AND ordem_dose_paciente <= 2)
+        SELECT d1.idade_paciente AS idade_primeira_dose,
+               floor(epoch(d2.data_vacinacao - d1.data_vacinacao) / 86400)::INTEGER AS intervalo_dias,
+               count(*) AS pacientes
+        FROM (SELECT * FROM base WHERE o = 1) d1 JOIN (SELECT * FROM base WHERE o = 2) d2 USING (p)
+        GROUP BY ALL ORDER BY idade_primeira_dose NULLS LAST, intervalo_dias NULLS LAST""")
 
 
 def main() -> None:
     GOLD_DIR.mkdir(parents=True, exist_ok=True)
-    df, tipos_silver = ler_silver()
-    df["dose_grupo"] = classificar_dose(df)
-    df["faixa_atraso"] = pd.cut(df["atraso_registro_dias"].astype(float), FAIXAS_ATRASO,
-                                labels=ROTULOS_ATRASO).astype("string")
+    con = conectar()
     dim = pd.read_csv(DIM_MUNICIPIOS)
     salvar("dim_municipios", dim)
 
-    # Série diária nacional
-    dia = contar(df, ["data_vacinacao", "ano_mes", "dose_grupo", "vacina_tipo"], dropna=True)
-    salvar("gold_doses_dia", dia)
-
-    # UF x mês x vacina x dose
-    uf = (df.groupby(["ano_mes", "uf_paciente", "vacina_tipo", "dose_grupo"], dropna=False, as_index=False, observed=True)
-            .size().rename(columns={"size": "doses"}))
-    salvar("gold_doses_uf_mes", uf)
-
-    # Município (residência do paciente) x mês
-    mun = (df.assign(d1=df["dose_grupo"].eq("1ª dose"), d2=df["dose_grupo"].eq("2ª dose"),
-                     crianca_1a4=df["idade_paciente"].between(1, 4))
-             .groupby(["codigo_municipio_paciente", "ano_mes"], as_index=False, observed=True)
-             .agg(doses=("d1", "size"), doses_d1=("d1", "sum"), doses_d2=("d2", "sum"),
-                  doses_criancas_1a4=("crianca_1a4", "sum"),
-                  pacientes_unicos=("codigo_paciente_anonimizado", "nunique")))
-    mun["codigo_municipio"] = pd.to_numeric(mun["codigo_municipio_paciente"].astype("string"))
-    mun = mun.merge(dim, on="codigo_municipio", how="left").drop(columns=["codigo_municipio"])
-    salvar("gold_municipio_mes", mun)
-
-    # Perfil demográfico
-    perfil = contar(df, ["ano_mes", "uf_paciente", "sexo_paciente", "faixa_etaria", "raca_cor_paciente",
-                         "vacina_tipo", "dose_grupo"])
-    salvar("gold_perfil", perfil)
-
+    salvar("gold_doses_dia", contar(con, ["data_vacinacao", "ano_mes", "dose_grupo", "vacina_tipo"], dropna=True))
+    salvar("gold_doses_uf_mes", contar(con, ["ano_mes", "uf_paciente", "vacina_tipo", "dose_grupo"]))
+    salvar("gold_municipio_mes", municipio_mes(con, dim))
+    salvar("gold_perfil", contar(con, ["ano_mes", "uf_paciente", "sexo_paciente", "faixa_etaria", "raca_cor_paciente",
+                                       "vacina_tipo", "dose_grupo"]))
     # Idade simples x dose (sem limite superior; idade ausente fica de fora, ver gold_resumo_geral)
-    idade = contar(df, ["ano_mes", "idade_paciente", "dose_grupo", "vacina_tipo"], dropna=True)
-    salvar("gold_idade_dose", idade)
-
-    # Coorte de crianças de 1 a 4 anos (idade mais recente do paciente): quantas receberam 1 e 2 doses
-    criancas = df[df["idade_paciente"].between(1, 4)]
-    por_crianca = (criancas.groupby(criancas["codigo_paciente_anonimizado"].cat.codes)
-                   .agg(codigo_municipio_paciente=("codigo_municipio_paciente", "last"),
-                        uf_paciente=("uf_paciente", "last"),
-                        doses=("data_vacinacao", "nunique"), idade=("idade_paciente", "max")))
-    coorte = (por_crianca.assign(com_1_dose=True, com_2_ou_mais=por_crianca["doses"] >= 2)
-              .groupby(["uf_paciente", "codigo_municipio_paciente"], dropna=False, as_index=False, observed=True)
-              .agg(criancas_vacinadas=("com_1_dose", "sum"), criancas_com_2_ou_mais_doses=("com_2_ou_mais", "sum")))
-    coorte["codigo_municipio"] = pd.to_numeric(coorte["codigo_municipio_paciente"].astype("string"))
-    coorte = coorte.merge(dim[["codigo_municipio", "municipio"]], on="codigo_municipio", how="left")
-    coorte["prop_com_2_ou_mais"] = (coorte["criancas_com_2_ou_mais_doses"] / coorte["criancas_vacinadas"]).round(4)
-    salvar("gold_coorte_criancas_municipio", coorte.drop(columns=["codigo_municipio"]))
-    del criancas, por_crianca
-
-    # Qualidade: atraso do registro no RNDS
-    atraso = (df.groupby(["ano_mes", "uf_paciente", "faixa_atraso"], dropna=False, as_index=False, observed=True)
-                .size().rename(columns={"size": "doses"}))
-    salvar("gold_atraso_registro", atraso)
-
-    # Onde e por qual estratégia a dose foi aplicada
-    estab = (df.groupby(["ano_mes", "uf_estabelecimento", "tipo_estabelecimento", "natureza_estabelecimento",
-                         "estrategia_vacinacao"], dropna=False, as_index=False, observed=True)
-               .size().rename(columns={"size": "doses"}))
-    salvar("gold_estabelecimento", estab)
-
-    # KPIs mensais
-    kpi = df.groupby("ano_mes", observed=True).agg(
-        doses=("dose_grupo", "size"), pacientes_unicos=("codigo_paciente_anonimizado", "nunique"),
-        pct_criancas_1a4=("idade_paciente", lambda s: round(100 * s.between(1, 4).mean(), 2)),
-        pct_rotina=("estrategia_vacinacao", lambda s: round(100 * s.eq("Rotina").mean(), 2)),
-        mediana_atraso_dias=("atraso_registro_dias", "median"),
-        pct_registro_ate_7d=("atraso_registro_dias", lambda s: round(100 * (s <= 7).mean(), 2)),
-        ufs=("uf_paciente", "nunique"), municipios=("codigo_municipio_paciente", "nunique"),
-    ).reset_index()
-    salvar("gold_kpis_mensais", kpi)
+    salvar("gold_idade_dose", contar(con, ["ano_mes", "idade_paciente", "dose_grupo", "vacina_tipo"], dropna=True))
+    salvar("gold_coorte_criancas_municipio", coorte_criancas(con, dim))
+    salvar("gold_atraso_registro", contar(con, ["ano_mes", "uf_paciente", "faixa_atraso"]))
+    salvar("gold_estabelecimento", contar(con, ["ano_mes", "uf_estabelecimento", "tipo_estabelecimento",
+                                                "natureza_estabelecimento", "estrategia_vacinacao"]))
+    salvar("gold_kpis_mensais", kpis_mensais(con))
 
     # ---------------------------------------------------------------- detalhe e qualidade
-    por_paciente = df.groupby("codigo_paciente_anonimizado", observed=True).size()
-    atraso_dias = df["atraso_registro_dias"]
-    idade_pac = df["idade_paciente"]
-    resumo = pd.DataFrame([{
-        "doses": len(df),
-        "pacientes_distintos": por_paciente.size,
-        "meses": df["ano_mes"].nunique(),
-        "primeiro_mes": df["ano_mes"].min(), "ultimo_mes": df["ano_mes"].max(),
-        "data_vacinacao_min": df["data_vacinacao"].min(), "data_vacinacao_max": df["data_vacinacao"].max(),
-        "municipios_residencia": df["codigo_municipio_paciente"].nunique(),
-        "estabelecimentos": df["codigo_cnes_estabelecimento"].nunique(),
-        "etnias_indigenas": df["etnia_indigena_paciente"].nunique(),
-        "vacinacao_fora_do_mes": int(df["vacinacao_fora_do_mes"].sum()),
-        "atraso_negativo": int((atraso_dias < 0).sum()),
-        "atraso_ausente": int(atraso_dias.isna().sum()),
-        "idade_ausente": int(idade_pac.isna().sum()),
-        "idade_maior_100": int((idade_pac > 100).sum()), "idade_maior_110": int((idade_pac > 110).sum()),
-        "pacientes_mais_10_doses": int((por_paciente > 10).sum()),
-        "doses_pacientes_mais_10_doses": int(por_paciente[por_paciente > 10].sum()),
-    }])
-    salvar("gold_resumo_geral", resumo)
-    salvar("gold_qualidade_colunas", qualidade_colunas(df.drop(columns=["dose_grupo", "faixa_atraso"]), tipos_silver))
-
+    salvar("gold_resumo_geral", resumo_geral(con))
+    salvar("gold_qualidade_colunas", qualidade_colunas(con))
     funil = pd.DataFrame(json.loads(RESUMO_PROCESSAMENTO.read_text(encoding="utf-8"))).T
     salvar("gold_funil_processamento", funil.rename_axis("ano_mes").reset_index())
-
-    salvar("gold_doses_por_paciente",
-           por_paciente.value_counts().sort_index().rename_axis("doses_na_janela").rename("pacientes").reset_index())
-    salvar("gold_dose_descricao_ordem", contar(
-        df.assign(ordem_dose=df["ordem_dose_paciente"].clip(upper=4)), ["ano_mes", "descricao_dose_vacina", "ordem_dose"]))
-    salvar("gold_atraso_dias", contar(df, ["atraso_registro_dias"], dropna=True))
-    salvar("gold_intervalo_doses", intervalo_entre_doses(df))
-    salvar("gold_estrategia_faixa", contar(df, ["ano_mes", "faixa_etaria", "tipo_estabelecimento",
-                                                "natureza_estabelecimento", "estrategia_vacinacao"]))
-    salvar("gold_categoria_atendimento", contar(df, ["ano_mes", "categoria_atendimento"]))
-    salvar("gold_nacionalidade_etnia", contar(df, ["nacionalidade_paciente", "etnia_indigena_paciente"]))
-    salvar("gold_fluxo_uf", contar(df, ["uf_paciente", "uf_estabelecimento"]))
-    salvar("gold_estabelecimento_cnes", contar(df, ["codigo_cnes_estabelecimento", "uf_estabelecimento",
-                                                    "tipo_estabelecimento", "natureza_estabelecimento"]))
-    if "descricao_vacina" not in df.columns:
-        raise SystemExit("A silver não tem descricao_vacina/fabricante_vacina: rode de novo o passo 07.")
-    salvar("gold_vacina_fabricante", contar(df, ["ano_mes", "descricao_vacina", "sigla_vacina", "vacina_tipo",
-                                                 "fabricante_vacina"]))
+    salvar("gold_doses_por_paciente", consulta(con, """
+        SELECT n AS doses_na_janela, count(*) AS pacientes FROM (
+            SELECT count(*) AS n FROM s WHERE codigo_paciente_anonimizado IS NOT NULL GROUP BY codigo_paciente_anonimizado)
+        GROUP BY n ORDER BY n"""))
+    con.execute("CREATE VIEW s_ordem AS SELECT *, least(ordem_dose_paciente, 4) AS ordem_dose FROM s")
+    salvar("gold_dose_descricao_ordem", contar(con, ["ano_mes", "descricao_dose_vacina", "ordem_dose"], origem="s_ordem"))
+    salvar("gold_atraso_dias", contar(con, ["atraso_registro_dias"], dropna=True))
+    salvar("gold_intervalo_doses", intervalo_entre_doses(con))
+    salvar("gold_estrategia_faixa", contar(con, ["ano_mes", "faixa_etaria", "tipo_estabelecimento",
+                                                 "natureza_estabelecimento", "estrategia_vacinacao"]))
+    salvar("gold_categoria_atendimento", contar(con, ["ano_mes", "categoria_atendimento"]))
+    salvar("gold_nacionalidade_etnia", contar(con, ["nacionalidade_paciente", "etnia_indigena_paciente"]))
+    salvar("gold_fluxo_uf", contar(con, ["uf_paciente", "uf_estabelecimento"]))
+    salvar("gold_estabelecimento_cnes", contar(con, ["codigo_cnes_estabelecimento", "uf_estabelecimento",
+                                                     "tipo_estabelecimento", "natureza_estabelecimento"]))
+    salvar("gold_vacina_fabricante", contar(con, ["ano_mes", "descricao_vacina", "sigla_vacina", "vacina_tipo",
+                                                  "fabricante_vacina"]))
+    con.close()
+    shutil.rmtree(TMP_DIR, ignore_errors=True)
 
 
 if __name__ == "__main__":
