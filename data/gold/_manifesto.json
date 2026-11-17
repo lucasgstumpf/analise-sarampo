@@ -1,6 +1,6 @@
 {
   "camada": "gold",
-  "gerado_em": "2026-11-17T21:57:59+00:00",
+  "gerado_em": "2026-11-17T22:07:04+00:00",
   "parametros": {
     "data_corte": "2026-11-08",
     "data_corte_explicita": true,
@@ -8,7 +8,7 @@
     "ano_populacao_ibge": 2026
   },
   "codigo": {
-    "commit": "6e1ad9e5bec75ebea516bc3e266e0257db5cb9cc",
+    "commit": "bf420724fa4755f01e97467fd799f9e61c22ed00",
     "alteracoes_locais": false
   },
   "ambiente": {
