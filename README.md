@@ -9,6 +9,7 @@ Análise de dados de vacinação (SI-PNI) e de casos/exames de sarampo (SINAN) n
 pipeline/    código de extração e tratamento, em passos numerados (arquitetura medalhão)
 data/        dados gerados pelo pipeline, separados em bronze / silver / gold
 notebooks/   análises 01-09 (leem só data/gold, que vai para o git)
+notebooks/   análises 01-10 (leem data/gold e data/silver, versionados no git)
 ```
 
 Os dados passam por três camadas:
@@ -38,6 +39,14 @@ python pipeline/executar_pipeline.py --passos 07 09
 Cada passo também pode ser rodado sozinho, por exemplo `python pipeline/05_silver_sinan_sarampo.py`.
 A documentação completa de cada passo (fonte, entradas, saídas e regras) está em
 [pipeline/README.md](pipeline/README.md).
+
+## Notebooks de Análise
+
+- `01` a `04`: Análises exploratórias preliminares das fontes primárias (SI-PNI e SINAN).
+- `05` a `07`: Validação das camadas Silver e Gold, perfil de crianças e atraso no RNDS.
+- `08-eda-completa-vacinacao-sarampo.ipynb`: Panorama analítico completo da vacinação contra sarampo.
+- `09-mapas-brasil-vacinacao-sarampo.ipynb`: Mapas coropléticos gerais de doses, fluxos e rankings municipais.
+- `10-small-multiples-geograficos.ipynb`: **Small Multiples em Mapas Geográficos e Cartogramas Hexagonais** (fundamentação teórica Tufte, Munzner e Ware; matrizes de tempo, completude D1/D2, demografia/bloqueio, latência do RNDS e insumos SCR/SCRV).
 
 ## Fontes oficiais de referência
 
