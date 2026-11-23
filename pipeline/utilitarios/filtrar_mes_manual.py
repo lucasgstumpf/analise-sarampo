@@ -38,7 +38,7 @@ def filtrar_arquivo(nome_arquivo_bruto: str, nome_base_saida: str) -> pd.DataFra
     ]
     df_bruto = pd.concat(partes, ignore_index=True) if partes else pd.DataFrame()
     df = renomear_colunas(df_bruto, COLUNAS_SIPNI)
-    df.to_csv(arquivo_saida, index=False, encoding="utf-8")
+    df.to_csv(arquivo_saida, index=False, encoding="utf-8", lineterminator="\n")
 
     print(f"Processo finalizado! Arquivo gerado: {arquivo_saida} ({len(df)} registros)")
     return df

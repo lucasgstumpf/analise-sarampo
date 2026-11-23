@@ -20,3 +20,11 @@ data/sarampo/raw/
 data/sarampo/processed/
 data/vacinacao/raw/
 data/vacinacao/processed/
+
+# Temporários de execução (duckdb, testes e logs locais)
+data/_duckdb_tmp/
+data/_teste/
+data/_logs_reconstrucao/
+
+# Dicionários de códigos do PNI de origem não registrada (só locais; a pipeline não os usa)
+data/dicionarios/

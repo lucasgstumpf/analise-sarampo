@@ -21,17 +21,19 @@ Os dados passam por três camadas:
 | **Gold** | Tabelas pequenas, prontas para os notebooks e para BI (versionadas no git) | `data/gold/<tema>/` |
 
 Para só rodar os notebooks, basta clonar o repositório: a pasta `data/gold/` já vem com tudo o
-que eles leem.
+que eles leem. As três camadas também ficam publicadas no Azure, por versão (data de corte), e
+podem ser baixadas sem credencial com `python pipeline/baixar_azure.py <camada>` (ver
+[COMO_RODAR, seção 10](pipeline/COMO_RODAR.md#10-publicar-e-recuperar-camadas-no-azure)).
 
 ## Como rodar
 
 Passo a passo completo: [pipeline/COMO_RODAR.md](pipeline/COMO_RODAR.md).
 
-A partir da raiz do projeto, com o venv ativado (`pip install -r requirements.txt`):
+A partir da raiz do projeto, com o venv ativado (`pip install -r requirements-lock.txt`):
 
 ```
 python pipeline/executar_pipeline.py --listar          # mostra os passos
-python pipeline/executar_pipeline.py                   # roda tudo, do 01 ao 12
+python pipeline/executar_pipeline.py                   # roda tudo, do 01 ao 13
 python pipeline/executar_pipeline.py --camada silver gold
 python pipeline/executar_pipeline.py --passos 07 09
 ```

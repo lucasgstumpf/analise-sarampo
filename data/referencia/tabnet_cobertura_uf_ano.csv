@@ -1,0 +1,1513 @@
+indicador,codigo_imunobiologico,codigo_uf,uf,ano,cobertura_percentual,consultado_em
+sarampo_monovalente,018,00,Brasil,1994,71.37,2026-11-17
+sarampo_monovalente,018,11,Rondônia,1994,75.57,2026-11-17
+sarampo_monovalente,018,12,Acre,1994,37.05,2026-11-17
+sarampo_monovalente,018,13,Amazonas,1994,34.81,2026-11-17
+sarampo_monovalente,018,14,Roraima,1994,90.29,2026-11-17
+sarampo_monovalente,018,15,Pará,1994,63.49,2026-11-17
+sarampo_monovalente,018,16,Amapá,1994,0.0,2026-11-17
+sarampo_monovalente,018,17,Tocantins,1994,0.0,2026-11-17
+sarampo_monovalente,018,21,Maranhão,1994,45.26,2026-11-17
+sarampo_monovalente,018,22,Piauí,1994,67.65,2026-11-17
+sarampo_monovalente,018,23,Ceará,1994,103.72,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,1994,80.44,2026-11-17
+sarampo_monovalente,018,25,Paraíba,1994,0.0,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,1994,73.31,2026-11-17
+sarampo_monovalente,018,27,Alagoas,1994,0.0,2026-11-17
+sarampo_monovalente,018,28,Sergipe,1994,0.0,2026-11-17
+sarampo_monovalente,018,29,Bahia,1994,82.61,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,1994,0.0,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,1994,96.21,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,1994,0.0,2026-11-17
+sarampo_monovalente,018,35,São Paulo,1994,0.0,2026-11-17
+sarampo_monovalente,018,41,Paraná,1994,0.0,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,1994,87.35,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,1994,0.0,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,1994,0.0,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,1994,63.74,2026-11-17
+sarampo_monovalente,018,52,Goiás,1994,43.36,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,1994,0.0,2026-11-17
+sarampo_monovalente,018,00,Brasil,1995,86.86,2026-11-17
+sarampo_monovalente,018,11,Rondônia,1995,96.54,2026-11-17
+sarampo_monovalente,018,12,Acre,1995,98.03,2026-11-17
+sarampo_monovalente,018,13,Amazonas,1995,74.59,2026-11-17
+sarampo_monovalente,018,14,Roraima,1995,116.47,2026-11-17
+sarampo_monovalente,018,15,Pará,1995,91.81,2026-11-17
+sarampo_monovalente,018,16,Amapá,1995,80.42,2026-11-17
+sarampo_monovalente,018,17,Tocantins,1995,0.0,2026-11-17
+sarampo_monovalente,018,21,Maranhão,1995,71.0,2026-11-17
+sarampo_monovalente,018,22,Piauí,1995,64.35,2026-11-17
+sarampo_monovalente,018,23,Ceará,1995,107.4,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,1995,83.7,2026-11-17
+sarampo_monovalente,018,25,Paraíba,1995,50.75,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,1995,104.74,2026-11-17
+sarampo_monovalente,018,27,Alagoas,1995,72.36,2026-11-17
+sarampo_monovalente,018,28,Sergipe,1995,93.22,2026-11-17
+sarampo_monovalente,018,29,Bahia,1995,70.57,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,1995,0.0,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,1995,89.98,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,1995,83.79,2026-11-17
+sarampo_monovalente,018,35,São Paulo,1995,97.71,2026-11-17
+sarampo_monovalente,018,41,Paraná,1995,70.47,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,1995,98.68,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,1995,97.74,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,1995,0.0,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,1995,88.14,2026-11-17
+sarampo_monovalente,018,52,Goiás,1995,110.09,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,1995,0.0,2026-11-17
+sarampo_monovalente,018,00,Brasil,1996,80.4,2026-11-17
+sarampo_monovalente,018,11,Rondônia,1996,82.64,2026-11-17
+sarampo_monovalente,018,12,Acre,1996,54.94,2026-11-17
+sarampo_monovalente,018,13,Amazonas,1996,71.18,2026-11-17
+sarampo_monovalente,018,14,Roraima,1996,88.12,2026-11-17
+sarampo_monovalente,018,15,Pará,1996,59.08,2026-11-17
+sarampo_monovalente,018,16,Amapá,1996,70.21,2026-11-17
+sarampo_monovalente,018,17,Tocantins,1996,71.43,2026-11-17
+sarampo_monovalente,018,21,Maranhão,1996,72.64,2026-11-17
+sarampo_monovalente,018,22,Piauí,1996,71.11,2026-11-17
+sarampo_monovalente,018,23,Ceará,1996,98.43,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,1996,76.77,2026-11-17
+sarampo_monovalente,018,25,Paraíba,1996,74.38,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,1996,87.24,2026-11-17
+sarampo_monovalente,018,27,Alagoas,1996,43.11,2026-11-17
+sarampo_monovalente,018,28,Sergipe,1996,83.71,2026-11-17
+sarampo_monovalente,018,29,Bahia,1996,56.67,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,1996,0.0,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,1996,94.09,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,1996,79.64,2026-11-17
+sarampo_monovalente,018,35,São Paulo,1996,95.2,2026-11-17
+sarampo_monovalente,018,41,Paraná,1996,90.28,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,1996,87.83,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,1996,84.09,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,1996,77.15,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,1996,78.68,2026-11-17
+sarampo_monovalente,018,52,Goiás,1996,79.55,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,1996,50.59,2026-11-17
+sarampo_monovalente,018,00,Brasil,1997,108.61,2026-11-17
+sarampo_monovalente,018,11,Rondônia,1997,105.09,2026-11-17
+sarampo_monovalente,018,12,Acre,1997,93.04,2026-11-17
+sarampo_monovalente,018,13,Amazonas,1997,106.45,2026-11-17
+sarampo_monovalente,018,14,Roraima,1997,110.31,2026-11-17
+sarampo_monovalente,018,15,Pará,1997,95.61,2026-11-17
+sarampo_monovalente,018,16,Amapá,1997,92.11,2026-11-17
+sarampo_monovalente,018,17,Tocantins,1997,122.72,2026-11-17
+sarampo_monovalente,018,21,Maranhão,1997,102.07,2026-11-17
+sarampo_monovalente,018,22,Piauí,1997,76.72,2026-11-17
+sarampo_monovalente,018,23,Ceará,1997,131.76,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,1997,95.16,2026-11-17
+sarampo_monovalente,018,25,Paraíba,1997,94.59,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,1997,122.51,2026-11-17
+sarampo_monovalente,018,27,Alagoas,1997,65.19,2026-11-17
+sarampo_monovalente,018,28,Sergipe,1997,106.09,2026-11-17
+sarampo_monovalente,018,29,Bahia,1997,86.02,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,1997,108.07,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,1997,105.21,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,1997,105.8,2026-11-17
+sarampo_monovalente,018,35,São Paulo,1997,134.43,2026-11-17
+sarampo_monovalente,018,41,Paraná,1997,122.89,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,1997,107.62,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,1997,97.15,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,1997,83.04,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,1997,103.39,2026-11-17
+sarampo_monovalente,018,52,Goiás,1997,113.82,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,1997,0.42,2026-11-17
+sarampo_monovalente,018,00,Brasil,1998,95.26,2026-11-17
+sarampo_monovalente,018,11,Rondônia,1998,103.7,2026-11-17
+sarampo_monovalente,018,12,Acre,1998,68.15,2026-11-17
+sarampo_monovalente,018,13,Amazonas,1998,72.42,2026-11-17
+sarampo_monovalente,018,14,Roraima,1998,89.5,2026-11-17
+sarampo_monovalente,018,15,Pará,1998,61.0,2026-11-17
+sarampo_monovalente,018,16,Amapá,1998,80.61,2026-11-17
+sarampo_monovalente,018,17,Tocantins,1998,100.32,2026-11-17
+sarampo_monovalente,018,21,Maranhão,1998,87.08,2026-11-17
+sarampo_monovalente,018,22,Piauí,1998,86.29,2026-11-17
+sarampo_monovalente,018,23,Ceará,1998,90.77,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,1998,74.91,2026-11-17
+sarampo_monovalente,018,25,Paraíba,1998,83.12,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,1998,113.48,2026-11-17
+sarampo_monovalente,018,27,Alagoas,1998,61.49,2026-11-17
+sarampo_monovalente,018,28,Sergipe,1998,96.44,2026-11-17
+sarampo_monovalente,018,29,Bahia,1998,86.4,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,1998,82.96,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,1998,107.62,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,1998,103.65,2026-11-17
+sarampo_monovalente,018,35,São Paulo,1998,124.72,2026-11-17
+sarampo_monovalente,018,41,Paraná,1998,113.72,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,1998,92.18,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,1998,84.22,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,1998,90.18,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,1998,95.64,2026-11-17
+sarampo_monovalente,018,52,Goiás,1998,86.15,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,1998,1.3,2026-11-17
+sarampo_monovalente,018,00,Brasil,1999,99.31,2026-11-17
+sarampo_monovalente,018,11,Rondônia,1999,97.87,2026-11-17
+sarampo_monovalente,018,12,Acre,1999,74.42,2026-11-17
+sarampo_monovalente,018,13,Amazonas,1999,82.49,2026-11-17
+sarampo_monovalente,018,14,Roraima,1999,96.02,2026-11-17
+sarampo_monovalente,018,15,Pará,1999,85.1,2026-11-17
+sarampo_monovalente,018,16,Amapá,1999,100.13,2026-11-17
+sarampo_monovalente,018,17,Tocantins,1999,100.22,2026-11-17
+sarampo_monovalente,018,21,Maranhão,1999,93.02,2026-11-17
+sarampo_monovalente,018,22,Piauí,1999,95.26,2026-11-17
+sarampo_monovalente,018,23,Ceará,1999,112.02,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,1999,89.81,2026-11-17
+sarampo_monovalente,018,25,Paraíba,1999,93.34,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,1999,117.36,2026-11-17
+sarampo_monovalente,018,27,Alagoas,1999,84.94,2026-11-17
+sarampo_monovalente,018,28,Sergipe,1999,104.06,2026-11-17
+sarampo_monovalente,018,29,Bahia,1999,85.62,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,1999,95.96,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,1999,108.38,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,1999,106.29,2026-11-17
+sarampo_monovalente,018,35,São Paulo,1999,115.24,2026-11-17
+sarampo_monovalente,018,41,Paraná,1999,97.89,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,1999,94.31,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,1999,94.14,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,1999,105.21,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,1999,97.5,2026-11-17
+sarampo_monovalente,018,52,Goiás,1999,96.6,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,1999,0.0,2026-11-17
+sarampo_monovalente,018,00,Brasil,2000,105.35,2026-11-17
+sarampo_monovalente,018,11,Rondônia,2000,100.63,2026-11-17
+sarampo_monovalente,018,12,Acre,2000,94.22,2026-11-17
+sarampo_monovalente,018,13,Amazonas,2000,113.34,2026-11-17
+sarampo_monovalente,018,14,Roraima,2000,135.75,2026-11-17
+sarampo_monovalente,018,15,Pará,2000,111.86,2026-11-17
+sarampo_monovalente,018,16,Amapá,2000,97.78,2026-11-17
+sarampo_monovalente,018,17,Tocantins,2000,102.88,2026-11-17
+sarampo_monovalente,018,21,Maranhão,2000,103.22,2026-11-17
+sarampo_monovalente,018,22,Piauí,2000,101.92,2026-11-17
+sarampo_monovalente,018,23,Ceará,2000,111.04,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,2000,101.43,2026-11-17
+sarampo_monovalente,018,25,Paraíba,2000,93.34,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,2000,115.01,2026-11-17
+sarampo_monovalente,018,27,Alagoas,2000,99.61,2026-11-17
+sarampo_monovalente,018,28,Sergipe,2000,112.06,2026-11-17
+sarampo_monovalente,018,29,Bahia,2000,104.31,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,2000,108.91,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,2000,103.79,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,2000,101.26,2026-11-17
+sarampo_monovalente,018,35,São Paulo,2000,108.05,2026-11-17
+sarampo_monovalente,018,41,Paraná,2000,110.32,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,2000,107.03,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,2000,95.97,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,2000,118.86,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,2000,117.88,2026-11-17
+sarampo_monovalente,018,52,Goiás,2000,111.76,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,2000,0.03,2026-11-17
+sarampo_monovalente,018,00,Brasil,2001,103.85,2026-11-17
+sarampo_monovalente,018,11,Rondônia,2001,103.37,2026-11-17
+sarampo_monovalente,018,12,Acre,2001,96.8,2026-11-17
+sarampo_monovalente,018,13,Amazonas,2001,94.82,2026-11-17
+sarampo_monovalente,018,14,Roraima,2001,84.9,2026-11-17
+sarampo_monovalente,018,15,Pará,2001,124.3,2026-11-17
+sarampo_monovalente,018,16,Amapá,2001,163.82,2026-11-17
+sarampo_monovalente,018,17,Tocantins,2001,108.37,2026-11-17
+sarampo_monovalente,018,21,Maranhão,2001,103.24,2026-11-17
+sarampo_monovalente,018,22,Piauí,2001,103.51,2026-11-17
+sarampo_monovalente,018,23,Ceará,2001,114.15,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,2001,96.79,2026-11-17
+sarampo_monovalente,018,25,Paraíba,2001,107.26,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,2001,105.86,2026-11-17
+sarampo_monovalente,018,27,Alagoas,2001,92.68,2026-11-17
+sarampo_monovalente,018,28,Sergipe,2001,105.51,2026-11-17
+sarampo_monovalente,018,29,Bahia,2001,102.45,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,2001,101.65,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,2001,102.25,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,2001,100.32,2026-11-17
+sarampo_monovalente,018,35,São Paulo,2001,107.04,2026-11-17
+sarampo_monovalente,018,41,Paraná,2001,107.67,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,2001,105.9,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,2001,100.4,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,2001,105.6,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,2001,116.17,2026-11-17
+sarampo_monovalente,018,52,Goiás,2001,101.25,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,2001,0.04,2026-11-17
+sarampo_monovalente,018,00,Brasil,2002,96.02,2026-11-17
+sarampo_monovalente,018,11,Rondônia,2002,96.17,2026-11-17
+sarampo_monovalente,018,12,Acre,2002,80.08,2026-11-17
+sarampo_monovalente,018,13,Amazonas,2002,84.27,2026-11-17
+sarampo_monovalente,018,14,Roraima,2002,93.31,2026-11-17
+sarampo_monovalente,018,15,Pará,2002,116.86,2026-11-17
+sarampo_monovalente,018,16,Amapá,2002,54.55,2026-11-17
+sarampo_monovalente,018,17,Tocantins,2002,98.91,2026-11-17
+sarampo_monovalente,018,21,Maranhão,2002,100.98,2026-11-17
+sarampo_monovalente,018,22,Piauí,2002,97.88,2026-11-17
+sarampo_monovalente,018,23,Ceará,2002,105.78,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,2002,93.59,2026-11-17
+sarampo_monovalente,018,25,Paraíba,2002,101.46,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,2002,107.29,2026-11-17
+sarampo_monovalente,018,27,Alagoas,2002,103.06,2026-11-17
+sarampo_monovalente,018,28,Sergipe,2002,108.69,2026-11-17
+sarampo_monovalente,018,29,Bahia,2002,93.03,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,2002,74.61,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,2002,100.05,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,2002,98.25,2026-11-17
+sarampo_monovalente,018,35,São Paulo,2002,100.37,2026-11-17
+sarampo_monovalente,018,41,Paraná,2002,98.35,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,2002,99.77,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,2002,96.07,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,2002,99.86,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,2002,102.84,2026-11-17
+sarampo_monovalente,018,52,Goiás,2002,102.2,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,2002,0.0,2026-11-17
+sarampo_monovalente,018,00,Brasil,2003,4.06,2026-11-17
+sarampo_monovalente,018,11,Rondônia,2003,7.82,2026-11-17
+sarampo_monovalente,018,12,Acre,2003,0.0,2026-11-17
+sarampo_monovalente,018,13,Amazonas,2003,5.39,2026-11-17
+sarampo_monovalente,018,14,Roraima,2003,10.44,2026-11-17
+sarampo_monovalente,018,15,Pará,2003,0.0,2026-11-17
+sarampo_monovalente,018,16,Amapá,2003,0.83,2026-11-17
+sarampo_monovalente,018,17,Tocantins,2003,4.05,2026-11-17
+sarampo_monovalente,018,21,Maranhão,2003,24.56,2026-11-17
+sarampo_monovalente,018,22,Piauí,2003,7.22,2026-11-17
+sarampo_monovalente,018,23,Ceará,2003,3.6,2026-11-17
+sarampo_monovalente,018,24,Rio Grande do Norte,2003,2.94,2026-11-17
+sarampo_monovalente,018,25,Paraíba,2003,0.02,2026-11-17
+sarampo_monovalente,018,26,Pernambuco,2003,5.38,2026-11-17
+sarampo_monovalente,018,27,Alagoas,2003,2.9,2026-11-17
+sarampo_monovalente,018,28,Sergipe,2003,2.39,2026-11-17
+sarampo_monovalente,018,29,Bahia,2003,9.22,2026-11-17
+sarampo_monovalente,018,31,Minas Gerais,2003,0.98,2026-11-17
+sarampo_monovalente,018,32,Espírito Santo,2003,3.79,2026-11-17
+sarampo_monovalente,018,33,Rio de Janeiro,2003,0.76,2026-11-17
+sarampo_monovalente,018,35,São Paulo,2003,3.35,2026-11-17
+sarampo_monovalente,018,41,Paraná,2003,1.22,2026-11-17
+sarampo_monovalente,018,42,Santa Catarina,2003,0.5,2026-11-17
+sarampo_monovalente,018,43,Rio Grande do Sul,2003,1.95,2026-11-17
+sarampo_monovalente,018,50,Mato Grosso do Sul,2003,1.88,2026-11-17
+sarampo_monovalente,018,51,Mato Grosso,2003,4.08,2026-11-17
+sarampo_monovalente,018,52,Goiás,2003,2.3,2026-11-17
+sarampo_monovalente,018,53,Distrito Federal,2003,0.02,2026-11-17
+tetra_viral,097,00,Brasil,2013,34.19,2026-11-17
+tetra_viral,097,11,Rondônia,2013,38.3,2026-11-17
+tetra_viral,097,12,Acre,2013,12.84,2026-11-17
+tetra_viral,097,13,Amazonas,2013,30.44,2026-11-17
+tetra_viral,097,14,Roraima,2013,18.29,2026-11-17
+tetra_viral,097,15,Pará,2013,20.14,2026-11-17
+tetra_viral,097,16,Amapá,2013,30.17,2026-11-17
+tetra_viral,097,17,Tocantins,2013,34.67,2026-11-17
+tetra_viral,097,21,Maranhão,2013,23.44,2026-11-17
+tetra_viral,097,22,Piauí,2013,30.63,2026-11-17
+tetra_viral,097,23,Ceará,2013,27.6,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2013,30.43,2026-11-17
+tetra_viral,097,25,Paraíba,2013,34.19,2026-11-17
+tetra_viral,097,26,Pernambuco,2013,30.85,2026-11-17
+tetra_viral,097,27,Alagoas,2013,26.91,2026-11-17
+tetra_viral,097,28,Sergipe,2013,42.14,2026-11-17
+tetra_viral,097,29,Bahia,2013,36.87,2026-11-17
+tetra_viral,097,31,Minas Gerais,2013,39.15,2026-11-17
+tetra_viral,097,32,Espírito Santo,2013,39.84,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2013,34.03,2026-11-17
+tetra_viral,097,35,São Paulo,2013,37.63,2026-11-17
+tetra_viral,097,41,Paraná,2013,40.2,2026-11-17
+tetra_viral,097,42,Santa Catarina,2013,35.84,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2013,37.03,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2013,35.91,2026-11-17
+tetra_viral,097,51,Mato Grosso,2013,30.52,2026-11-17
+tetra_viral,097,52,Goiás,2013,32.5,2026-11-17
+tetra_viral,097,53,Distrito Federal,2013,44.44,2026-11-17
+tetra_viral,097,00,Brasil,2014,90.19,2026-11-17
+tetra_viral,097,11,Rondônia,2014,112.79,2026-11-17
+tetra_viral,097,12,Acre,2014,59.3,2026-11-17
+tetra_viral,097,13,Amazonas,2014,84.84,2026-11-17
+tetra_viral,097,14,Roraima,2014,89.83,2026-11-17
+tetra_viral,097,15,Pará,2014,57.71,2026-11-17
+tetra_viral,097,16,Amapá,2014,80.98,2026-11-17
+tetra_viral,097,17,Tocantins,2014,82.22,2026-11-17
+tetra_viral,097,21,Maranhão,2014,87.39,2026-11-17
+tetra_viral,097,22,Piauí,2014,61.99,2026-11-17
+tetra_viral,097,23,Ceará,2014,127.95,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2014,91.87,2026-11-17
+tetra_viral,097,25,Paraíba,2014,77.44,2026-11-17
+tetra_viral,097,26,Pernambuco,2014,91.13,2026-11-17
+tetra_viral,097,27,Alagoas,2014,90.2,2026-11-17
+tetra_viral,097,28,Sergipe,2014,77.26,2026-11-17
+tetra_viral,097,29,Bahia,2014,88.8,2026-11-17
+tetra_viral,097,31,Minas Gerais,2014,78.4,2026-11-17
+tetra_viral,097,32,Espírito Santo,2014,98.45,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2014,96.72,2026-11-17
+tetra_viral,097,35,São Paulo,2014,98.07,2026-11-17
+tetra_viral,097,41,Paraná,2014,88.21,2026-11-17
+tetra_viral,097,42,Santa Catarina,2014,93.16,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2014,81.82,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2014,103.64,2026-11-17
+tetra_viral,097,51,Mato Grosso,2014,99.51,2026-11-17
+tetra_viral,097,52,Goiás,2014,85.99,2026-11-17
+tetra_viral,097,53,Distrito Federal,2014,93.36,2026-11-17
+tetra_viral,097,00,Brasil,2015,77.37,2026-11-17
+tetra_viral,097,11,Rondônia,2015,94.63,2026-11-17
+tetra_viral,097,12,Acre,2015,49.3,2026-11-17
+tetra_viral,097,13,Amazonas,2015,77.43,2026-11-17
+tetra_viral,097,14,Roraima,2015,92.53,2026-11-17
+tetra_viral,097,15,Pará,2015,37.78,2026-11-17
+tetra_viral,097,16,Amapá,2015,71.14,2026-11-17
+tetra_viral,097,17,Tocantins,2015,52.17,2026-11-17
+tetra_viral,097,21,Maranhão,2015,72.06,2026-11-17
+tetra_viral,097,22,Piauí,2015,48.23,2026-11-17
+tetra_viral,097,23,Ceará,2015,94.42,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2015,79.93,2026-11-17
+tetra_viral,097,25,Paraíba,2015,57.99,2026-11-17
+tetra_viral,097,26,Pernambuco,2015,85.85,2026-11-17
+tetra_viral,097,27,Alagoas,2015,81.19,2026-11-17
+tetra_viral,097,28,Sergipe,2015,74.59,2026-11-17
+tetra_viral,097,29,Bahia,2015,73.66,2026-11-17
+tetra_viral,097,31,Minas Gerais,2015,66.03,2026-11-17
+tetra_viral,097,32,Espírito Santo,2015,85.88,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2015,90.55,2026-11-17
+tetra_viral,097,35,São Paulo,2015,94.64,2026-11-17
+tetra_viral,097,41,Paraná,2015,74.68,2026-11-17
+tetra_viral,097,42,Santa Catarina,2015,80.7,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2015,59.93,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2015,70.74,2026-11-17
+tetra_viral,097,51,Mato Grosso,2015,76.73,2026-11-17
+tetra_viral,097,52,Goiás,2015,63.24,2026-11-17
+tetra_viral,097,53,Distrito Federal,2015,66.33,2026-11-17
+tetra_viral,097,00,Brasil,2016,79.04,2026-11-17
+tetra_viral,097,11,Rondônia,2016,94.97,2026-11-17
+tetra_viral,097,12,Acre,2016,64.45,2026-11-17
+tetra_viral,097,13,Amazonas,2016,75.8,2026-11-17
+tetra_viral,097,14,Roraima,2016,83.64,2026-11-17
+tetra_viral,097,15,Pará,2016,62.39,2026-11-17
+tetra_viral,097,16,Amapá,2016,86.08,2026-11-17
+tetra_viral,097,17,Tocantins,2016,88.32,2026-11-17
+tetra_viral,097,21,Maranhão,2016,51.68,2026-11-17
+tetra_viral,097,22,Piauí,2016,65.66,2026-11-17
+tetra_viral,097,23,Ceará,2016,91.06,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2016,54.28,2026-11-17
+tetra_viral,097,25,Paraíba,2016,61.22,2026-11-17
+tetra_viral,097,26,Pernambuco,2016,70.12,2026-11-17
+tetra_viral,097,27,Alagoas,2016,63.96,2026-11-17
+tetra_viral,097,28,Sergipe,2016,75.19,2026-11-17
+tetra_viral,097,29,Bahia,2016,59.46,2026-11-17
+tetra_viral,097,31,Minas Gerais,2016,91.82,2026-11-17
+tetra_viral,097,32,Espírito Santo,2016,81.52,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2016,73.79,2026-11-17
+tetra_viral,097,35,São Paulo,2016,80.97,2026-11-17
+tetra_viral,097,41,Paraná,2016,92.63,2026-11-17
+tetra_viral,097,42,Santa Catarina,2016,99.59,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2016,87.12,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2016,94.94,2026-11-17
+tetra_viral,097,51,Mato Grosso,2016,85.98,2026-11-17
+tetra_viral,097,52,Goiás,2016,85.2,2026-11-17
+tetra_viral,097,53,Distrito Federal,2016,129.99,2026-11-17
+tetra_viral,097,00,Brasil,2017,35.44,2026-11-17
+tetra_viral,097,11,Rondônia,2017,76.25,2026-11-17
+tetra_viral,097,12,Acre,2017,52.16,2026-11-17
+tetra_viral,097,13,Amazonas,2017,59.11,2026-11-17
+tetra_viral,097,14,Roraima,2017,84.65,2026-11-17
+tetra_viral,097,15,Pará,2017,51.04,2026-11-17
+tetra_viral,097,16,Amapá,2017,56.4,2026-11-17
+tetra_viral,097,17,Tocantins,2017,60.91,2026-11-17
+tetra_viral,097,21,Maranhão,2017,21.33,2026-11-17
+tetra_viral,097,22,Piauí,2017,18.78,2026-11-17
+tetra_viral,097,23,Ceará,2017,36.06,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2017,18.37,2026-11-17
+tetra_viral,097,25,Paraíba,2017,23.84,2026-11-17
+tetra_viral,097,26,Pernambuco,2017,30.03,2026-11-17
+tetra_viral,097,27,Alagoas,2017,31.1,2026-11-17
+tetra_viral,097,28,Sergipe,2017,24.57,2026-11-17
+tetra_viral,097,29,Bahia,2017,22.4,2026-11-17
+tetra_viral,097,31,Minas Gerais,2017,18.48,2026-11-17
+tetra_viral,097,32,Espírito Santo,2017,16.06,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2017,19.54,2026-11-17
+tetra_viral,097,35,São Paulo,2017,20.98,2026-11-17
+tetra_viral,097,41,Paraná,2017,69.77,2026-11-17
+tetra_viral,097,42,Santa Catarina,2017,67.25,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2017,62.47,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2017,66.2,2026-11-17
+tetra_viral,097,51,Mato Grosso,2017,64.68,2026-11-17
+tetra_viral,097,52,Goiás,2017,59.59,2026-11-17
+tetra_viral,097,53,Distrito Federal,2017,66.1,2026-11-17
+tetra_viral,097,00,Brasil,2018,33.26,2026-11-17
+tetra_viral,097,11,Rondônia,2018,53.43,2026-11-17
+tetra_viral,097,12,Acre,2018,59.06,2026-11-17
+tetra_viral,097,13,Amazonas,2018,58.52,2026-11-17
+tetra_viral,097,14,Roraima,2018,71.34,2026-11-17
+tetra_viral,097,15,Pará,2018,48.29,2026-11-17
+tetra_viral,097,16,Amapá,2018,51.17,2026-11-17
+tetra_viral,097,17,Tocantins,2018,65.92,2026-11-17
+tetra_viral,097,21,Maranhão,2018,15.44,2026-11-17
+tetra_viral,097,22,Piauí,2018,2.94,2026-11-17
+tetra_viral,097,23,Ceará,2018,11.75,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2018,13.52,2026-11-17
+tetra_viral,097,25,Paraíba,2018,8.61,2026-11-17
+tetra_viral,097,26,Pernambuco,2018,11.29,2026-11-17
+tetra_viral,097,27,Alagoas,2018,19.86,2026-11-17
+tetra_viral,097,28,Sergipe,2018,1.23,2026-11-17
+tetra_viral,097,29,Bahia,2018,5.46,2026-11-17
+tetra_viral,097,31,Minas Gerais,2018,9.73,2026-11-17
+tetra_viral,097,32,Espírito Santo,2018,7.34,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2018,8.88,2026-11-17
+tetra_viral,097,35,São Paulo,2018,37.16,2026-11-17
+tetra_viral,097,41,Paraná,2018,63.22,2026-11-17
+tetra_viral,097,42,Santa Catarina,2018,68.81,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2018,68.63,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2018,78.83,2026-11-17
+tetra_viral,097,51,Mato Grosso,2018,60.46,2026-11-17
+tetra_viral,097,52,Goiás,2018,59.51,2026-11-17
+tetra_viral,097,53,Distrito Federal,2018,82.12,2026-11-17
+tetra_viral,097,00,Brasil,2019,34.24,2026-11-17
+tetra_viral,097,11,Rondônia,2019,70.74,2026-11-17
+tetra_viral,097,12,Acre,2019,75.68,2026-11-17
+tetra_viral,097,13,Amazonas,2019,72.71,2026-11-17
+tetra_viral,097,14,Roraima,2019,74.53,2026-11-17
+tetra_viral,097,15,Pará,2019,59.9,2026-11-17
+tetra_viral,097,16,Amapá,2019,64.43,2026-11-17
+tetra_viral,097,17,Tocantins,2019,81.35,2026-11-17
+tetra_viral,097,21,Maranhão,2019,6.94,2026-11-17
+tetra_viral,097,22,Piauí,2019,2.14,2026-11-17
+tetra_viral,097,23,Ceará,2019,13.04,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2019,3.74,2026-11-17
+tetra_viral,097,25,Paraíba,2019,13.22,2026-11-17
+tetra_viral,097,26,Pernambuco,2019,7.78,2026-11-17
+tetra_viral,097,27,Alagoas,2019,3.43,2026-11-17
+tetra_viral,097,28,Sergipe,2019,0.81,2026-11-17
+tetra_viral,097,29,Bahia,2019,1.79,2026-11-17
+tetra_viral,097,31,Minas Gerais,2019,1.37,2026-11-17
+tetra_viral,097,32,Espírito Santo,2019,3.42,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2019,6.76,2026-11-17
+tetra_viral,097,35,São Paulo,2019,26.81,2026-11-17
+tetra_viral,097,41,Paraná,2019,83.02,2026-11-17
+tetra_viral,097,42,Santa Catarina,2019,89.32,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2019,82.89,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2019,81.86,2026-11-17
+tetra_viral,097,51,Mato Grosso,2019,79.44,2026-11-17
+tetra_viral,097,52,Goiás,2019,71.18,2026-11-17
+tetra_viral,097,53,Distrito Federal,2019,84.27,2026-11-17
+tetra_viral,097,00,Brasil,2020,21.01,2026-11-17
+tetra_viral,097,11,Rondônia,2020,47.65,2026-11-17
+tetra_viral,097,12,Acre,2020,34.11,2026-11-17
+tetra_viral,097,13,Amazonas,2020,34.43,2026-11-17
+tetra_viral,097,14,Roraima,2020,42.46,2026-11-17
+tetra_viral,097,15,Pará,2020,46.49,2026-11-17
+tetra_viral,097,16,Amapá,2020,27.72,2026-11-17
+tetra_viral,097,17,Tocantins,2020,55.31,2026-11-17
+tetra_viral,097,21,Maranhão,2020,1.97,2026-11-17
+tetra_viral,097,22,Piauí,2020,5.76,2026-11-17
+tetra_viral,097,23,Ceará,2020,2.56,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2020,6.63,2026-11-17
+tetra_viral,097,25,Paraíba,2020,6.39,2026-11-17
+tetra_viral,097,26,Pernambuco,2020,3.97,2026-11-17
+tetra_viral,097,27,Alagoas,2020,6.02,2026-11-17
+tetra_viral,097,28,Sergipe,2020,2.29,2026-11-17
+tetra_viral,097,29,Bahia,2020,4.8,2026-11-17
+tetra_viral,097,31,Minas Gerais,2020,3.03,2026-11-17
+tetra_viral,097,32,Espírito Santo,2020,1.37,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2020,12.36,2026-11-17
+tetra_viral,097,35,São Paulo,2020,2.64,2026-11-17
+tetra_viral,097,41,Paraná,2020,56.24,2026-11-17
+tetra_viral,097,42,Santa Catarina,2020,61.0,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2020,58.72,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2020,56.33,2026-11-17
+tetra_viral,097,51,Mato Grosso,2020,61.48,2026-11-17
+tetra_viral,097,52,Goiás,2020,52.86,2026-11-17
+tetra_viral,097,53,Distrito Federal,2020,42.89,2026-11-17
+tetra_viral,097,00,Brasil,2021,6.27,2026-11-17
+tetra_viral,097,11,Rondônia,2021,1.51,2026-11-17
+tetra_viral,097,12,Acre,2021,1.63,2026-11-17
+tetra_viral,097,13,Amazonas,2021,1.31,2026-11-17
+tetra_viral,097,14,Roraima,2021,1.65,2026-11-17
+tetra_viral,097,15,Pará,2021,2.55,2026-11-17
+tetra_viral,097,16,Amapá,2021,0.96,2026-11-17
+tetra_viral,097,17,Tocantins,2021,4.3,2026-11-17
+tetra_viral,097,21,Maranhão,2021,3.11,2026-11-17
+tetra_viral,097,22,Piauí,2021,8.8,2026-11-17
+tetra_viral,097,23,Ceará,2021,3.87,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2021,7.57,2026-11-17
+tetra_viral,097,25,Paraíba,2021,7.58,2026-11-17
+tetra_viral,097,26,Pernambuco,2021,4.65,2026-11-17
+tetra_viral,097,27,Alagoas,2021,8.2,2026-11-17
+tetra_viral,097,28,Sergipe,2021,7.56,2026-11-17
+tetra_viral,097,29,Bahia,2021,6.33,2026-11-17
+tetra_viral,097,31,Minas Gerais,2021,4.83,2026-11-17
+tetra_viral,097,32,Espírito Santo,2021,1.65,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2021,12.74,2026-11-17
+tetra_viral,097,35,São Paulo,2021,2.8,2026-11-17
+tetra_viral,097,41,Paraná,2021,16.3,2026-11-17
+tetra_viral,097,42,Santa Catarina,2021,19.53,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2021,3.44,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2021,5.21,2026-11-17
+tetra_viral,097,51,Mato Grosso,2021,6.84,2026-11-17
+tetra_viral,097,52,Goiás,2021,7.41,2026-11-17
+tetra_viral,097,53,Distrito Federal,2021,1.95,2026-11-17
+tetra_viral,097,00,Brasil,2022,10.43,2026-11-17
+tetra_viral,097,11,Rondônia,2022,9.81,2026-11-17
+tetra_viral,097,12,Acre,2022,3.64,2026-11-17
+tetra_viral,097,13,Amazonas,2022,12.62,2026-11-17
+tetra_viral,097,14,Roraima,2022,5.48,2026-11-17
+tetra_viral,097,15,Pará,2022,4.96,2026-11-17
+tetra_viral,097,16,Amapá,2022,8.87,2026-11-17
+tetra_viral,097,17,Tocantins,2022,14.31,2026-11-17
+tetra_viral,097,21,Maranhão,2022,11.58,2026-11-17
+tetra_viral,097,22,Piauí,2022,13.31,2026-11-17
+tetra_viral,097,23,Ceará,2022,6.95,2026-11-17
+tetra_viral,097,24,Rio Grande do Norte,2022,13.12,2026-11-17
+tetra_viral,097,25,Paraíba,2022,11.71,2026-11-17
+tetra_viral,097,26,Pernambuco,2022,10.55,2026-11-17
+tetra_viral,097,27,Alagoas,2022,16.94,2026-11-17
+tetra_viral,097,28,Sergipe,2022,11.77,2026-11-17
+tetra_viral,097,29,Bahia,2022,14.69,2026-11-17
+tetra_viral,097,31,Minas Gerais,2022,8.93,2026-11-17
+tetra_viral,097,32,Espírito Santo,2022,0.93,2026-11-17
+tetra_viral,097,33,Rio de Janeiro,2022,14.17,2026-11-17
+tetra_viral,097,35,São Paulo,2022,7.53,2026-11-17
+tetra_viral,097,41,Paraná,2022,14.24,2026-11-17
+tetra_viral,097,42,Santa Catarina,2022,9.21,2026-11-17
+tetra_viral,097,43,Rio Grande do Sul,2022,9.23,2026-11-17
+tetra_viral,097,50,Mato Grosso do Sul,2022,14.8,2026-11-17
+tetra_viral,097,51,Mato Grosso,2022,9.58,2026-11-17
+tetra_viral,097,52,Goiás,2022,18.18,2026-11-17
+tetra_viral,097,53,Distrito Federal,2022,2.29,2026-11-17
+triplice_viral_d1,021,00,Brasil,1999,6692.1,2026-11-17
+triplice_viral_d1,021,11,Rondônia,1999,0.0,2026-11-17
+triplice_viral_d1,021,12,Acre,1999,0.0,2026-11-17
+triplice_viral_d1,021,13,Amazonas,1999,0.0,2026-11-17
+triplice_viral_d1,021,14,Roraima,1999,0.0,2026-11-17
+triplice_viral_d1,021,15,Pará,1999,0.0,2026-11-17
+triplice_viral_d1,021,16,Amapá,1999,0.0,2026-11-17
+triplice_viral_d1,021,17,Tocantins,1999,0.0,2026-11-17
+triplice_viral_d1,021,21,Maranhão,1999,0.0,2026-11-17
+triplice_viral_d1,021,22,Piauí,1999,0.0,2026-11-17
+triplice_viral_d1,021,23,Ceará,1999,0.0,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,1999,0.0,2026-11-17
+triplice_viral_d1,021,25,Paraíba,1999,0.0,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,1999,0.0,2026-11-17
+triplice_viral_d1,021,27,Alagoas,1999,0.0,2026-11-17
+triplice_viral_d1,021,28,Sergipe,1999,0.0,2026-11-17
+triplice_viral_d1,021,29,Bahia,1999,0.0,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,1999,0.0,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,1999,0.0,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,1999,0.0,2026-11-17
+triplice_viral_d1,021,35,São Paulo,1999,0.0,2026-11-17
+triplice_viral_d1,021,41,Paraná,1999,0.0,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,1999,0.0,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,1999,0.0,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,1999,0.0,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,1999,0.0,2026-11-17
+triplice_viral_d1,021,52,Goiás,1999,0.0,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,1999,134.17,2026-11-17
+triplice_viral_d1,021,00,Brasil,2000,77.5,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2000,17.15,2026-11-17
+triplice_viral_d1,021,12,Acre,2000,27.55,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2000,14.84,2026-11-17
+triplice_viral_d1,021,14,Roraima,2000,25.35,2026-11-17
+triplice_viral_d1,021,15,Pará,2000,10.14,2026-11-17
+triplice_viral_d1,021,16,Amapá,2000,5.25,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2000,0.17,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2000,82.66,2026-11-17
+triplice_viral_d1,021,22,Piauí,2000,72.25,2026-11-17
+triplice_viral_d1,021,23,Ceará,2000,85.19,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2000,46.55,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2000,67.12,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2000,29.21,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2000,11.13,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2000,94.08,2026-11-17
+triplice_viral_d1,021,29,Bahia,2000,76.3,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2000,92.7,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2000,68.74,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2000,89.41,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2000,105.38,2026-11-17
+triplice_viral_d1,021,41,Paraná,2000,91.12,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2000,95.57,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2000,79.75,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2000,114.77,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2000,61.41,2026-11-17
+triplice_viral_d1,021,52,Goiás,2000,82.19,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2000,101.96,2026-11-17
+triplice_viral_d1,021,00,Brasil,2001,88.43,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2001,93.85,2026-11-17
+triplice_viral_d1,021,12,Acre,2001,67.82,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2001,27.69,2026-11-17
+triplice_viral_d1,021,14,Roraima,2001,61.93,2026-11-17
+triplice_viral_d1,021,15,Pará,2001,47.94,2026-11-17
+triplice_viral_d1,021,16,Amapá,2001,131.68,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2001,82.17,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2001,80.13,2026-11-17
+triplice_viral_d1,021,22,Piauí,2001,95.28,2026-11-17
+triplice_viral_d1,021,23,Ceará,2001,109.94,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2001,39.5,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2001,95.42,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2001,69.88,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2001,59.09,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2001,102.22,2026-11-17
+triplice_viral_d1,021,29,Bahia,2001,104.8,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2001,101.89,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2001,99.75,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2001,90.78,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2001,105.13,2026-11-17
+triplice_viral_d1,021,41,Paraná,2001,101.36,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2001,101.09,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2001,22.85,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2001,99.93,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2001,88.61,2026-11-17
+triplice_viral_d1,021,52,Goiás,2001,95.71,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2001,102.22,2026-11-17
+triplice_viral_d1,021,00,Brasil,2002,96.92,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2002,94.94,2026-11-17
+triplice_viral_d1,021,12,Acre,2002,104.56,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2002,71.27,2026-11-17
+triplice_viral_d1,021,14,Roraima,2002,75.26,2026-11-17
+triplice_viral_d1,021,15,Pará,2002,120.34,2026-11-17
+triplice_viral_d1,021,16,Amapá,2002,89.81,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2002,88.48,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2002,83.4,2026-11-17
+triplice_viral_d1,021,22,Piauí,2002,95.22,2026-11-17
+triplice_viral_d1,021,23,Ceará,2002,104.11,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2002,75.35,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2002,96.56,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2002,84.64,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2002,97.43,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2002,103.48,2026-11-17
+triplice_viral_d1,021,29,Bahia,2002,88.35,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2002,98.8,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2002,101.04,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2002,96.23,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2002,105.13,2026-11-17
+triplice_viral_d1,021,41,Paraná,2002,101.72,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2002,91.38,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2002,86.54,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2002,100.22,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2002,94.64,2026-11-17
+triplice_viral_d1,021,52,Goiás,2002,99.18,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2002,99.92,2026-11-17
+triplice_viral_d1,021,00,Brasil,2003,112.95,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2003,115.24,2026-11-17
+triplice_viral_d1,021,12,Acre,2003,99.4,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2003,91.3,2026-11-17
+triplice_viral_d1,021,14,Roraima,2003,110.22,2026-11-17
+triplice_viral_d1,021,15,Pará,2003,124.98,2026-11-17
+triplice_viral_d1,021,16,Amapá,2003,114.5,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2003,115.03,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2003,102.32,2026-11-17
+triplice_viral_d1,021,22,Piauí,2003,111.58,2026-11-17
+triplice_viral_d1,021,23,Ceará,2003,119.11,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2003,116.8,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2003,108.34,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2003,119.59,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2003,99.05,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2003,132.46,2026-11-17
+triplice_viral_d1,021,29,Bahia,2003,107.79,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2003,103.62,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2003,126.19,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2003,114.46,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2003,119.88,2026-11-17
+triplice_viral_d1,021,41,Paraná,2003,107.13,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2003,115.37,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2003,110.93,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2003,119.49,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2003,120.92,2026-11-17
+triplice_viral_d1,021,52,Goiás,2003,109.98,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2003,101.66,2026-11-17
+triplice_viral_d1,021,00,Brasil,2004,110.93,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2004,130.63,2026-11-17
+triplice_viral_d1,021,12,Acre,2004,123.22,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2004,86.06,2026-11-17
+triplice_viral_d1,021,14,Roraima,2004,110.32,2026-11-17
+triplice_viral_d1,021,15,Pará,2004,143.1,2026-11-17
+triplice_viral_d1,021,16,Amapá,2004,129.76,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2004,97.41,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2004,106.3,2026-11-17
+triplice_viral_d1,021,22,Piauí,2004,116.01,2026-11-17
+triplice_viral_d1,021,23,Ceará,2004,112.89,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2004,110.2,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2004,114.45,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2004,113.7,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2004,123.77,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2004,120.41,2026-11-17
+triplice_viral_d1,021,29,Bahia,2004,132.66,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2004,115.2,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2004,113.96,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2004,105.97,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2004,104.3,2026-11-17
+triplice_viral_d1,021,41,Paraná,2004,93.89,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2004,97.79,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2004,100.61,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2004,98.49,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2004,110.41,2026-11-17
+triplice_viral_d1,021,52,Goiás,2004,113.78,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2004,96.7,2026-11-17
+triplice_viral_d1,021,00,Brasil,2005,106.55,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2005,115.99,2026-11-17
+triplice_viral_d1,021,12,Acre,2005,95.12,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2005,104.03,2026-11-17
+triplice_viral_d1,021,14,Roraima,2005,116.01,2026-11-17
+triplice_viral_d1,021,15,Pará,2005,116.35,2026-11-17
+triplice_viral_d1,021,16,Amapá,2005,99.34,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2005,101.0,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2005,113.67,2026-11-17
+triplice_viral_d1,021,22,Piauí,2005,102.5,2026-11-17
+triplice_viral_d1,021,23,Ceará,2005,110.35,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2005,100.34,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2005,107.3,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2005,109.15,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2005,110.17,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2005,93.82,2026-11-17
+triplice_viral_d1,021,29,Bahia,2005,117.98,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2005,107.46,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2005,110.12,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2005,107.75,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2005,102.04,2026-11-17
+triplice_viral_d1,021,41,Paraná,2005,99.78,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2005,101.01,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2005,101.4,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2005,97.99,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2005,109.58,2026-11-17
+triplice_viral_d1,021,52,Goiás,2005,106.42,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2005,101.14,2026-11-17
+triplice_viral_d1,021,00,Brasil,2006,105.35,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2006,125.36,2026-11-17
+triplice_viral_d1,021,12,Acre,2006,90.84,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2006,103.37,2026-11-17
+triplice_viral_d1,021,14,Roraima,2006,94.23,2026-11-17
+triplice_viral_d1,021,15,Pará,2006,113.05,2026-11-17
+triplice_viral_d1,021,16,Amapá,2006,90.41,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2006,100.96,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2006,110.54,2026-11-17
+triplice_viral_d1,021,22,Piauí,2006,104.9,2026-11-17
+triplice_viral_d1,021,23,Ceará,2006,105.3,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2006,107.58,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2006,112.97,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2006,110.07,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2006,103.9,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2006,95.89,2026-11-17
+triplice_viral_d1,021,29,Bahia,2006,114.49,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2006,105.77,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2006,109.37,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2006,102.12,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2006,101.19,2026-11-17
+triplice_viral_d1,021,41,Paraná,2006,101.21,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2006,100.38,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2006,101.05,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2006,104.28,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2006,109.83,2026-11-17
+triplice_viral_d1,021,52,Goiás,2006,109.78,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2006,98.91,2026-11-17
+triplice_viral_d1,021,00,Brasil,2007,106.8,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2007,116.7,2026-11-17
+triplice_viral_d1,021,12,Acre,2007,109.45,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2007,110.07,2026-11-17
+triplice_viral_d1,021,14,Roraima,2007,97.31,2026-11-17
+triplice_viral_d1,021,15,Pará,2007,118.49,2026-11-17
+triplice_viral_d1,021,16,Amapá,2007,98.29,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2007,107.82,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2007,119.71,2026-11-17
+triplice_viral_d1,021,22,Piauí,2007,107.07,2026-11-17
+triplice_viral_d1,021,23,Ceará,2007,107.88,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2007,107.25,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2007,116.26,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2007,113.35,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2007,99.63,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2007,106.25,2026-11-17
+triplice_viral_d1,021,29,Bahia,2007,108.2,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2007,109.28,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2007,104.49,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2007,100.54,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2007,100.23,2026-11-17
+triplice_viral_d1,021,41,Paraná,2007,103.17,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2007,102.4,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2007,104.53,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2007,106.44,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2007,114.8,2026-11-17
+triplice_viral_d1,021,52,Goiás,2007,116.26,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2007,95.26,2026-11-17
+triplice_viral_d1,021,00,Brasil,2008,99.81,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2008,103.49,2026-11-17
+triplice_viral_d1,021,12,Acre,2008,94.17,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2008,101.56,2026-11-17
+triplice_viral_d1,021,14,Roraima,2008,95.51,2026-11-17
+triplice_viral_d1,021,15,Pará,2008,111.83,2026-11-17
+triplice_viral_d1,021,16,Amapá,2008,93.02,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2008,96.4,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2008,113.9,2026-11-17
+triplice_viral_d1,021,22,Piauí,2008,100.9,2026-11-17
+triplice_viral_d1,021,23,Ceará,2008,103.02,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2008,94.73,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2008,102.5,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2008,105.71,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2008,92.94,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2008,99.53,2026-11-17
+triplice_viral_d1,021,29,Bahia,2008,102.05,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2008,98.69,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2008,100.36,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2008,95.46,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2008,96.68,2026-11-17
+triplice_viral_d1,021,41,Paraná,2008,94.48,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2008,96.43,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2008,95.32,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2008,92.66,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2008,100.37,2026-11-17
+triplice_viral_d1,021,52,Goiás,2008,106.1,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2008,91.52,2026-11-17
+triplice_viral_d1,021,00,Brasil,2009,103.74,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2009,102.29,2026-11-17
+triplice_viral_d1,021,12,Acre,2009,103.45,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2009,103.13,2026-11-17
+triplice_viral_d1,021,14,Roraima,2009,100.61,2026-11-17
+triplice_viral_d1,021,15,Pará,2009,117.62,2026-11-17
+triplice_viral_d1,021,16,Amapá,2009,100.57,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2009,103.0,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2009,118.1,2026-11-17
+triplice_viral_d1,021,22,Piauí,2009,102.35,2026-11-17
+triplice_viral_d1,021,23,Ceará,2009,105.67,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2009,101.01,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2009,104.4,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2009,111.23,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2009,105.33,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2009,102.66,2026-11-17
+triplice_viral_d1,021,29,Bahia,2009,108.09,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2009,105.45,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2009,102.47,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2009,96.69,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2009,99.13,2026-11-17
+triplice_viral_d1,021,41,Paraná,2009,100.19,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2009,103.11,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2009,95.32,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2009,102.13,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2009,104.65,2026-11-17
+triplice_viral_d1,021,52,Goiás,2009,106.9,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2009,95.78,2026-11-17
+triplice_viral_d1,021,00,Brasil,2010,99.93,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2010,100.41,2026-11-17
+triplice_viral_d1,021,12,Acre,2010,96.87,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2010,100.11,2026-11-17
+triplice_viral_d1,021,14,Roraima,2010,94.49,2026-11-17
+triplice_viral_d1,021,15,Pará,2010,110.95,2026-11-17
+triplice_viral_d1,021,16,Amapá,2010,92.1,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2010,95.33,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2010,109.99,2026-11-17
+triplice_viral_d1,021,22,Piauí,2010,97.7,2026-11-17
+triplice_viral_d1,021,23,Ceará,2010,103.91,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2010,100.72,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2010,119.28,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2010,104.79,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2010,98.58,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2010,98.24,2026-11-17
+triplice_viral_d1,021,29,Bahia,2010,102.97,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2010,99.72,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2010,99.72,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2010,94.98,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2010,94.91,2026-11-17
+triplice_viral_d1,021,41,Paraná,2010,95.64,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2010,101.3,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2010,93.63,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2010,100.22,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2010,97.7,2026-11-17
+triplice_viral_d1,021,52,Goiás,2010,106.82,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2010,92.41,2026-11-17
+triplice_viral_d1,021,00,Brasil,2011,102.39,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2011,102.72,2026-11-17
+triplice_viral_d1,021,12,Acre,2011,105.29,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2011,94.67,2026-11-17
+triplice_viral_d1,021,14,Roraima,2011,97.98,2026-11-17
+triplice_viral_d1,021,15,Pará,2011,109.25,2026-11-17
+triplice_viral_d1,021,16,Amapá,2011,93.0,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2011,91.41,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2011,112.84,2026-11-17
+triplice_viral_d1,021,22,Piauí,2011,97.02,2026-11-17
+triplice_viral_d1,021,23,Ceará,2011,110.92,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2011,99.47,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2011,102.34,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2011,113.67,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2011,89.95,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2011,98.03,2026-11-17
+triplice_viral_d1,021,29,Bahia,2011,100.29,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2011,100.8,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2011,103.76,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2011,107.16,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2011,100.34,2026-11-17
+triplice_viral_d1,021,41,Paraná,2011,98.59,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2011,99.79,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2011,93.87,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2011,96.29,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2011,98.48,2026-11-17
+triplice_viral_d1,021,52,Goiás,2011,115.54,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2011,89.52,2026-11-17
+triplice_viral_d1,021,00,Brasil,2012,99.5,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2012,105.4,2026-11-17
+triplice_viral_d1,021,12,Acre,2012,90.28,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2012,103.39,2026-11-17
+triplice_viral_d1,021,14,Roraima,2012,87.83,2026-11-17
+triplice_viral_d1,021,15,Pará,2012,102.2,2026-11-17
+triplice_viral_d1,021,16,Amapá,2012,91.55,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2012,91.6,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2012,98.21,2026-11-17
+triplice_viral_d1,021,22,Piauí,2012,98.33,2026-11-17
+triplice_viral_d1,021,23,Ceará,2012,97.61,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2012,98.69,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2012,92.72,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2012,104.59,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2012,93.18,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2012,97.34,2026-11-17
+triplice_viral_d1,021,29,Bahia,2012,97.88,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2012,104.88,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2012,105.07,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2012,97.18,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2012,99.54,2026-11-17
+triplice_viral_d1,021,41,Paraná,2012,99.94,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2012,100.35,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2012,91.61,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2012,100.76,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2012,99.32,2026-11-17
+triplice_viral_d1,021,52,Goiás,2012,107.68,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2012,92.85,2026-11-17
+triplice_viral_d1,021,00,Brasil,2013,107.46,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2013,106.52,2026-11-17
+triplice_viral_d1,021,12,Acre,2013,95.0,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2013,98.77,2026-11-17
+triplice_viral_d1,021,14,Roraima,2013,89.07,2026-11-17
+triplice_viral_d1,021,15,Pará,2013,98.49,2026-11-17
+triplice_viral_d1,021,16,Amapá,2013,95.63,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2013,102.24,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2013,106.37,2026-11-17
+triplice_viral_d1,021,22,Piauí,2013,102.35,2026-11-17
+triplice_viral_d1,021,23,Ceará,2013,115.15,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2013,113.05,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2013,114.64,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2013,120.77,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2013,110.72,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2013,111.44,2026-11-17
+triplice_viral_d1,021,29,Bahia,2013,109.17,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2013,108.25,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2013,106.19,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2013,108.16,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2013,103.37,2026-11-17
+triplice_viral_d1,021,41,Paraná,2013,110.21,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2013,104.61,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2013,105.65,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2013,113.91,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2013,107.76,2026-11-17
+triplice_viral_d1,021,52,Goiás,2013,117.77,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2013,105.23,2026-11-17
+triplice_viral_d1,021,00,Brasil,2014,112.8,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2014,146.88,2026-11-17
+triplice_viral_d1,021,12,Acre,2014,99.2,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2014,114.36,2026-11-17
+triplice_viral_d1,021,14,Roraima,2014,110.16,2026-11-17
+triplice_viral_d1,021,15,Pará,2014,115.73,2026-11-17
+triplice_viral_d1,021,16,Amapá,2014,113.19,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2014,105.54,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2014,123.86,2026-11-17
+triplice_viral_d1,021,22,Piauí,2014,93.1,2026-11-17
+triplice_viral_d1,021,23,Ceará,2014,140.69,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2014,110.26,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2014,120.35,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2014,108.46,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2014,113.15,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2014,94.64,2026-11-17
+triplice_viral_d1,021,29,Bahia,2014,114.85,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2014,109.22,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2014,109.44,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2014,112.48,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2014,105.02,2026-11-17
+triplice_viral_d1,021,41,Paraná,2014,113.35,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2014,112.2,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2014,107.74,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2014,143.76,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2014,120.66,2026-11-17
+triplice_viral_d1,021,52,Goiás,2014,122.14,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2014,104.91,2026-11-17
+triplice_viral_d1,021,00,Brasil,2015,96.07,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2015,109.0,2026-11-17
+triplice_viral_d1,021,12,Acre,2015,84.21,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2015,95.42,2026-11-17
+triplice_viral_d1,021,14,Roraima,2015,108.45,2026-11-17
+triplice_viral_d1,021,15,Pará,2015,71.92,2026-11-17
+triplice_viral_d1,021,16,Amapá,2015,89.02,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2015,94.7,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2015,90.47,2026-11-17
+triplice_viral_d1,021,22,Piauí,2015,81.22,2026-11-17
+triplice_viral_d1,021,23,Ceará,2015,110.83,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2015,94.98,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2015,93.67,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2015,97.81,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2015,98.67,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2015,91.99,2026-11-17
+triplice_viral_d1,021,29,Bahia,2015,90.18,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2015,100.11,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2015,99.04,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2015,105.42,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2015,97.91,2026-11-17
+triplice_viral_d1,021,41,Paraná,2015,99.44,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2015,103.42,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2015,87.81,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2015,112.53,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2015,98.71,2026-11-17
+triplice_viral_d1,021,52,Goiás,2015,94.83,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2015,67.58,2026-11-17
+triplice_viral_d1,021,00,Brasil,2016,95.41,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2016,109.79,2026-11-17
+triplice_viral_d1,021,12,Acre,2016,75.71,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2016,83.56,2026-11-17
+triplice_viral_d1,021,14,Roraima,2016,90.77,2026-11-17
+triplice_viral_d1,021,15,Pará,2016,69.61,2026-11-17
+triplice_viral_d1,021,16,Amapá,2016,97.36,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2016,91.89,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2016,80.01,2026-11-17
+triplice_viral_d1,021,22,Piauí,2016,81.48,2026-11-17
+triplice_viral_d1,021,23,Ceará,2016,119.76,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2016,96.05,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2016,96.59,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2016,112.65,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2016,102.24,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2016,92.09,2026-11-17
+triplice_viral_d1,021,29,Bahia,2016,85.7,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2016,98.93,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2016,104.31,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2016,109.26,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2016,92.96,2026-11-17
+triplice_viral_d1,021,41,Paraná,2016,91.87,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2016,98.97,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2016,90.45,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2016,100.98,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2016,96.68,2026-11-17
+triplice_viral_d1,021,52,Goiás,2016,85.93,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2016,131.75,2026-11-17
+triplice_viral_d1,021,00,Brasil,2017,86.24,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2017,103.01,2026-11-17
+triplice_viral_d1,021,12,Acre,2017,75.14,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2017,79.83,2026-11-17
+triplice_viral_d1,021,14,Roraima,2017,86.53,2026-11-17
+triplice_viral_d1,021,15,Pará,2017,67.51,2026-11-17
+triplice_viral_d1,021,16,Amapá,2017,71.98,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2017,83.26,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2017,76.86,2026-11-17
+triplice_viral_d1,021,22,Piauí,2017,77.82,2026-11-17
+triplice_viral_d1,021,23,Ceará,2017,100.69,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2017,75.55,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2017,90.9,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2017,96.39,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2017,99.22,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2017,83.24,2026-11-17
+triplice_viral_d1,021,29,Bahia,2017,79.16,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2017,89.27,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2017,83.79,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2017,94.29,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2017,86.72,2026-11-17
+triplice_viral_d1,021,41,Paraná,2017,88.13,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2017,91.81,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2017,83.34,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2017,91.18,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2017,85.25,2026-11-17
+triplice_viral_d1,021,52,Goiás,2017,80.99,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2017,78.5,2026-11-17
+triplice_viral_d1,021,00,Brasil,2018,92.61,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2018,101.65,2026-11-17
+triplice_viral_d1,021,12,Acre,2018,83.11,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2018,89.81,2026-11-17
+triplice_viral_d1,021,14,Roraima,2018,99.32,2026-11-17
+triplice_viral_d1,021,15,Pará,2018,77.3,2026-11-17
+triplice_viral_d1,021,16,Amapá,2018,77.1,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2018,91.21,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2018,84.04,2026-11-17
+triplice_viral_d1,021,22,Piauí,2018,87.79,2026-11-17
+triplice_viral_d1,021,23,Ceará,2018,111.46,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2018,88.7,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2018,96.73,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2018,104.72,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2018,107.18,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2018,95.47,2026-11-17
+triplice_viral_d1,021,29,Bahia,2018,82.3,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2018,97.52,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2018,95.47,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2018,99.66,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2018,91.46,2026-11-17
+triplice_viral_d1,021,41,Paraná,2018,89.78,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2018,92.12,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2018,88.72,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2018,104.53,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2018,89.77,2026-11-17
+triplice_viral_d1,021,52,Goiás,2018,87.81,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2018,86.32,2026-11-17
+triplice_viral_d1,021,00,Brasil,2019,93.12,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2019,106.42,2026-11-17
+triplice_viral_d1,021,12,Acre,2019,87.39,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2019,92.12,2026-11-17
+triplice_viral_d1,021,14,Roraima,2019,81.21,2026-11-17
+triplice_viral_d1,021,15,Pará,2019,82.81,2026-11-17
+triplice_viral_d1,021,16,Amapá,2019,87.24,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2019,91.07,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2019,87.05,2026-11-17
+triplice_viral_d1,021,22,Piauí,2019,89.01,2026-11-17
+triplice_viral_d1,021,23,Ceará,2019,103.02,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2019,93.73,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2019,105.74,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2019,101.0,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2019,106.22,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2019,90.99,2026-11-17
+triplice_viral_d1,021,29,Bahia,2019,84.65,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2019,96.97,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2019,95.01,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2019,96.58,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2019,91.8,2026-11-17
+triplice_viral_d1,021,41,Paraná,2019,91.99,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2019,95.82,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2019,91.23,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2019,104.88,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2019,89.91,2026-11-17
+triplice_viral_d1,021,52,Goiás,2019,88.39,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2019,85.71,2026-11-17
+triplice_viral_d1,021,00,Brasil,2020,80.88,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2020,84.21,2026-11-17
+triplice_viral_d1,021,12,Acre,2020,60.15,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2020,77.0,2026-11-17
+triplice_viral_d1,021,14,Roraima,2020,69.5,2026-11-17
+triplice_viral_d1,021,15,Pará,2020,62.39,2026-11-17
+triplice_viral_d1,021,16,Amapá,2020,52.54,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2020,82.48,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2020,64.27,2026-11-17
+triplice_viral_d1,021,22,Piauí,2020,78.47,2026-11-17
+triplice_viral_d1,021,23,Ceará,2020,91.75,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2020,79.02,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2020,80.38,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2020,79.18,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2020,82.56,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2020,76.21,2026-11-17
+triplice_viral_d1,021,29,Bahia,2020,79.72,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2020,93.11,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2020,87.81,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2020,61.61,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2020,86.83,2026-11-17
+triplice_viral_d1,021,41,Paraná,2020,86.15,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2020,87.55,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2020,86.08,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2020,81.12,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2020,82.87,2026-11-17
+triplice_viral_d1,021,52,Goiás,2020,76.57,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2020,82.21,2026-11-17
+triplice_viral_d1,021,00,Brasil,2021,74.94,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2021,82.54,2026-11-17
+triplice_viral_d1,021,12,Acre,2021,60.2,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2021,73.11,2026-11-17
+triplice_viral_d1,021,14,Roraima,2021,67.31,2026-11-17
+triplice_viral_d1,021,15,Pará,2021,62.71,2026-11-17
+triplice_viral_d1,021,16,Amapá,2021,64.18,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2021,80.47,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2021,63.26,2026-11-17
+triplice_viral_d1,021,22,Piauí,2021,74.99,2026-11-17
+triplice_viral_d1,021,23,Ceará,2021,74.49,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2021,72.58,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2021,70.92,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2021,72.02,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2021,77.68,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2021,76.52,2026-11-17
+triplice_viral_d1,021,29,Bahia,2021,66.3,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2021,82.25,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2021,80.79,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2021,59.48,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2021,77.85,2026-11-17
+triplice_viral_d1,021,41,Paraná,2021,86.54,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2021,87.52,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2021,79.88,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2021,78.12,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2021,80.88,2026-11-17
+triplice_viral_d1,021,52,Goiás,2021,79.53,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2021,83.21,2026-11-17
+triplice_viral_d1,021,00,Brasil,2022,80.7,2026-11-17
+triplice_viral_d1,021,11,Rondônia,2022,89.16,2026-11-17
+triplice_viral_d1,021,12,Acre,2022,70.47,2026-11-17
+triplice_viral_d1,021,13,Amazonas,2022,78.94,2026-11-17
+triplice_viral_d1,021,14,Roraima,2022,66.95,2026-11-17
+triplice_viral_d1,021,15,Pará,2022,67.46,2026-11-17
+triplice_viral_d1,021,16,Amapá,2022,61.33,2026-11-17
+triplice_viral_d1,021,17,Tocantins,2022,82.89,2026-11-17
+triplice_viral_d1,021,21,Maranhão,2022,73.18,2026-11-17
+triplice_viral_d1,021,22,Piauí,2022,82.84,2026-11-17
+triplice_viral_d1,021,23,Ceará,2022,89.01,2026-11-17
+triplice_viral_d1,021,24,Rio Grande do Norte,2022,79.86,2026-11-17
+triplice_viral_d1,021,25,Paraíba,2022,78.45,2026-11-17
+triplice_viral_d1,021,26,Pernambuco,2022,80.34,2026-11-17
+triplice_viral_d1,021,27,Alagoas,2022,89.74,2026-11-17
+triplice_viral_d1,021,28,Sergipe,2022,84.31,2026-11-17
+triplice_viral_d1,021,29,Bahia,2022,75.87,2026-11-17
+triplice_viral_d1,021,31,Minas Gerais,2022,87.11,2026-11-17
+triplice_viral_d1,021,32,Espírito Santo,2022,77.73,2026-11-17
+triplice_viral_d1,021,33,Rio de Janeiro,2022,66.74,2026-11-17
+triplice_viral_d1,021,35,São Paulo,2022,78.42,2026-11-17
+triplice_viral_d1,021,41,Paraná,2022,90.1,2026-11-17
+triplice_viral_d1,021,42,Santa Catarina,2022,94.94,2026-11-17
+triplice_viral_d1,021,43,Rio Grande do Sul,2022,88.48,2026-11-17
+triplice_viral_d1,021,50,Mato Grosso do Sul,2022,91.83,2026-11-17
+triplice_viral_d1,021,51,Mato Grosso,2022,87.06,2026-11-17
+triplice_viral_d1,021,52,Goiás,2022,82.35,2026-11-17
+triplice_viral_d1,021,53,Distrito Federal,2022,90.23,2026-11-17
+triplice_viral_d2,098,00,Brasil,2013,68.87,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2013,74.56,2026-11-17
+triplice_viral_d2,098,12,Acre,2013,27.08,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2013,56.09,2026-11-17
+triplice_viral_d2,098,14,Roraima,2013,23.02,2026-11-17
+triplice_viral_d2,098,15,Pará,2013,34.76,2026-11-17
+triplice_viral_d2,098,16,Amapá,2013,48.43,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2013,72.31,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2013,46.05,2026-11-17
+triplice_viral_d2,098,22,Piauí,2013,76.17,2026-11-17
+triplice_viral_d2,098,23,Ceará,2013,68.8,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2013,64.12,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2013,60.95,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2013,65.42,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2013,58.38,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2013,79.87,2026-11-17
+triplice_viral_d2,098,29,Bahia,2013,68.48,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2013,83.49,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2013,84.89,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2013,67.04,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2013,75.71,2026-11-17
+triplice_viral_d2,098,41,Paraná,2013,77.16,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2013,71.69,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2013,75.29,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2013,44.68,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2013,59.2,2026-11-17
+triplice_viral_d2,098,52,Goiás,2013,69.95,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2013,103.87,2026-11-17
+triplice_viral_d2,098,00,Brasil,2014,92.88,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2014,112.73,2026-11-17
+triplice_viral_d2,098,12,Acre,2014,61.61,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2014,84.51,2026-11-17
+triplice_viral_d2,098,14,Roraima,2014,89.67,2026-11-17
+triplice_viral_d2,098,15,Pará,2014,65.35,2026-11-17
+triplice_viral_d2,098,16,Amapá,2014,84.86,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2014,89.43,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2014,89.25,2026-11-17
+triplice_viral_d2,098,22,Piauí,2014,73.51,2026-11-17
+triplice_viral_d2,098,23,Ceará,2014,128.34,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2014,91.11,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2014,86.96,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2014,92.83,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2014,90.64,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2014,81.8,2026-11-17
+triplice_viral_d2,098,29,Bahia,2014,91.52,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2014,87.72,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2014,97.63,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2014,96.45,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2014,95.89,2026-11-17
+triplice_viral_d2,098,41,Paraná,2014,93.09,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2014,93.38,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2014,90.12,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2014,115.08,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2014,100.71,2026-11-17
+triplice_viral_d2,098,52,Goiás,2014,92.25,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2014,97.29,2026-11-17
+triplice_viral_d2,098,00,Brasil,2015,79.94,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2015,94.61,2026-11-17
+triplice_viral_d2,098,12,Acre,2015,51.69,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2015,78.17,2026-11-17
+triplice_viral_d2,098,14,Roraima,2015,92.42,2026-11-17
+triplice_viral_d2,098,15,Pará,2015,45.78,2026-11-17
+triplice_viral_d2,098,16,Amapá,2015,74.65,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2015,61.33,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2015,74.36,2026-11-17
+triplice_viral_d2,098,22,Piauí,2015,62.91,2026-11-17
+triplice_viral_d2,098,23,Ceará,2015,93.98,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2015,79.89,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2015,64.46,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2015,87.36,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2015,81.68,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2015,80.95,2026-11-17
+triplice_viral_d2,098,29,Bahia,2015,78.54,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2015,71.87,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2015,87.48,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2015,89.41,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2015,92.43,2026-11-17
+triplice_viral_d2,098,41,Paraná,2015,78.91,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2015,83.72,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2015,69.36,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2015,80.03,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2015,80.55,2026-11-17
+triplice_viral_d2,098,52,Goiás,2015,68.14,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2015,65.43,2026-11-17
+triplice_viral_d2,098,00,Brasil,2016,76.71,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2016,94.32,2026-11-17
+triplice_viral_d2,098,12,Acre,2016,64.2,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2016,75.6,2026-11-17
+triplice_viral_d2,098,14,Roraima,2016,83.5,2026-11-17
+triplice_viral_d2,098,15,Pará,2016,62.34,2026-11-17
+triplice_viral_d2,098,16,Amapá,2016,85.95,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2016,88.28,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2016,47.58,2026-11-17
+triplice_viral_d2,098,22,Piauí,2016,60.91,2026-11-17
+triplice_viral_d2,098,23,Ceará,2016,88.7,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2016,50.44,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2016,56.66,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2016,68.22,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2016,60.5,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2016,70.86,2026-11-17
+triplice_viral_d2,098,29,Bahia,2016,56.24,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2016,88.38,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2016,78.35,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2016,72.17,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2016,77.73,2026-11-17
+triplice_viral_d2,098,41,Paraná,2016,91.29,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2016,98.38,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2016,86.47,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2016,94.3,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2016,85.08,2026-11-17
+triplice_viral_d2,098,52,Goiás,2016,84.19,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2016,128.41,2026-11-17
+triplice_viral_d2,098,00,Brasil,2017,72.94,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2017,81.58,2026-11-17
+triplice_viral_d2,098,12,Acre,2017,57.0,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2017,61.32,2026-11-17
+triplice_viral_d2,098,14,Roraima,2017,86.27,2026-11-17
+triplice_viral_d2,098,15,Pará,2017,54.16,2026-11-17
+triplice_viral_d2,098,16,Amapá,2017,60.16,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2017,73.77,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2017,52.56,2026-11-17
+triplice_viral_d2,098,22,Piauí,2017,58.64,2026-11-17
+triplice_viral_d2,098,23,Ceará,2017,80.42,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2017,50.7,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2017,67.93,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2017,67.66,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2017,68.67,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2017,69.69,2026-11-17
+triplice_viral_d2,098,29,Bahia,2017,60.47,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2017,82.33,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2017,69.73,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2017,67.96,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2017,83.4,2026-11-17
+triplice_viral_d2,098,41,Paraná,2017,84.3,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2017,81.42,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2017,75.72,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2017,74.94,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2017,71.24,2026-11-17
+triplice_viral_d2,098,52,Goiás,2017,71.86,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2017,77.43,2026-11-17
+triplice_viral_d2,098,00,Brasil,2018,76.89,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2018,78.87,2026-11-17
+triplice_viral_d2,098,12,Acre,2018,71.92,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2018,78.0,2026-11-17
+triplice_viral_d2,098,14,Roraima,2018,88.27,2026-11-17
+triplice_viral_d2,098,15,Pará,2018,59.97,2026-11-17
+triplice_viral_d2,098,16,Amapá,2018,63.88,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2018,78.86,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2018,56.88,2026-11-17
+triplice_viral_d2,098,22,Piauí,2018,69.17,2026-11-17
+triplice_viral_d2,098,23,Ceará,2018,87.14,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2018,64.49,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2018,72.18,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2018,69.54,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2018,72.09,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2018,71.93,2026-11-17
+triplice_viral_d2,098,29,Bahia,2018,65.06,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2018,85.03,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2018,79.5,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2018,70.18,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2018,81.84,2026-11-17
+triplice_viral_d2,098,41,Paraná,2018,86.23,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2018,83.42,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2018,83.11,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2018,97.62,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2018,79.53,2026-11-17
+triplice_viral_d2,098,52,Goiás,2018,76.76,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2018,87.05,2026-11-17
+triplice_viral_d2,098,00,Brasil,2019,81.55,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2019,82.25,2026-11-17
+triplice_viral_d2,098,12,Acre,2019,78.65,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2019,82.29,2026-11-17
+triplice_viral_d2,098,14,Roraima,2019,86.72,2026-11-17
+triplice_viral_d2,098,15,Pará,2019,71.34,2026-11-17
+triplice_viral_d2,098,16,Amapá,2019,74.28,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2019,84.71,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2019,65.87,2026-11-17
+triplice_viral_d2,098,22,Piauí,2019,74.48,2026-11-17
+triplice_viral_d2,098,23,Ceará,2019,86.7,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2019,74.4,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2019,87.79,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2019,81.45,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2019,74.53,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2019,74.98,2026-11-17
+triplice_viral_d2,098,29,Bahia,2019,70.5,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2019,87.58,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2019,87.45,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2019,77.24,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2019,82.5,2026-11-17
+triplice_viral_d2,098,41,Paraná,2019,90.67,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2019,93.34,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2019,87.6,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2019,92.21,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2019,83.71,2026-11-17
+triplice_viral_d2,098,52,Goiás,2019,79.68,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2019,86.8,2026-11-17
+triplice_viral_d2,098,00,Brasil,2020,64.27,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2020,64.44,2026-11-17
+triplice_viral_d2,098,12,Acre,2020,41.58,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2020,52.17,2026-11-17
+triplice_viral_d2,098,14,Roraima,2020,65.41,2026-11-17
+triplice_viral_d2,098,15,Pará,2020,54.79,2026-11-17
+triplice_viral_d2,098,16,Amapá,2020,37.54,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2020,68.52,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2020,45.73,2026-11-17
+triplice_viral_d2,098,22,Piauí,2020,53.25,2026-11-17
+triplice_viral_d2,098,23,Ceará,2020,73.36,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2020,56.09,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2020,55.29,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2020,53.82,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2020,55.5,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2020,61.52,2026-11-17
+triplice_viral_d2,098,29,Bahia,2020,55.54,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2020,77.12,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2020,71.16,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2020,41.25,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2020,68.5,2026-11-17
+triplice_viral_d2,098,41,Paraná,2020,80.79,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2020,85.68,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2020,78.39,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2020,67.61,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2020,70.88,2026-11-17
+triplice_viral_d2,098,52,Goiás,2020,68.92,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2020,67.19,2026-11-17
+triplice_viral_d2,098,00,Brasil,2021,53.2,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2021,42.14,2026-11-17
+triplice_viral_d2,098,12,Acre,2021,25.95,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2021,44.7,2026-11-17
+triplice_viral_d2,098,14,Roraima,2021,35.51,2026-11-17
+triplice_viral_d2,098,15,Pará,2021,27.72,2026-11-17
+triplice_viral_d2,098,16,Amapá,2021,34.7,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2021,50.51,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2021,39.94,2026-11-17
+triplice_viral_d2,098,22,Piauí,2021,48.76,2026-11-17
+triplice_viral_d2,098,23,Ceará,2021,55.18,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2021,45.1,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2021,44.24,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2021,44.95,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2021,50.27,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2021,61.33,2026-11-17
+triplice_viral_d2,098,29,Bahia,2021,45.31,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2021,67.23,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2021,64.92,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2021,40.31,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2021,64.16,2026-11-17
+triplice_viral_d2,098,41,Paraná,2021,67.36,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2021,69.61,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2021,56.03,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2021,37.4,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2021,41.97,2026-11-17
+triplice_viral_d2,098,52,Goiás,2021,48.87,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2021,54.67,2026-11-17
+triplice_viral_d2,098,00,Brasil,2022,57.64,2026-11-17
+triplice_viral_d2,098,11,Rondônia,2022,48.34,2026-11-17
+triplice_viral_d2,098,12,Acre,2022,37.33,2026-11-17
+triplice_viral_d2,098,13,Amazonas,2022,48.78,2026-11-17
+triplice_viral_d2,098,14,Roraima,2022,38.11,2026-11-17
+triplice_viral_d2,098,15,Pará,2022,30.19,2026-11-17
+triplice_viral_d2,098,16,Amapá,2022,35.41,2026-11-17
+triplice_viral_d2,098,17,Tocantins,2022,50.39,2026-11-17
+triplice_viral_d2,098,21,Maranhão,2022,46.94,2026-11-17
+triplice_viral_d2,098,22,Piauí,2022,53.23,2026-11-17
+triplice_viral_d2,098,23,Ceará,2022,66.26,2026-11-17
+triplice_viral_d2,098,24,Rio Grande do Norte,2022,46.5,2026-11-17
+triplice_viral_d2,098,25,Paraíba,2022,53.09,2026-11-17
+triplice_viral_d2,098,26,Pernambuco,2022,51.17,2026-11-17
+triplice_viral_d2,098,27,Alagoas,2022,61.25,2026-11-17
+triplice_viral_d2,098,28,Sergipe,2022,62.25,2026-11-17
+triplice_viral_d2,098,29,Bahia,2022,52.71,2026-11-17
+triplice_viral_d2,098,31,Minas Gerais,2022,68.27,2026-11-17
+triplice_viral_d2,098,32,Espírito Santo,2022,64.6,2026-11-17
+triplice_viral_d2,098,33,Rio de Janeiro,2022,50.49,2026-11-17
+triplice_viral_d2,098,35,São Paulo,2022,65.15,2026-11-17
+triplice_viral_d2,098,41,Paraná,2022,68.59,2026-11-17
+triplice_viral_d2,098,42,Santa Catarina,2022,72.35,2026-11-17
+triplice_viral_d2,098,43,Rio Grande do Sul,2022,62.59,2026-11-17
+triplice_viral_d2,098,50,Mato Grosso do Sul,2022,49.56,2026-11-17
+triplice_viral_d2,098,51,Mato Grosso,2022,46.07,2026-11-17
+triplice_viral_d2,098,52,Goiás,2022,52.56,2026-11-17
+triplice_viral_d2,098,53,Distrito Federal,2022,61.5,2026-11-17

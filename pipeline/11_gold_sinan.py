@@ -76,12 +76,12 @@ def main() -> None:
 
     notificacoes = pd.concat(notificacoes, ignore_index=True)
     notificacoes.to_parquet(GOLD_DIR / "gold_sinan_notificacoes.parquet", index=False, compression="zstd")
-    notificacoes.to_csv(GOLD_DIR / "gold_sinan_notificacoes.csv", index=False, encoding="utf-8")
+    notificacoes.to_csv(GOLD_DIR / "gold_sinan_notificacoes.csv", index=False, encoding="utf-8", lineterminator="\n")
     print(f"gold_sinan_notificacoes: {len(notificacoes):,} linhas x {notificacoes.shape[1]} colunas")
 
     qualidade = pd.concat(qualidade, ignore_index=True)
     qualidade.to_parquet(GOLD_DIR / "gold_sinan_qualidade_colunas.parquet", index=False, compression="zstd")
-    qualidade.to_csv(GOLD_DIR / "gold_sinan_qualidade_colunas.csv", index=False, encoding="utf-8")
+    qualidade.to_csv(GOLD_DIR / "gold_sinan_qualidade_colunas.csv", index=False, encoding="utf-8", lineterminator="\n")
     print(f"gold_sinan_qualidade_colunas: {len(qualidade):,} linhas")
 
 

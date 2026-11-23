@@ -1,4 +1,6 @@
-# Dependências diretas do projeto. As versões mínimas são as primeiras com instalador pronto
+# Dependências diretas do projeto (faixas de versão). Para reproduzir os dados use o
+# requirements-lock.txt, que fixa as versões exatas da execução validada.
+# As versões mínimas são as primeiras com instalador pronto
 # (wheel) para Python 3.15 no Windows; o pip resolve o resto sozinho. Instale com:
 #   python -m pip install -r requirements.txt
 # --prefer-binary faz o pip escolher uma versão já compilada em vez de compilar do código-fonte
@@ -10,7 +12,8 @@ pandas>=3.0.6
 numpy>=2.5.2
 pyarrow>=26.0.0
 dbfread>=2.0.7
-# pyreaddbc  # opcional: precisa de compilador C; há fallback em pipeline/comum/dbc_puro.py
+duckdb>=2.0.0         # agregações fora da memória (passos 07, 09, 13 e 19)
+numba>=0.68.1         # descompressão .dbc rápida (comum/dbc_rapido.py); sem ele usa comum/dbc_puro.py
 
 # notebooks
 jupyter>=1.1.1

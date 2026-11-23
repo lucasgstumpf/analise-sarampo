@@ -1,0 +1,1222 @@
+nivel,codigo,nome,ano,casos_confirmados,obitos
+regiao,N,Região Norte,1990,5396,118
+regiao,N,Região Norte,1991,4665,53
+regiao,N,Região Norte,1992,480,4
+regiao,N,Região Norte,1993,239,2
+regiao,N,Região Norte,1994,265,1
+regiao,N,Região Norte,1995,141,1
+regiao,N,Região Norte,1996,101,0
+regiao,N,Região Norte,1997,231,0
+regiao,N,Região Norte,1998,245,0
+regiao,N,Região Norte,1999,91,0
+regiao,N,Região Norte,2000,17,0
+regiao,N,Região Norte,2001,0,0
+regiao,N,Região Norte,2002,0,0
+regiao,N,Região Norte,2003,0,0
+regiao,N,Região Norte,2004,0,0
+regiao,N,Região Norte,2005,0,0
+regiao,N,Região Norte,2006,0,0
+regiao,N,Região Norte,2007,0,0
+regiao,N,Região Norte,2008,0,0
+regiao,N,Região Norte,2009,0,0
+regiao,N,Região Norte,2010,3,0
+regiao,N,Região Norte,2011,0,0
+regiao,N,Região Norte,2012,0,0
+regiao,N,Região Norte,2013,0,0
+regiao,N,Região Norte,2014,0,0
+regiao,N,Região Norte,2015,1,0
+regiao,N,Região Norte,2016,0,0
+regiao,N,Região Norte,2017,0,0
+regiao,N,Região Norte,2018,9243,12
+regiao,N,Região Norte,2019,436,1
+regiao,N,Região Norte,2020,5154,8
+regiao,N,Região Norte,2021,645,2
+regiao,N,Região Norte,2022,31,0
+regiao,N,Região Norte,2023,0,0
+regiao,N,Região Norte,2024,0,0
+regiao,N,Região Norte,2025,25,0
+regiao,N,Região Norte,2026,19,0
+uf,RO,Rondônia,1990,165,6
+uf,RO,Rondônia,1991,211,1
+uf,RO,Rondônia,1992,48,0
+uf,RO,Rondônia,1993,71,0
+uf,RO,Rondônia,1994,35,0
+uf,RO,Rondônia,1995,23,0
+uf,RO,Rondônia,1996,7,0
+uf,RO,Rondônia,1997,17,0
+uf,RO,Rondônia,1998,22,0
+uf,RO,Rondônia,1999,1,0
+uf,RO,Rondônia,2000,0,0
+uf,RO,Rondônia,2001,0,0
+uf,RO,Rondônia,2002,0,0
+uf,RO,Rondônia,2003,0,0
+uf,RO,Rondônia,2004,0,0
+uf,RO,Rondônia,2005,0,0
+uf,RO,Rondônia,2006,0,0
+uf,RO,Rondônia,2007,0,0
+uf,RO,Rondônia,2008,0,0
+uf,RO,Rondônia,2009,0,0
+uf,RO,Rondônia,2010,0,0
+uf,RO,Rondônia,2011,0,0
+uf,RO,Rondônia,2012,0,0
+uf,RO,Rondônia,2013,0,0
+uf,RO,Rondônia,2014,0,0
+uf,RO,Rondônia,2015,0,0
+uf,RO,Rondônia,2016,0,0
+uf,RO,Rondônia,2017,0,0
+uf,RO,Rondônia,2018,2,0
+uf,RO,Rondônia,2019,0,0
+uf,RO,Rondônia,2020,6,0
+uf,RO,Rondônia,2021,0,0
+uf,RO,Rondônia,2022,0,0
+uf,RO,Rondônia,2023,0,0
+uf,RO,Rondônia,2024,0,0
+uf,RO,Rondônia,2025,0,0
+uf,RO,Rondônia,2026,0,0
+uf,AC,Acre,1990,537,9
+uf,AC,Acre,1991,89,4
+uf,AC,Acre,1992,40,0
+uf,AC,Acre,1993,0,0
+uf,AC,Acre,1994,4,0
+uf,AC,Acre,1995,8,0
+uf,AC,Acre,1996,4,0
+uf,AC,Acre,1997,12,0
+uf,AC,Acre,1998,9,0
+uf,AC,Acre,1999,14,0
+uf,AC,Acre,2000,15,0
+uf,AC,Acre,2001,0,0
+uf,AC,Acre,2002,0,0
+uf,AC,Acre,2003,0,0
+uf,AC,Acre,2004,0,0
+uf,AC,Acre,2005,0,0
+uf,AC,Acre,2006,0,0
+uf,AC,Acre,2007,0,0
+uf,AC,Acre,2008,0,0
+uf,AC,Acre,2009,0,0
+uf,AC,Acre,2010,0,0
+uf,AC,Acre,2011,0,0
+uf,AC,Acre,2012,0,0
+uf,AC,Acre,2013,0,0
+uf,AC,Acre,2014,0,0
+uf,AC,Acre,2015,0,0
+uf,AC,Acre,2016,0,0
+uf,AC,Acre,2017,0,0
+uf,AC,Acre,2018,0,0
+uf,AC,Acre,2019,0,0
+uf,AC,Acre,2020,0,0
+uf,AC,Acre,2021,0,0
+uf,AC,Acre,2022,0,0
+uf,AC,Acre,2023,0,0
+uf,AC,Acre,2024,0,0
+uf,AC,Acre,2025,0,0
+uf,AC,Acre,2026,2,0
+uf,AM,Amazonas,1990,1878,67
+uf,AM,Amazonas,1991,800,7
+uf,AM,Amazonas,1992,217,0
+uf,AM,Amazonas,1993,104,0
+uf,AM,Amazonas,1994,146,1
+uf,AM,Amazonas,1995,43,1
+uf,AM,Amazonas,1996,28,0
+uf,AM,Amazonas,1997,60,0
+uf,AM,Amazonas,1998,110,0
+uf,AM,Amazonas,1999,54,0
+uf,AM,Amazonas,2000,2,0
+uf,AM,Amazonas,2001,0,0
+uf,AM,Amazonas,2002,0,0
+uf,AM,Amazonas,2003,0,0
+uf,AM,Amazonas,2004,0,0
+uf,AM,Amazonas,2005,0,0
+uf,AM,Amazonas,2006,0,0
+uf,AM,Amazonas,2007,0,0
+uf,AM,Amazonas,2008,0,0
+uf,AM,Amazonas,2009,0,0
+uf,AM,Amazonas,2010,0,0
+uf,AM,Amazonas,2011,0,0
+uf,AM,Amazonas,2012,0,0
+uf,AM,Amazonas,2013,0,0
+uf,AM,Amazonas,2014,0,0
+uf,AM,Amazonas,2015,0,0
+uf,AM,Amazonas,2016,0,0
+uf,AM,Amazonas,2017,0,0
+uf,AM,Amazonas,2018,8789,6
+uf,AM,Amazonas,2019,4,0
+uf,AM,Amazonas,2020,7,0
+uf,AM,Amazonas,2021,0,0
+uf,AM,Amazonas,2022,0,0
+uf,AM,Amazonas,2023,0,0
+uf,AM,Amazonas,2024,0,0
+uf,AM,Amazonas,2025,0,0
+uf,AM,Amazonas,2026,17,0
+uf,RR,Roraima,1990,27,1
+uf,RR,Roraima,1991,94,1
+uf,RR,Roraima,1992,27,1
+uf,RR,Roraima,1993,20,0
+uf,RR,Roraima,1994,23,0
+uf,RR,Roraima,1995,12,0
+uf,RR,Roraima,1996,4,0
+uf,RR,Roraima,1997,10,0
+uf,RR,Roraima,1998,22,0
+uf,RR,Roraima,1999,0,0
+uf,RR,Roraima,2000,0,0
+uf,RR,Roraima,2001,0,0
+uf,RR,Roraima,2002,0,0
+uf,RR,Roraima,2003,0,0
+uf,RR,Roraima,2004,0,0
+uf,RR,Roraima,2005,0,0
+uf,RR,Roraima,2006,0,0
+uf,RR,Roraima,2007,0,0
+uf,RR,Roraima,2008,0,0
+uf,RR,Roraima,2009,0,0
+uf,RR,Roraima,2010,0,0
+uf,RR,Roraima,2011,0,0
+uf,RR,Roraima,2012,0,0
+uf,RR,Roraima,2013,0,0
+uf,RR,Roraima,2014,0,0
+uf,RR,Roraima,2015,1,0
+uf,RR,Roraima,2016,0,0
+uf,RR,Roraima,2017,0,0
+uf,RR,Roraima,2018,368,4
+uf,RR,Roraima,2019,1,0
+uf,RR,Roraima,2020,0,0
+uf,RR,Roraima,2021,0,0
+uf,RR,Roraima,2022,0,0
+uf,RR,Roraima,2023,0,0
+uf,RR,Roraima,2024,0,0
+uf,RR,Roraima,2025,0,0
+uf,RR,Roraima,2026,0,0
+uf,PA,Pará,1990,1205,30
+uf,PA,Pará,1991,1672,22
+uf,PA,Pará,1992,109,2
+uf,PA,Pará,1993,20,2
+uf,PA,Pará,1994,42,0
+uf,PA,Pará,1995,22,0
+uf,PA,Pará,1996,25,0
+uf,PA,Pará,1997,52,0
+uf,PA,Pará,1998,21,0
+uf,PA,Pará,1999,17,0
+uf,PA,Pará,2000,0,0
+uf,PA,Pará,2001,0,0
+uf,PA,Pará,2002,0,0
+uf,PA,Pará,2003,0,0
+uf,PA,Pará,2004,0,0
+uf,PA,Pará,2005,0,0
+uf,PA,Pará,2006,0,0
+uf,PA,Pará,2007,0,0
+uf,PA,Pará,2008,0,0
+uf,PA,Pará,2009,0,0
+uf,PA,Pará,2010,3,0
+uf,PA,Pará,2011,0,0
+uf,PA,Pará,2012,0,0
+uf,PA,Pará,2013,0,0
+uf,PA,Pará,2014,0,0
+uf,PA,Pará,2015,0,0
+uf,PA,Pará,2016,0,0
+uf,PA,Pará,2017,0,0
+uf,PA,Pará,2018,84,2
+uf,PA,Pará,2019,429,1
+uf,PA,Pará,2020,4844,8
+uf,PA,Pará,2021,111,0
+uf,PA,Pará,2022,1,0
+uf,PA,Pará,2023,0,0
+uf,PA,Pará,2024,0,0
+uf,PA,Pará,2025,0,0
+uf,PA,Pará,2026,0,0
+uf,AP,Amapá,1990,80,1
+uf,AP,Amapá,1991,1366,16
+uf,AP,Amapá,1992,22,1
+uf,AP,Amapá,1993,17,0
+uf,AP,Amapá,1994,11,0
+uf,AP,Amapá,1995,9,0
+uf,AP,Amapá,1996,10,0
+uf,AP,Amapá,1997,22,0
+uf,AP,Amapá,1998,0,0
+uf,AP,Amapá,1999,0,0
+uf,AP,Amapá,2000,0,0
+uf,AP,Amapá,2001,0,0
+uf,AP,Amapá,2002,0,0
+uf,AP,Amapá,2003,0,0
+uf,AP,Amapá,2004,0,0
+uf,AP,Amapá,2005,0,0
+uf,AP,Amapá,2006,0,0
+uf,AP,Amapá,2007,0,0
+uf,AP,Amapá,2008,0,0
+uf,AP,Amapá,2009,0,0
+uf,AP,Amapá,2010,0,0
+uf,AP,Amapá,2011,0,0
+uf,AP,Amapá,2012,0,0
+uf,AP,Amapá,2013,0,0
+uf,AP,Amapá,2014,0,0
+uf,AP,Amapá,2015,0,0
+uf,AP,Amapá,2016,0,0
+uf,AP,Amapá,2017,0,0
+uf,AP,Amapá,2018,0,0
+uf,AP,Amapá,2019,2,0
+uf,AP,Amapá,2020,296,0
+uf,AP,Amapá,2021,534,2
+uf,AP,Amapá,2022,30,0
+uf,AP,Amapá,2023,0,0
+uf,AP,Amapá,2024,0,0
+uf,AP,Amapá,2025,0,0
+uf,AP,Amapá,2026,0,0
+uf,TO,Tocantins,1990,1504,4
+uf,TO,Tocantins,1991,433,2
+uf,TO,Tocantins,1992,17,0
+uf,TO,Tocantins,1993,7,0
+uf,TO,Tocantins,1994,4,0
+uf,TO,Tocantins,1995,24,0
+uf,TO,Tocantins,1996,23,0
+uf,TO,Tocantins,1997,58,0
+uf,TO,Tocantins,1998,61,0
+uf,TO,Tocantins,1999,5,0
+uf,TO,Tocantins,2000,0,0
+uf,TO,Tocantins,2001,0,0
+uf,TO,Tocantins,2002,0,0
+uf,TO,Tocantins,2003,0,0
+uf,TO,Tocantins,2004,0,0
+uf,TO,Tocantins,2005,0,0
+uf,TO,Tocantins,2006,0,0
+uf,TO,Tocantins,2007,0,0
+uf,TO,Tocantins,2008,0,0
+uf,TO,Tocantins,2009,0,0
+uf,TO,Tocantins,2010,0,0
+uf,TO,Tocantins,2011,0,0
+uf,TO,Tocantins,2012,0,0
+uf,TO,Tocantins,2013,0,0
+uf,TO,Tocantins,2014,0,0
+uf,TO,Tocantins,2015,0,0
+uf,TO,Tocantins,2016,0,0
+uf,TO,Tocantins,2017,0,0
+uf,TO,Tocantins,2018,0,0
+uf,TO,Tocantins,2019,0,0
+uf,TO,Tocantins,2020,1,0
+uf,TO,Tocantins,2021,0,0
+uf,TO,Tocantins,2022,0,0
+uf,TO,Tocantins,2023,0,0
+uf,TO,Tocantins,2024,0,0
+uf,TO,Tocantins,2025,25,0
+uf,TO,Tocantins,2026,0,0
+regiao,NE,Região Nordeste,1990,13776,193
+regiao,NE,Região Nordeste,1991,11364,60
+regiao,NE,Região Nordeste,1992,2758,13
+regiao,NE,Região Nordeste,1993,366,5
+regiao,NE,Região Nordeste,1994,303,4
+regiao,NE,Região Nordeste,1995,195,3
+regiao,NE,Região Nordeste,1996,664,2
+regiao,NE,Região Nordeste,1997,4547,9
+regiao,NE,Região Nordeste,1998,607,1
+regiao,NE,Região Nordeste,1999,369,1
+regiao,NE,Região Nordeste,2000,0,0
+regiao,NE,Região Nordeste,2001,0,0
+regiao,NE,Região Nordeste,2002,0,0
+regiao,NE,Região Nordeste,2003,0,0
+regiao,NE,Região Nordeste,2004,0,0
+regiao,NE,Região Nordeste,2005,0,0
+regiao,NE,Região Nordeste,2006,57,1
+regiao,NE,Região Nordeste,2007,0,0
+regiao,NE,Região Nordeste,2008,0,0
+regiao,NE,Região Nordeste,2009,0,0
+regiao,NE,Região Nordeste,2010,57,0
+regiao,NE,Região Nordeste,2011,2,0
+regiao,NE,Região Nordeste,2012,1,0
+regiao,NE,Região Nordeste,2013,210,1
+regiao,NE,Região Nordeste,2014,866,0
+regiao,NE,Região Nordeste,2015,211,0
+regiao,NE,Região Nordeste,2016,0,0
+regiao,NE,Região Nordeste,2017,0,0
+regiao,NE,Região Nordeste,2018,11,0
+regiao,NE,Região Nordeste,2019,570,1
+regiao,NE,Região Nordeste,2020,80,0
+regiao,NE,Região Nordeste,2021,14,0
+regiao,NE,Região Nordeste,2022,0,0
+regiao,NE,Região Nordeste,2023,0,0
+regiao,NE,Região Nordeste,2024,0,0
+regiao,NE,Região Nordeste,2025,1,0
+regiao,NE,Região Nordeste,2026,0,0
+uf,MA,Maranhão,1990,2580,54
+uf,MA,Maranhão,1991,281,5
+uf,MA,Maranhão,1992,26,0
+uf,MA,Maranhão,1993,13,1
+uf,MA,Maranhão,1994,11,0
+uf,MA,Maranhão,1995,2,1
+uf,MA,Maranhão,1996,9,0
+uf,MA,Maranhão,1997,48,0
+uf,MA,Maranhão,1998,0,0
+uf,MA,Maranhão,1999,0,0
+uf,MA,Maranhão,2000,0,0
+uf,MA,Maranhão,2001,0,0
+uf,MA,Maranhão,2002,0,0
+uf,MA,Maranhão,2003,0,0
+uf,MA,Maranhão,2004,0,0
+uf,MA,Maranhão,2005,0,0
+uf,MA,Maranhão,2006,0,0
+uf,MA,Maranhão,2007,0,0
+uf,MA,Maranhão,2008,0,0
+uf,MA,Maranhão,2009,0,0
+uf,MA,Maranhão,2010,0,0
+uf,MA,Maranhão,2011,0,0
+uf,MA,Maranhão,2012,0,0
+uf,MA,Maranhão,2013,0,0
+uf,MA,Maranhão,2014,0,0
+uf,MA,Maranhão,2015,0,0
+uf,MA,Maranhão,2016,0,0
+uf,MA,Maranhão,2017,0,0
+uf,MA,Maranhão,2018,0,0
+uf,MA,Maranhão,2019,8,0
+uf,MA,Maranhão,2020,17,0
+uf,MA,Maranhão,2021,0,0
+uf,MA,Maranhão,2022,0,0
+uf,MA,Maranhão,2023,0,0
+uf,MA,Maranhão,2024,0,0
+uf,MA,Maranhão,2025,1,0
+uf,MA,Maranhão,2026,0,0
+uf,PI,Piauí,1990,1282,30
+uf,PI,Piauí,1991,156,2
+uf,PI,Piauí,1992,54,0
+uf,PI,Piauí,1993,4,0
+uf,PI,Piauí,1994,8,1
+uf,PI,Piauí,1995,7,0
+uf,PI,Piauí,1996,8,1
+uf,PI,Piauí,1997,161,0
+uf,PI,Piauí,1998,19,0
+uf,PI,Piauí,1999,6,0
+uf,PI,Piauí,2000,0,0
+uf,PI,Piauí,2001,0,0
+uf,PI,Piauí,2002,0,0
+uf,PI,Piauí,2003,0,0
+uf,PI,Piauí,2004,0,0
+uf,PI,Piauí,2005,0,0
+uf,PI,Piauí,2006,0,0
+uf,PI,Piauí,2007,0,0
+uf,PI,Piauí,2008,0,0
+uf,PI,Piauí,2009,0,0
+uf,PI,Piauí,2010,0,0
+uf,PI,Piauí,2011,1,0
+uf,PI,Piauí,2012,0,0
+uf,PI,Piauí,2013,0,0
+uf,PI,Piauí,2014,0,0
+uf,PI,Piauí,2015,0,0
+uf,PI,Piauí,2016,0,0
+uf,PI,Piauí,2017,0,0
+uf,PI,Piauí,2018,0,0
+uf,PI,Piauí,2019,3,0
+uf,PI,Piauí,2020,0,0
+uf,PI,Piauí,2021,0,0
+uf,PI,Piauí,2022,0,0
+uf,PI,Piauí,2023,0,0
+uf,PI,Piauí,2024,0,0
+uf,PI,Piauí,2025,0,0
+uf,PI,Piauí,2026,0,0
+uf,CE,Ceará,1990,2771,13
+uf,CE,Ceará,1991,4704,13
+uf,CE,Ceará,1992,393,4
+uf,CE,Ceará,1993,134,0
+uf,CE,Ceará,1994,87,0
+uf,CE,Ceará,1995,37,0
+uf,CE,Ceará,1996,125,0
+uf,CE,Ceará,1997,864,3
+uf,CE,Ceará,1998,29,1
+uf,CE,Ceará,1999,8,0
+uf,CE,Ceará,2000,0,0
+uf,CE,Ceará,2001,0,0
+uf,CE,Ceará,2002,0,0
+uf,CE,Ceará,2003,0,0
+uf,CE,Ceará,2004,0,0
+uf,CE,Ceará,2005,0,0
+uf,CE,Ceará,2006,0,0
+uf,CE,Ceará,2007,0,0
+uf,CE,Ceará,2008,0,0
+uf,CE,Ceará,2009,0,0
+uf,CE,Ceará,2010,0,0
+uf,CE,Ceará,2011,0,0
+uf,CE,Ceará,2012,0,0
+uf,CE,Ceará,2013,1,0
+uf,CE,Ceará,2014,840,0
+uf,CE,Ceará,2015,211,0
+uf,CE,Ceará,2016,0,0
+uf,CE,Ceará,2017,0,0
+uf,CE,Ceará,2018,0,0
+uf,CE,Ceará,2019,19,0
+uf,CE,Ceará,2020,7,0
+uf,CE,Ceará,2021,3,0
+uf,CE,Ceará,2022,0,0
+uf,CE,Ceará,2023,0,0
+uf,CE,Ceará,2024,0,0
+uf,CE,Ceará,2025,0,0
+uf,CE,Ceará,2026,0,0
+uf,RN,Rio Grande do Norte,1990,1378,8
+uf,RN,Rio Grande do Norte,1991,617,1
+uf,RN,Rio Grande do Norte,1992,205,0
+uf,RN,Rio Grande do Norte,1993,42,0
+uf,RN,Rio Grande do Norte,1994,26,0
+uf,RN,Rio Grande do Norte,1995,13,0
+uf,RN,Rio Grande do Norte,1996,25,0
+uf,RN,Rio Grande do Norte,1997,112,0
+uf,RN,Rio Grande do Norte,1998,7,0
+uf,RN,Rio Grande do Norte,1999,3,0
+uf,RN,Rio Grande do Norte,2000,0,0
+uf,RN,Rio Grande do Norte,2001,0,0
+uf,RN,Rio Grande do Norte,2002,0,0
+uf,RN,Rio Grande do Norte,2003,0,0
+uf,RN,Rio Grande do Norte,2004,0,0
+uf,RN,Rio Grande do Norte,2005,0,0
+uf,RN,Rio Grande do Norte,2006,0,0
+uf,RN,Rio Grande do Norte,2007,0,0
+uf,RN,Rio Grande do Norte,2008,0,0
+uf,RN,Rio Grande do Norte,2009,0,0
+uf,RN,Rio Grande do Norte,2010,0,0
+uf,RN,Rio Grande do Norte,2011,0,0
+uf,RN,Rio Grande do Norte,2012,0,0
+uf,RN,Rio Grande do Norte,2013,0,0
+uf,RN,Rio Grande do Norte,2014,0,0
+uf,RN,Rio Grande do Norte,2015,0,0
+uf,RN,Rio Grande do Norte,2016,0,0
+uf,RN,Rio Grande do Norte,2017,0,0
+uf,RN,Rio Grande do Norte,2018,0,0
+uf,RN,Rio Grande do Norte,2019,9,0
+uf,RN,Rio Grande do Norte,2020,0,0
+uf,RN,Rio Grande do Norte,2021,0,0
+uf,RN,Rio Grande do Norte,2022,0,0
+uf,RN,Rio Grande do Norte,2023,0,0
+uf,RN,Rio Grande do Norte,2024,0,0
+uf,RN,Rio Grande do Norte,2025,0,0
+uf,RN,Rio Grande do Norte,2026,0,0
+uf,PB,Paraíba,1990,1735,32
+uf,PB,Paraíba,1991,764,16
+uf,PB,Paraíba,1992,369,3
+uf,PB,Paraíba,1993,32,0
+uf,PB,Paraíba,1994,8,0
+uf,PB,Paraíba,1995,33,0
+uf,PB,Paraíba,1996,59,0
+uf,PB,Paraíba,1997,342,0
+uf,PB,Paraíba,1998,49,0
+uf,PB,Paraíba,1999,35,0
+uf,PB,Paraíba,2000,0,0
+uf,PB,Paraíba,2001,0,0
+uf,PB,Paraíba,2002,0,0
+uf,PB,Paraíba,2003,0,0
+uf,PB,Paraíba,2004,0,0
+uf,PB,Paraíba,2005,0,0
+uf,PB,Paraíba,2006,0,1
+uf,PB,Paraíba,2007,0,0
+uf,PB,Paraíba,2008,0,0
+uf,PB,Paraíba,2009,0,0
+uf,PB,Paraíba,2010,57,0
+uf,PB,Paraíba,2011,0,0
+uf,PB,Paraíba,2012,0,0
+uf,PB,Paraíba,2013,9,0
+uf,PB,Paraíba,2014,0,0
+uf,PB,Paraíba,2015,0,0
+uf,PB,Paraíba,2016,0,0
+uf,PB,Paraíba,2017,0,0
+uf,PB,Paraíba,2018,0,0
+uf,PB,Paraíba,2019,66,0
+uf,PB,Paraíba,2020,0,0
+uf,PB,Paraíba,2021,0,0
+uf,PB,Paraíba,2022,0,0
+uf,PB,Paraíba,2023,0,0
+uf,PB,Paraíba,2024,0,0
+uf,PB,Paraíba,2025,0,0
+uf,PB,Paraíba,2026,0,0
+uf,PE,Pernambuco,1990,194,6
+uf,PE,Pernambuco,1991,290,7
+uf,PE,Pernambuco,1992,165,0
+uf,PE,Pernambuco,1993,15,1
+uf,PE,Pernambuco,1994,13,1
+uf,PE,Pernambuco,1995,10,0
+uf,PE,Pernambuco,1996,23,0
+uf,PE,Pernambuco,1997,335,0
+uf,PE,Pernambuco,1998,345,0
+uf,PE,Pernambuco,1999,240,0
+uf,PE,Pernambuco,2000,0,0
+uf,PE,Pernambuco,2001,0,0
+uf,PE,Pernambuco,2002,0,0
+uf,PE,Pernambuco,2003,0,0
+uf,PE,Pernambuco,2004,0,0
+uf,PE,Pernambuco,2005,0,0
+uf,PE,Pernambuco,2006,0,0
+uf,PE,Pernambuco,2007,0,0
+uf,PE,Pernambuco,2008,0,0
+uf,PE,Pernambuco,2009,0,0
+uf,PE,Pernambuco,2010,0,0
+uf,PE,Pernambuco,2011,0,0
+uf,PE,Pernambuco,2012,1,0
+uf,PE,Pernambuco,2013,200,1
+uf,PE,Pernambuco,2014,26,0
+uf,PE,Pernambuco,2015,0,0
+uf,PE,Pernambuco,2016,0,0
+uf,PE,Pernambuco,2017,0,0
+uf,PE,Pernambuco,2018,4,0
+uf,PE,Pernambuco,2019,344,1
+uf,PE,Pernambuco,2020,38,0
+uf,PE,Pernambuco,2021,0,0
+uf,PE,Pernambuco,2022,0,0
+uf,PE,Pernambuco,2023,0,0
+uf,PE,Pernambuco,2024,0,0
+uf,PE,Pernambuco,2025,0,0
+uf,PE,Pernambuco,2026,0,0
+uf,AL,Alagoas,1990,1679,35
+uf,AL,Alagoas,1991,525,4
+uf,AL,Alagoas,1992,131,0
+uf,AL,Alagoas,1993,22,1
+uf,AL,Alagoas,1994,3,1
+uf,AL,Alagoas,1995,24,2
+uf,AL,Alagoas,1996,19,0
+uf,AL,Alagoas,1997,30,1
+uf,AL,Alagoas,1998,7,0
+uf,AL,Alagoas,1999,43,0
+uf,AL,Alagoas,2000,0,0
+uf,AL,Alagoas,2001,0,0
+uf,AL,Alagoas,2002,0,0
+uf,AL,Alagoas,2003,0,0
+uf,AL,Alagoas,2004,0,0
+uf,AL,Alagoas,2005,0,0
+uf,AL,Alagoas,2006,0,0
+uf,AL,Alagoas,2007,0,0
+uf,AL,Alagoas,2008,0,0
+uf,AL,Alagoas,2009,0,0
+uf,AL,Alagoas,2010,0,0
+uf,AL,Alagoas,2011,0,0
+uf,AL,Alagoas,2012,0,0
+uf,AL,Alagoas,2013,0,0
+uf,AL,Alagoas,2014,0,0
+uf,AL,Alagoas,2015,0,0
+uf,AL,Alagoas,2016,0,0
+uf,AL,Alagoas,2017,0,0
+uf,AL,Alagoas,2018,0,0
+uf,AL,Alagoas,2019,35,0
+uf,AL,Alagoas,2020,3,0
+uf,AL,Alagoas,2021,11,0
+uf,AL,Alagoas,2022,0,0
+uf,AL,Alagoas,2023,0,0
+uf,AL,Alagoas,2024,0,0
+uf,AL,Alagoas,2025,0,0
+uf,AL,Alagoas,2026,0,0
+uf,SE,Sergipe,1990,773,4
+uf,SE,Sergipe,1991,495,3
+uf,SE,Sergipe,1992,112,4
+uf,SE,Sergipe,1993,48,0
+uf,SE,Sergipe,1994,51,0
+uf,SE,Sergipe,1995,33,0
+uf,SE,Sergipe,1996,34,0
+uf,SE,Sergipe,1997,98,0
+uf,SE,Sergipe,1998,51,0
+uf,SE,Sergipe,1999,20,0
+uf,SE,Sergipe,2000,0,0
+uf,SE,Sergipe,2001,0,0
+uf,SE,Sergipe,2002,0,0
+uf,SE,Sergipe,2003,0,0
+uf,SE,Sergipe,2004,0,0
+uf,SE,Sergipe,2005,0,0
+uf,SE,Sergipe,2006,0,0
+uf,SE,Sergipe,2007,0,0
+uf,SE,Sergipe,2008,0,0
+uf,SE,Sergipe,2009,0,0
+uf,SE,Sergipe,2010,0,0
+uf,SE,Sergipe,2011,0,0
+uf,SE,Sergipe,2012,0,0
+uf,SE,Sergipe,2013,0,0
+uf,SE,Sergipe,2014,0,0
+uf,SE,Sergipe,2015,0,0
+uf,SE,Sergipe,2016,0,0
+uf,SE,Sergipe,2017,0,0
+uf,SE,Sergipe,2018,4,0
+uf,SE,Sergipe,2019,6,0
+uf,SE,Sergipe,2020,8,0
+uf,SE,Sergipe,2021,0,0
+uf,SE,Sergipe,2022,0,0
+uf,SE,Sergipe,2023,0,0
+uf,SE,Sergipe,2024,0,0
+uf,SE,Sergipe,2025,0,0
+uf,SE,Sergipe,2026,0,0
+uf,BA,Bahia,1990,1384,11
+uf,BA,Bahia,1991,3532,9
+uf,BA,Bahia,1992,1303,2
+uf,BA,Bahia,1993,56,2
+uf,BA,Bahia,1994,96,1
+uf,BA,Bahia,1995,36,0
+uf,BA,Bahia,1996,362,1
+uf,BA,Bahia,1997,2557,5
+uf,BA,Bahia,1998,100,0
+uf,BA,Bahia,1999,14,1
+uf,BA,Bahia,2000,0,0
+uf,BA,Bahia,2001,0,0
+uf,BA,Bahia,2002,0,0
+uf,BA,Bahia,2003,0,0
+uf,BA,Bahia,2004,0,0
+uf,BA,Bahia,2005,0,0
+uf,BA,Bahia,2006,57,0
+uf,BA,Bahia,2007,0,0
+uf,BA,Bahia,2008,0,0
+uf,BA,Bahia,2009,0,0
+uf,BA,Bahia,2010,0,0
+uf,BA,Bahia,2011,1,0
+uf,BA,Bahia,2012,0,0
+uf,BA,Bahia,2013,0,0
+uf,BA,Bahia,2014,0,0
+uf,BA,Bahia,2015,0,0
+uf,BA,Bahia,2016,0,0
+uf,BA,Bahia,2017,0,0
+uf,BA,Bahia,2018,3,0
+uf,BA,Bahia,2019,80,0
+uf,BA,Bahia,2020,7,0
+uf,BA,Bahia,2021,0,0
+uf,BA,Bahia,2022,0,0
+uf,BA,Bahia,2023,0,0
+uf,BA,Bahia,2024,0,0
+uf,BA,Bahia,2025,0,0
+uf,BA,Bahia,2026,0,0
+regiao,SE,Região Sudeste,1990,22202,112
+regiao,SE,Região Sudeste,1991,10893,34
+regiao,SE,Região Sudeste,1992,2635,7
+regiao,SE,Região Sudeste,1993,1002,7
+regiao,SE,Região Sudeste,1994,354,1
+regiao,SE,Região Sudeste,1995,346,1
+regiao,SE,Região Sudeste,1996,2083,3
+regiao,SE,Região Sudeste,1997,45503,47
+regiao,SE,Região Sudeste,1998,618,2
+regiao,SE,Região Sudeste,1999,359,1
+regiao,SE,Região Sudeste,2000,15,0
+regiao,SE,Região Sudeste,2001,1,0
+regiao,SE,Região Sudeste,2002,1,0
+regiao,SE,Região Sudeste,2003,0,1
+regiao,SE,Região Sudeste,2004,0,1
+regiao,SE,Região Sudeste,2005,2,0
+regiao,SE,Região Sudeste,2006,0,0
+regiao,SE,Região Sudeste,2007,0,0
+regiao,SE,Região Sudeste,2008,0,0
+regiao,SE,Região Sudeste,2009,0,0
+regiao,SE,Região Sudeste,2010,0,0
+regiao,SE,Região Sudeste,2011,32,0
+regiao,SE,Região Sudeste,2012,1,0
+regiao,SE,Região Sudeste,2013,8,0
+regiao,SE,Região Sudeste,2014,10,0
+regiao,SE,Região Sudeste,2015,2,0
+regiao,SE,Região Sudeste,2016,0,0
+regiao,SE,Região Sudeste,2017,0,0
+regiao,SE,Região Sudeste,2018,27,0
+regiao,SE,Região Sudeste,2019,18674,14
+regiao,SE,Região Sudeste,2020,2259,2
+regiao,SE,Região Sudeste,2021,11,0
+regiao,SE,Região Sudeste,2022,10,0
+regiao,SE,Região Sudeste,2023,0,0
+regiao,SE,Região Sudeste,2024,4,0
+regiao,SE,Região Sudeste,2025,4,0
+regiao,SE,Região Sudeste,2026,42,0
+uf,MG,Minas Gerais,1990,8100,44
+uf,MG,Minas Gerais,1991,5354,17
+uf,MG,Minas Gerais,1992,1828,4
+uf,MG,Minas Gerais,1993,325,2
+uf,MG,Minas Gerais,1994,97,0
+uf,MG,Minas Gerais,1995,60,0
+uf,MG,Minas Gerais,1996,74,1
+uf,MG,Minas Gerais,1997,794,3
+uf,MG,Minas Gerais,1998,43,0
+uf,MG,Minas Gerais,1999,9,0
+uf,MG,Minas Gerais,2000,0,0
+uf,MG,Minas Gerais,2001,0,0
+uf,MG,Minas Gerais,2002,0,0
+uf,MG,Minas Gerais,2003,0,0
+uf,MG,Minas Gerais,2004,0,0
+uf,MG,Minas Gerais,2005,0,0
+uf,MG,Minas Gerais,2006,0,0
+uf,MG,Minas Gerais,2007,0,0
+uf,MG,Minas Gerais,2008,0,0
+uf,MG,Minas Gerais,2009,0,0
+uf,MG,Minas Gerais,2010,0,0
+uf,MG,Minas Gerais,2011,1,0
+uf,MG,Minas Gerais,2012,0,0
+uf,MG,Minas Gerais,2013,2,0
+uf,MG,Minas Gerais,2014,0,0
+uf,MG,Minas Gerais,2015,0,0
+uf,MG,Minas Gerais,2016,0,0
+uf,MG,Minas Gerais,2017,0,0
+uf,MG,Minas Gerais,2018,0,0
+uf,MG,Minas Gerais,2019,158,0
+uf,MG,Minas Gerais,2020,22,0
+uf,MG,Minas Gerais,2021,0,0
+uf,MG,Minas Gerais,2022,0,0
+uf,MG,Minas Gerais,2023,0,0
+uf,MG,Minas Gerais,2024,1,0
+uf,MG,Minas Gerais,2025,0,0
+uf,MG,Minas Gerais,2026,0,0
+uf,ES,Espírito Santo,1990,8664,43
+uf,ES,Espírito Santo,1991,1422,3
+uf,ES,Espírito Santo,1992,228,2
+uf,ES,Espírito Santo,1993,31,1
+uf,ES,Espírito Santo,1994,32,0
+uf,ES,Espírito Santo,1995,33,0
+uf,ES,Espírito Santo,1996,6,1
+uf,ES,Espírito Santo,1997,35,0
+uf,ES,Espírito Santo,1998,2,2
+uf,ES,Espírito Santo,1999,4,0
+uf,ES,Espírito Santo,2000,0,0
+uf,ES,Espírito Santo,2001,0,0
+uf,ES,Espírito Santo,2002,0,0
+uf,ES,Espírito Santo,2003,0,0
+uf,ES,Espírito Santo,2004,0,0
+uf,ES,Espírito Santo,2005,0,0
+uf,ES,Espírito Santo,2006,0,0
+uf,ES,Espírito Santo,2007,0,0
+uf,ES,Espírito Santo,2008,0,0
+uf,ES,Espírito Santo,2009,0,0
+uf,ES,Espírito Santo,2010,0,0
+uf,ES,Espírito Santo,2011,0,0
+uf,ES,Espírito Santo,2012,0,0
+uf,ES,Espírito Santo,2013,1,0
+uf,ES,Espírito Santo,2014,0,0
+uf,ES,Espírito Santo,2015,0,0
+uf,ES,Espírito Santo,2016,0,0
+uf,ES,Espírito Santo,2017,0,0
+uf,ES,Espírito Santo,2018,0,0
+uf,ES,Espírito Santo,2019,4,0
+uf,ES,Espírito Santo,2020,0,0
+uf,ES,Espírito Santo,2021,0,0
+uf,ES,Espírito Santo,2022,0,0
+uf,ES,Espírito Santo,2023,0,0
+uf,ES,Espírito Santo,2024,0,0
+uf,ES,Espírito Santo,2025,0,0
+uf,ES,Espírito Santo,2026,0,0
+uf,RJ,Rio de Janeiro,1990,4577,18
+uf,RJ,Rio de Janeiro,1991,3777,14
+uf,RJ,Rio de Janeiro,1992,463,0
+uf,RJ,Rio de Janeiro,1993,307,2
+uf,RJ,Rio de Janeiro,1994,136,0
+uf,RJ,Rio de Janeiro,1995,126,0
+uf,RJ,Rio de Janeiro,1996,438,0
+uf,RJ,Rio de Janeiro,1997,2616,2
+uf,RJ,Rio de Janeiro,1998,305,0
+uf,RJ,Rio de Janeiro,1999,177,0
+uf,RJ,Rio de Janeiro,2000,1,0
+uf,RJ,Rio de Janeiro,2001,0,0
+uf,RJ,Rio de Janeiro,2002,0,0
+uf,RJ,Rio de Janeiro,2003,0,0
+uf,RJ,Rio de Janeiro,2004,0,0
+uf,RJ,Rio de Janeiro,2005,0,0
+uf,RJ,Rio de Janeiro,2006,0,0
+uf,RJ,Rio de Janeiro,2007,0,0
+uf,RJ,Rio de Janeiro,2008,0,0
+uf,RJ,Rio de Janeiro,2009,0,0
+uf,RJ,Rio de Janeiro,2010,0,0
+uf,RJ,Rio de Janeiro,2011,4,0
+uf,RJ,Rio de Janeiro,2012,0,0
+uf,RJ,Rio de Janeiro,2013,0,0
+uf,RJ,Rio de Janeiro,2014,3,0
+uf,RJ,Rio de Janeiro,2015,0,0
+uf,RJ,Rio de Janeiro,2016,0,0
+uf,RJ,Rio de Janeiro,2017,0,0
+uf,RJ,Rio de Janeiro,2018,20,0
+uf,RJ,Rio de Janeiro,2019,463,0
+uf,RJ,Rio de Janeiro,2020,1358,1
+uf,RJ,Rio de Janeiro,2021,3,0
+uf,RJ,Rio de Janeiro,2022,2,0
+uf,RJ,Rio de Janeiro,2023,0,0
+uf,RJ,Rio de Janeiro,2024,1,0
+uf,RJ,Rio de Janeiro,2025,2,0
+uf,RJ,Rio de Janeiro,2026,1,0
+uf,SP,São Paulo,1990,861,7
+uf,SP,São Paulo,1991,340,0
+uf,SP,São Paulo,1992,116,1
+uf,SP,São Paulo,1993,339,2
+uf,SP,São Paulo,1994,89,1
+uf,SP,São Paulo,1995,127,1
+uf,SP,São Paulo,1996,1565,1
+uf,SP,São Paulo,1997,42058,42
+uf,SP,São Paulo,1998,268,0
+uf,SP,São Paulo,1999,169,1
+uf,SP,São Paulo,2000,14,0
+uf,SP,São Paulo,2001,1,0
+uf,SP,São Paulo,2002,1,0
+uf,SP,São Paulo,2003,0,1
+uf,SP,São Paulo,2004,0,1
+uf,SP,São Paulo,2005,2,0
+uf,SP,São Paulo,2006,0,0
+uf,SP,São Paulo,2007,0,0
+uf,SP,São Paulo,2008,0,0
+uf,SP,São Paulo,2009,0,0
+uf,SP,São Paulo,2010,0,0
+uf,SP,São Paulo,2011,27,0
+uf,SP,São Paulo,2012,1,0
+uf,SP,São Paulo,2013,5,0
+uf,SP,São Paulo,2014,7,0
+uf,SP,São Paulo,2015,2,0
+uf,SP,São Paulo,2016,0,0
+uf,SP,São Paulo,2017,0,0
+uf,SP,São Paulo,2018,7,0
+uf,SP,São Paulo,2019,18049,14
+uf,SP,São Paulo,2020,879,1
+uf,SP,São Paulo,2021,8,0
+uf,SP,São Paulo,2022,8,0
+uf,SP,São Paulo,2023,0,0
+uf,SP,São Paulo,2024,2,0
+uf,SP,São Paulo,2025,2,0
+uf,SP,São Paulo,2026,41,0
+regiao,S,Região Sul,1990,6599,23
+regiao,S,Região Sul,1991,11140,39
+regiao,S,Região Sul,1992,1058,4
+regiao,S,Região Sul,1993,558,4
+regiao,S,Região Sul,1994,227,1
+regiao,S,Região Sul,1995,253,1
+regiao,S,Região Sul,1996,270,2
+regiao,S,Região Sul,1997,1770,4
+regiao,S,Região Sul,1998,1046,0
+regiao,S,Região Sul,1999,39,0
+regiao,S,Região Sul,2000,3,0
+regiao,S,Região Sul,2001,0,0
+regiao,S,Região Sul,2002,0,0
+regiao,S,Região Sul,2003,2,0
+regiao,S,Região Sul,2004,0,0
+regiao,S,Região Sul,2005,4,0
+regiao,S,Região Sul,2006,0,0
+regiao,S,Região Sul,2007,0,0
+regiao,S,Região Sul,2008,0,0
+regiao,S,Região Sul,2009,0,0
+regiao,S,Região Sul,2010,8,0
+regiao,S,Região Sul,2011,7,0
+regiao,S,Região Sul,2012,0,0
+regiao,S,Região Sul,2013,1,0
+regiao,S,Região Sul,2014,0,0
+regiao,S,Região Sul,2015,0,0
+regiao,S,Região Sul,2016,0,0
+regiao,S,Região Sul,2017,0,0
+regiao,S,Região Sul,2018,47,0
+regiao,S,Região Sul,2019,1996,0
+regiao,S,Região Sul,2020,521,0
+regiao,S,Região Sul,2021,0,0
+regiao,S,Região Sul,2022,0,0
+regiao,S,Região Sul,2023,0,0
+regiao,S,Região Sul,2024,1,0
+regiao,S,Região Sul,2025,1,0
+regiao,S,Região Sul,2026,0,0
+uf,PR,Paraná,1990,1846,4
+uf,PR,Paraná,1991,3144,7
+uf,PR,Paraná,1992,273,1
+uf,PR,Paraná,1993,101,0
+uf,PR,Paraná,1994,9,0
+uf,PR,Paraná,1995,33,0
+uf,PR,Paraná,1996,73,0
+uf,PR,Paraná,1997,546,1
+uf,PR,Paraná,1998,909,0
+uf,PR,Paraná,1999,1,0
+uf,PR,Paraná,2000,2,0
+uf,PR,Paraná,2001,0,0
+uf,PR,Paraná,2002,0,0
+uf,PR,Paraná,2003,0,0
+uf,PR,Paraná,2004,0,0
+uf,PR,Paraná,2005,0,0
+uf,PR,Paraná,2006,0,0
+uf,PR,Paraná,2007,0,0
+uf,PR,Paraná,2008,0,0
+uf,PR,Paraná,2009,0,0
+uf,PR,Paraná,2010,0,0
+uf,PR,Paraná,2011,0,0
+uf,PR,Paraná,2012,0,0
+uf,PR,Paraná,2013,0,0
+uf,PR,Paraná,2014,0,0
+uf,PR,Paraná,2015,0,0
+uf,PR,Paraná,2016,0,0
+uf,PR,Paraná,2017,0,0
+uf,PR,Paraná,2018,0,0
+uf,PR,Paraná,2019,1599,0
+uf,PR,Paraná,2020,377,0
+uf,PR,Paraná,2021,0,0
+uf,PR,Paraná,2022,0,0
+uf,PR,Paraná,2023,0,0
+uf,PR,Paraná,2024,0,0
+uf,PR,Paraná,2025,0,0
+uf,PR,Paraná,2026,0,0
+uf,SC,Santa Catarina,1990,852,2
+uf,SC,Santa Catarina,1991,1477,5
+uf,SC,Santa Catarina,1992,28,0
+uf,SC,Santa Catarina,1993,8,0
+uf,SC,Santa Catarina,1994,25,0
+uf,SC,Santa Catarina,1995,30,0
+uf,SC,Santa Catarina,1996,39,0
+uf,SC,Santa Catarina,1997,491,0
+uf,SC,Santa Catarina,1998,61,0
+uf,SC,Santa Catarina,1999,25,0
+uf,SC,Santa Catarina,2000,1,0
+uf,SC,Santa Catarina,2001,0,0
+uf,SC,Santa Catarina,2002,0,0
+uf,SC,Santa Catarina,2003,2,0
+uf,SC,Santa Catarina,2004,0,0
+uf,SC,Santa Catarina,2005,4,0
+uf,SC,Santa Catarina,2006,0,0
+uf,SC,Santa Catarina,2007,0,0
+uf,SC,Santa Catarina,2008,0,0
+uf,SC,Santa Catarina,2009,0,0
+uf,SC,Santa Catarina,2010,0,0
+uf,SC,Santa Catarina,2011,0,0
+uf,SC,Santa Catarina,2012,0,0
+uf,SC,Santa Catarina,2013,1,0
+uf,SC,Santa Catarina,2014,0,0
+uf,SC,Santa Catarina,2015,0,0
+uf,SC,Santa Catarina,2016,0,0
+uf,SC,Santa Catarina,2017,0,0
+uf,SC,Santa Catarina,2018,0,0
+uf,SC,Santa Catarina,2019,297,0
+uf,SC,Santa Catarina,2020,107,0
+uf,SC,Santa Catarina,2021,0,0
+uf,SC,Santa Catarina,2022,0,0
+uf,SC,Santa Catarina,2023,0,0
+uf,SC,Santa Catarina,2024,0,0
+uf,SC,Santa Catarina,2025,0,0
+uf,SC,Santa Catarina,2026,0,0
+uf,RS,Rio Grande do Sul,1990,3901,17
+uf,RS,Rio Grande do Sul,1991,6519,27
+uf,RS,Rio Grande do Sul,1992,757,3
+uf,RS,Rio Grande do Sul,1993,449,4
+uf,RS,Rio Grande do Sul,1994,193,1
+uf,RS,Rio Grande do Sul,1995,190,1
+uf,RS,Rio Grande do Sul,1996,158,2
+uf,RS,Rio Grande do Sul,1997,733,3
+uf,RS,Rio Grande do Sul,1998,76,0
+uf,RS,Rio Grande do Sul,1999,13,0
+uf,RS,Rio Grande do Sul,2000,0,0
+uf,RS,Rio Grande do Sul,2001,0,0
+uf,RS,Rio Grande do Sul,2002,0,0
+uf,RS,Rio Grande do Sul,2003,0,0
+uf,RS,Rio Grande do Sul,2004,0,0
+uf,RS,Rio Grande do Sul,2005,0,0
+uf,RS,Rio Grande do Sul,2006,0,0
+uf,RS,Rio Grande do Sul,2007,0,0
+uf,RS,Rio Grande do Sul,2008,0,0
+uf,RS,Rio Grande do Sul,2009,0,0
+uf,RS,Rio Grande do Sul,2010,8,0
+uf,RS,Rio Grande do Sul,2011,7,0
+uf,RS,Rio Grande do Sul,2012,0,0
+uf,RS,Rio Grande do Sul,2013,0,0
+uf,RS,Rio Grande do Sul,2014,0,0
+uf,RS,Rio Grande do Sul,2015,0,0
+uf,RS,Rio Grande do Sul,2016,0,0
+uf,RS,Rio Grande do Sul,2017,0,0
+uf,RS,Rio Grande do Sul,2018,47,0
+uf,RS,Rio Grande do Sul,2019,100,0
+uf,RS,Rio Grande do Sul,2020,37,0
+uf,RS,Rio Grande do Sul,2021,0,0
+uf,RS,Rio Grande do Sul,2022,0,0
+uf,RS,Rio Grande do Sul,2023,0,0
+uf,RS,Rio Grande do Sul,2024,1,0
+uf,RS,Rio Grande do Sul,2025,1,0
+uf,RS,Rio Grande do Sul,2026,0,0
+regiao,CO,Região Centro-Oeste,1990,13498,32
+regiao,CO,Região Centro-Oeste,1991,4470,26
+regiao,CO,Região Centro-Oeste,1992,766,1
+regiao,CO,Região Centro-Oeste,1993,231,0
+regiao,CO,Região Centro-Oeste,1994,113,0
+regiao,CO,Região Centro-Oeste,1995,37,1
+regiao,CO,Região Centro-Oeste,1996,208,0
+regiao,CO,Região Centro-Oeste,1997,1613,0
+regiao,CO,Região Centro-Oeste,1998,265,0
+regiao,CO,Região Centro-Oeste,1999,50,0
+regiao,CO,Região Centro-Oeste,2000,1,0
+regiao,CO,Região Centro-Oeste,2001,0,0
+regiao,CO,Região Centro-Oeste,2002,0,0
+regiao,CO,Região Centro-Oeste,2003,0,0
+regiao,CO,Região Centro-Oeste,2004,0,0
+regiao,CO,Região Centro-Oeste,2005,0,0
+regiao,CO,Região Centro-Oeste,2006,0,0
+regiao,CO,Região Centro-Oeste,2007,0,0
+regiao,CO,Região Centro-Oeste,2008,0,0
+regiao,CO,Região Centro-Oeste,2009,0,0
+regiao,CO,Região Centro-Oeste,2010,0,0
+regiao,CO,Região Centro-Oeste,2011,2,0
+regiao,CO,Região Centro-Oeste,2012,0,0
+regiao,CO,Região Centro-Oeste,2013,1,0
+regiao,CO,Região Centro-Oeste,2014,0,0
+regiao,CO,Região Centro-Oeste,2015,0,0
+regiao,CO,Região Centro-Oeste,2016,0,0
+regiao,CO,Região Centro-Oeste,2017,0,0
+regiao,CO,Região Centro-Oeste,2018,1,0
+regiao,CO,Região Centro-Oeste,2019,28,0
+regiao,CO,Região Centro-Oeste,2020,21,0
+regiao,CO,Região Centro-Oeste,2021,0,0
+regiao,CO,Região Centro-Oeste,2022,0,0
+regiao,CO,Região Centro-Oeste,2023,0,0
+regiao,CO,Região Centro-Oeste,2024,0,0
+regiao,CO,Região Centro-Oeste,2025,7,0
+regiao,CO,Região Centro-Oeste,2026,0,0
+uf,MS,Mato Grosso do Sul,1990,121,1
+uf,MS,Mato Grosso do Sul,1991,1142,13
+uf,MS,Mato Grosso do Sul,1992,442,1
+uf,MS,Mato Grosso do Sul,1993,64,0
+uf,MS,Mato Grosso do Sul,1994,68,0
+uf,MS,Mato Grosso do Sul,1995,17,0
+uf,MS,Mato Grosso do Sul,1996,11,0
+uf,MS,Mato Grosso do Sul,1997,155,0
+uf,MS,Mato Grosso do Sul,1998,46,0
+uf,MS,Mato Grosso do Sul,1999,21,0
+uf,MS,Mato Grosso do Sul,2000,1,0
+uf,MS,Mato Grosso do Sul,2001,0,0
+uf,MS,Mato Grosso do Sul,2002,0,0
+uf,MS,Mato Grosso do Sul,2003,0,0
+uf,MS,Mato Grosso do Sul,2004,0,0
+uf,MS,Mato Grosso do Sul,2005,0,0
+uf,MS,Mato Grosso do Sul,2006,0,0
+uf,MS,Mato Grosso do Sul,2007,0,0
+uf,MS,Mato Grosso do Sul,2008,0,0
+uf,MS,Mato Grosso do Sul,2009,0,0
+uf,MS,Mato Grosso do Sul,2010,0,0
+uf,MS,Mato Grosso do Sul,2011,1,0
+uf,MS,Mato Grosso do Sul,2012,0,0
+uf,MS,Mato Grosso do Sul,2013,0,0
+uf,MS,Mato Grosso do Sul,2014,0,0
+uf,MS,Mato Grosso do Sul,2015,0,0
+uf,MS,Mato Grosso do Sul,2016,0,0
+uf,MS,Mato Grosso do Sul,2017,0,0
+uf,MS,Mato Grosso do Sul,2018,0,0
+uf,MS,Mato Grosso do Sul,2019,2,0
+uf,MS,Mato Grosso do Sul,2020,10,0
+uf,MS,Mato Grosso do Sul,2021,0,0
+uf,MS,Mato Grosso do Sul,2022,0,0
+uf,MS,Mato Grosso do Sul,2023,0,0
+uf,MS,Mato Grosso do Sul,2024,0,0
+uf,MS,Mato Grosso do Sul,2025,0,0
+uf,MS,Mato Grosso do Sul,2026,0,0
+uf,MT,Mato Grosso,1990,776,2
+uf,MT,Mato Grosso,1991,2765,12
+uf,MT,Mato Grosso,1992,177,0
+uf,MT,Mato Grosso,1993,14,0
+uf,MT,Mato Grosso,1994,14,0
+uf,MT,Mato Grosso,1995,6,1
+uf,MT,Mato Grosso,1996,21,0
+uf,MT,Mato Grosso,1997,54,0
+uf,MT,Mato Grosso,1998,19,0
+uf,MT,Mato Grosso,1999,7,0
+uf,MT,Mato Grosso,2000,0,0
+uf,MT,Mato Grosso,2001,0,0
+uf,MT,Mato Grosso,2002,0,0
+uf,MT,Mato Grosso,2003,0,0
+uf,MT,Mato Grosso,2004,0,0
+uf,MT,Mato Grosso,2005,0,0
+uf,MT,Mato Grosso,2006,0,0
+uf,MT,Mato Grosso,2007,0,0
+uf,MT,Mato Grosso,2008,0,0
+uf,MT,Mato Grosso,2009,0,0
+uf,MT,Mato Grosso,2010,0,0
+uf,MT,Mato Grosso,2011,0,0
+uf,MT,Mato Grosso,2012,0,0
+uf,MT,Mato Grosso,2013,0,0
+uf,MT,Mato Grosso,2014,0,0
+uf,MT,Mato Grosso,2015,0,0
+uf,MT,Mato Grosso,2016,0,0
+uf,MT,Mato Grosso,2017,0,0
+uf,MT,Mato Grosso,2018,0,0
+uf,MT,Mato Grosso,2019,0,0
+uf,MT,Mato Grosso,2020,1,0
+uf,MT,Mato Grosso,2021,0,0
+uf,MT,Mato Grosso,2022,0,0
+uf,MT,Mato Grosso,2023,0,0
+uf,MT,Mato Grosso,2024,0,0
+uf,MT,Mato Grosso,2025,6,0
+uf,MT,Mato Grosso,2026,0,0
+uf,GO,Goiás,1990,8229,10
+uf,GO,Goiás,1991,292,1
+uf,GO,Goiás,1992,83,0
+uf,GO,Goiás,1993,77,0
+uf,GO,Goiás,1994,21,0
+uf,GO,Goiás,1995,11,0
+uf,GO,Goiás,1996,101,0
+uf,GO,Goiás,1997,526,0
+uf,GO,Goiás,1998,69,0
+uf,GO,Goiás,1999,11,0
+uf,GO,Goiás,2000,0,0
+uf,GO,Goiás,2001,0,0
+uf,GO,Goiás,2002,0,0
+uf,GO,Goiás,2003,0,0
+uf,GO,Goiás,2004,0,0
+uf,GO,Goiás,2005,0,0
+uf,GO,Goiás,2006,0,0
+uf,GO,Goiás,2007,0,0
+uf,GO,Goiás,2008,0,0
+uf,GO,Goiás,2009,0,0
+uf,GO,Goiás,2010,0,0
+uf,GO,Goiás,2011,0,0
+uf,GO,Goiás,2012,0,0
+uf,GO,Goiás,2013,0,0
+uf,GO,Goiás,2014,0,0
+uf,GO,Goiás,2015,0,0
+uf,GO,Goiás,2016,0,0
+uf,GO,Goiás,2017,0,0
+uf,GO,Goiás,2018,0,0
+uf,GO,Goiás,2019,15,0
+uf,GO,Goiás,2020,2,0
+uf,GO,Goiás,2021,0,0
+uf,GO,Goiás,2022,0,0
+uf,GO,Goiás,2023,0,0
+uf,GO,Goiás,2024,0,0
+uf,GO,Goiás,2025,0,0
+uf,GO,Goiás,2026,0,0
+uf,DF,Distrito Federal,1990,4372,19
+uf,DF,Distrito Federal,1991,271,0
+uf,DF,Distrito Federal,1992,64,0
+uf,DF,Distrito Federal,1993,76,0
+uf,DF,Distrito Federal,1994,10,0
+uf,DF,Distrito Federal,1995,3,0
+uf,DF,Distrito Federal,1996,75,0
+uf,DF,Distrito Federal,1997,878,0
+uf,DF,Distrito Federal,1998,131,0
+uf,DF,Distrito Federal,1999,11,0
+uf,DF,Distrito Federal,2000,0,0
+uf,DF,Distrito Federal,2001,0,0
+uf,DF,Distrito Federal,2002,0,0
+uf,DF,Distrito Federal,2003,0,0
+uf,DF,Distrito Federal,2004,0,0
+uf,DF,Distrito Federal,2005,0,0
+uf,DF,Distrito Federal,2006,0,0
+uf,DF,Distrito Federal,2007,0,0
+uf,DF,Distrito Federal,2008,0,0
+uf,DF,Distrito Federal,2009,0,0
+uf,DF,Distrito Federal,2010,0,0
+uf,DF,Distrito Federal,2011,1,0
+uf,DF,Distrito Federal,2012,0,0
+uf,DF,Distrito Federal,2013,1,0
+uf,DF,Distrito Federal,2014,0,0
+uf,DF,Distrito Federal,2015,0,0
+uf,DF,Distrito Federal,2016,0,0
+uf,DF,Distrito Federal,2017,0,0
+uf,DF,Distrito Federal,2018,1,0
+uf,DF,Distrito Federal,2019,11,0
+uf,DF,Distrito Federal,2020,8,0
+uf,DF,Distrito Federal,2021,0,0
+uf,DF,Distrito Federal,2022,0,0
+uf,DF,Distrito Federal,2023,0,0
+uf,DF,Distrito Federal,2024,0,0
+uf,DF,Distrito Federal,2025,1,0
+uf,DF,Distrito Federal,2026,0,0
+brasil,BR,Brasil,1990,61471,478
+brasil,BR,Brasil,1991,42532,212
+brasil,BR,Brasil,1992,7697,29
+brasil,BR,Brasil,1993,2396,18
+brasil,BR,Brasil,1994,1262,7
+brasil,BR,Brasil,1995,972,7
+brasil,BR,Brasil,1996,3326,7
+brasil,BR,Brasil,1997,53664,60
+brasil,BR,Brasil,1998,2781,3
+brasil,BR,Brasil,1999,908,2
+brasil,BR,Brasil,2000,36,0
+brasil,BR,Brasil,2001,1,0
+brasil,BR,Brasil,2002,1,0
+brasil,BR,Brasil,2003,2,1
+brasil,BR,Brasil,2004,0,1
+brasil,BR,Brasil,2005,6,0
+brasil,BR,Brasil,2006,57,1
+brasil,BR,Brasil,2007,0,0
+brasil,BR,Brasil,2008,0,0
+brasil,BR,Brasil,2009,0,0
+brasil,BR,Brasil,2010,68,0
+brasil,BR,Brasil,2011,43,0
+brasil,BR,Brasil,2012,2,0
+brasil,BR,Brasil,2013,220,1
+brasil,BR,Brasil,2014,876,0
+brasil,BR,Brasil,2015,214,0
+brasil,BR,Brasil,2016,0,0
+brasil,BR,Brasil,2017,0,0
+brasil,BR,Brasil,2018,9329,12
+brasil,BR,Brasil,2019,21704,16
+brasil,BR,Brasil,2020,8035,10
+brasil,BR,Brasil,2021,670,2
+brasil,BR,Brasil,2022,41,0
+brasil,BR,Brasil,2023,0,0
+brasil,BR,Brasil,2024,5,0
+brasil,BR,Brasil,2025,38,0
+brasil,BR,Brasil,2026,61,0

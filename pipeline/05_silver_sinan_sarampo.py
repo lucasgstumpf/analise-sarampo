@@ -26,13 +26,13 @@ def main() -> None:
     for ano in config.ANOS_SINAN:
         nome = f"sinan_sarampo_exames_{config.ano_4_digitos(ano)}.csv"
         df = renomear_colunas(ler_csv_bronze(config.BRONZE_SINAN / nome), COLUNAS_SINAN)
-        df.to_csv(config.SILVER_SINAN / nome, index=False, encoding="utf-8")
+        df.to_csv(config.SILVER_SINAN / nome, index=False, encoding="utf-8", lineterminator="\n")
         print(f"{nome}: {len(df)} registros")
         dataframes.append(df)
 
     combinado = pd.concat(dataframes, ignore_index=True)
     arquivo_combinado = config.SILVER_SINAN / f"{NOME_BASE_COMBINADO}.csv"
-    combinado.to_csv(arquivo_combinado, index=False, encoding="utf-8")
+    combinado.to_csv(arquivo_combinado, index=False, encoding="utf-8", lineterminator="\n")
     print(f"Série histórica combinada gerada: {arquivo_combinado} ({len(combinado)} registros)")
 
 

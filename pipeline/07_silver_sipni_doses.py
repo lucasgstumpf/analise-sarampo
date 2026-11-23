@@ -16,15 +16,24 @@ Os nomes de município saem da tabela de doses e vão para uma dimensão à part
 Saída: data/silver/sipni_doses/vacinacao_sarampo_sipni.parquet  (1 linha = 1 dose)
        data/silver/sipni_doses/dim_municipios.csv
        data/silver/sipni_doses/_auditoria/processamento_resumo.json  (funil por mês)
-Uso:   python pipeline/07_silver_sipni_doses.py   (precisa de ~5 GB de RAM)
+Uso:   python pipeline/07_silver_sipni_doses.py [--retomar]   (--retomar: reaproveita as partes já gravadas)
+
+Memória: cada mês é lido em blocos de 500 mil linhas e gravado como uma parte em parquet; a
+numeração por paciente e a ordenação final ficam com o duckdb, que usa o disco
+(data/silver/sipni_doses/_duckdb_tmp) quando passa de SARAMPO_DUCKDB_MEMORIA (padrão 3GB).
 """
 
 import json
+import os
 import re
+import shutil
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import pyarrow as pa
+import pyarrow.parquet as pq
 
 import config
 
@@ -120,74 +129,235 @@ def tratar_mes(df: pd.DataFrame, ano: int, mes: int) -> pd.DataFrame:
     return df
 
 
-def numerar_doses_por_paciente(df: pd.DataFrame) -> pd.DataFrame:
-    """A descrição da dose muitas vezes vem só como "Dose" (16% das linhas). A ordem real da
-    dose de cada paciente dentro da janela dos dados (2025+) resolve essa ambiguidade. Limite:
-    doses anteriores à janela não são vistas, então `ordem_dose_paciente` é um mínimo."""
-    df = df.sort_values(["codigo_paciente_anonimizado", "data_vacinacao"], kind="stable")
-    grupo = df.groupby("codigo_paciente_anonimizado", sort=False)
-    df["ordem_dose_paciente"] = (grupo.cumcount() + 1).astype("Int32")
-    df["doses_paciente_janela"] = grupo["ordem_dose_paciente"].transform("size").astype("Int32")
-    return df.sort_values(["data_vacinacao"], kind="stable").reset_index(drop=True)
+# Tipos da silver (como o pandas gravava antes): o duckdb devolve string e é convertido de volta.
+TIPOS_PARQUET = {"idade_paciente": pa.int16(), "dose_numero": pa.int8(), "atraso_registro_dias": pa.int32(),
+                 "ordem_dose_paciente": pa.int32(), "doses_paciente_janela": pa.int32(),
+                 "data_vacinacao": pa.timestamp("us"), "data_entrada_rnds": pa.timestamp("us"),
+                 "substituiu_documento": pa.bool_(), "vacinacao_fora_do_mes": pa.bool_()}
+LINHAS_CHUNK = 500_000
+LINHAS_POR_GRUPO = 1_000_000
+LINHAS_POR_FATIA = int(os.environ.get("SARAMPO_LINHAS_POR_FATIA") or 3_000_000)  # gravação em fatias de data
+COLUNAS_DIM = ["codigo_municipio_paciente", "municipio_paciente", "uf_paciente",
+               "codigo_municipio_estabelecimento", "municipio_estabelecimento", "uf_estabelecimento"]
 
 
-def montar_dim_municipios(pedacos: list[pd.DataFrame]) -> pd.DataFrame:
-    """Um nome e uma UF por código de município (o valor mais frequente), juntando os
-    municípios de residência do paciente e do estabelecimento."""
-    paciente = pd.concat(p[["codigo_municipio_paciente", "municipio_paciente", "uf_paciente"]].set_axis(
-        ["codigo_municipio", "municipio", "uf"], axis=1) for p in pedacos)
-    estab = pd.concat(p[["codigo_municipio_estabelecimento", "municipio_estabelecimento", "uf_estabelecimento"]].set_axis(
-        ["codigo_municipio", "municipio", "uf"], axis=1) for p in pedacos)
-    dim = pd.concat([paciente, estab]).dropna(subset=["codigo_municipio"])
-    dim = dim.groupby("codigo_municipio", as_index=False).agg(
-        municipio=("municipio", lambda s: s.mode().iat[0] if s.notna().any() else None),
-        uf=("uf", lambda s: s.mode().iat[0] if s.notna().any() else None),
-    )
-    return dim.sort_values("codigo_municipio")
+class Vistos:
+    """Hashes dos codigo_documento já gravados (dedup entre meses e dentro do mês): um vetor
+    ordenado dos meses anteriores e os blocos do mês atual, consultados por busca binária."""
+
+    def __init__(self) -> None:
+        self.base = np.empty(0, dtype=np.uint64)
+        self.mes: list[np.ndarray] = []
+
+    @staticmethod
+    def _contem(ordenado: np.ndarray, h: np.ndarray) -> np.ndarray:
+        if not len(ordenado):
+            return np.zeros(len(h), dtype=bool)
+        i = np.searchsorted(ordenado, h).clip(max=len(ordenado) - 1)
+        return ordenado[i] == h
+
+    def duplicados(self, h: np.ndarray) -> np.ndarray:
+        dup = self._contem(self.base, h) | pd.Series(h).duplicated().to_numpy()
+        for bloco in self.mes:
+            dup |= self._contem(bloco, h)
+        self.mes.append(np.sort(h[~dup]))
+        return dup
+
+    def fechar_mes(self) -> None:
+        self.base = np.sort(np.concatenate([self.base, *self.mes]))
+        self.mes = []
+
+
+def processar_meses(arquivos, pasta_partes: Path) -> dict:
+    """1ª etapa: cada mês da bronze, em blocos, vira uma parte em parquet (regras de limpeza e
+    dedup). `seq` guarda a ordem original (mês, linha), usada nos desempates como no pandas."""
+    vistos, resumo, seq = Vistos(), {}, 0
+    for ano, mes, arq in arquivos:
+        chave = f"{ano}-{mes:02d}"
+        lidas = apos_diluente = duplicadas = fora = 0
+        caminho = pasta_partes / f"doses_{chave}.parquet"
+        escritor = escritor_dim = None
+        for bruto in pd.read_csv(arq, dtype=str, usecols=COLUNAS, chunksize=LINHAS_CHUNK):
+            lidas += len(bruto)
+            df = tratar_mes(bruto, ano, mes)
+            del bruto
+            apos_diluente += len(df)
+            duplicado = vistos.duplicados(pd.util.hash_array(df["codigo_documento"].to_numpy(dtype=object)))
+            df = df[~duplicado]
+            duplicadas += int(duplicado.sum())
+            fora += int(df["vacinacao_fora_do_mes"].sum())
+            dim = pa.Table.from_pandas(df[COLUNAS_DIM].astype("string"), preserve_index=False)
+            df = df.drop(columns=["codigo_documento", "codigo_documento_substituido",
+                                  "municipio_paciente", "municipio_estabelecimento"])
+            df.insert(0, "seq", np.arange(seq, seq + len(df), dtype=np.int64))
+            seq += len(df)
+            tabela = pa.Table.from_pandas(df, preserve_index=False)
+            if escritor is None:
+                escritor = pq.ParquetWriter(caminho, tabela.schema, compression="zstd")
+                escritor_dim = pq.ParquetWriter(pasta_partes / f"dim_{chave}.parquet", dim.schema, compression="zstd")
+            escritor.write_table(tabela.cast(escritor.schema))
+            escritor_dim.write_table(dim.cast(escritor_dim.schema))
+        if escritor is not None:
+            escritor.close()
+            escritor_dim.close()
+        vistos.fechar_mes()
+        resumo[chave] = {"linhas_csv": lidas, "diluentes_removidos": lidas - apos_diluente,
+                         "duplicadas_removidas": duplicadas, "linhas_finais": apos_diluente - duplicadas,
+                         "vacinacao_fora_do_mes": fora}
+        print(chave, resumo[chave], flush=True)
+    return resumo
+
+
+def conectar(pasta_tmp: Path):
+    import duckdb
+    con = duckdb.connect()
+    con.execute(f"SET memory_limit='{config.DUCKDB_MEMORIA}'")
+    con.execute(f"SET temp_directory='{pasta_tmp}'")
+    con.execute("SET max_temp_directory_size='200GiB'")
+    con.execute("SET preserve_insertion_order=true")  # sem isso, o resultado do ORDER BY chega em lotes fora de ordem
+    return con
+
+
+def numerar_doses(con, pasta_partes: Path, pasta_num: Path, grupos: int = 16) -> None:
+    """Numera as doses de cada paciente: ordem por data (vazias no fim) e, no empate, pela ordem
+    original (`seq`); e o total de doses do paciente. Roda em `grupos` partes (pacientes
+    separados pelo hash do código), só com as colunas necessárias, para caber na memória.
+    O resultado não depende do hash: todas as doses de um paciente caem no mesmo grupo."""
+    p = "codigo_paciente_anonimizado"
+    for g in range(grupos):
+        con.execute(f"""
+            COPY (
+                SELECT seq, data_vacinacao,
+                       row_number() OVER (PARTITION BY {p} ORDER BY data_vacinacao NULLS LAST, seq)::INTEGER AS ordem,
+                       count(*) OVER (PARTITION BY {p})::INTEGER AS total
+                FROM read_parquet('{pasta_partes}/doses_*.parquet', union_by_name=true)
+                WHERE {p} IS NOT NULL AND hash({p}) % {grupos} = {g}
+            ) TO '{pasta_num}/num_{g:02d}.parquet' (FORMAT parquet, COMPRESSION zstd)""")
+        print(f"  numeração: grupo {g + 1}/{grupos}", flush=True)
+
+
+def fatias_por_data(con, pasta_partes: Path, maximo: int = LINHAS_POR_FATIA) -> list[tuple[str, str] | None]:
+    """Intervalos de data de vacinação [início, fim) com até ~`maximo` linhas cada, em ordem;
+    None no fim = linhas sem data."""
+    meses = con.sql(f"""
+        SELECT date_trunc('month', data_vacinacao) AS m, count(*) AS n
+        FROM read_parquet('{pasta_partes}/doses_*.parquet', union_by_name=true)
+        WHERE data_vacinacao IS NOT NULL GROUP BY 1 ORDER BY 1""").fetchall()
+    fatias, inicio, soma = [], None, 0
+    for i, (m, n) in enumerate(meses):
+        inicio = inicio or m
+        soma += n
+        proximo = meses[i + 1][0] if i + 1 < len(meses) else None
+        if soma >= maximo or proximo is None:
+            fim = proximo.isoformat() if proximo is not None else "9999-12-31"
+            fatias.append((inicio.isoformat(), fim))
+            inicio, soma = None, 0
+    return fatias + [None]
+
+
+def gravar_silver(con, pasta_partes: Path, pasta_num: Path, destino: Path) -> int:
+    """2ª etapa (duckdb, fora da memória): numera as doses de cada paciente e grava a silver.
+
+    A descrição da dose muitas vezes vem só como "Dose" (16% das linhas): a ordem real da dose
+    do paciente dentro da janela dos dados resolve essa ambiguidade. Limite: doses anteriores à
+    janela não são vistas, então `ordem_dose_paciente` é um mínimo.
+
+    Equivale ao pandas de antes: ordenar (paciente, data) de forma estável, cumcount + 1 e o
+    tamanho do grupo; depois ordenar por data de forma estável (vazios no fim). A gravação é
+    feita em fatias de data, já na ordem final, para nunca ordenar a base inteira de uma vez."""
+    p = "codigo_paciente_anonimizado"
+    numerar_doses(con, pasta_partes, pasta_num)
+    colunas = [c for c in pq.read_schema(sorted(pasta_partes.glob("doses_*.parquet"))[0]).names if c != "seq"]
+    selecao = ", ".join(f"d.{c}" for c in colunas)
+    total, escritor = 0, None
+    try:
+        for fatia in fatias_por_data(con, pasta_partes):
+            if fatia is None:
+                filtro_d, filtro_n = "d.data_vacinacao IS NULL", "data_vacinacao IS NULL"
+            else:
+                faixa = f"BETWEEN TIMESTAMP '{fatia[0]}' AND TIMESTAMP '{fatia[1]}' - INTERVAL 1 MICROSECOND"
+                filtro_d, filtro_n = f"d.data_vacinacao {faixa}", f"data_vacinacao {faixa}"
+            consulta = f"""
+                SELECT {selecao}, n.ordem AS ordem_dose_paciente, n.total AS doses_paciente_janela
+                FROM read_parquet('{pasta_partes}/doses_*.parquet', union_by_name=true) d
+                LEFT JOIN (SELECT seq, ordem, total FROM read_parquet('{pasta_num}/num_*.parquet')
+                           WHERE {filtro_n}) n USING (seq)
+                WHERE {filtro_d}
+                ORDER BY d.data_vacinacao NULLS LAST, d.{p} NULLS LAST, d.seq"""
+            for lote in con.execute(consulta).to_arrow_reader(LINHAS_POR_GRUPO):
+                tabela = pa.Table.from_batches([lote])
+                if escritor is None:
+                    schema = pa.schema([pa.field(c, TIPOS_PARQUET.get(c, pa.large_string()))
+                                        for c in tabela.schema.names])
+                    escritor = pq.ParquetWriter(destino, schema, compression="zstd", compression_level=9)
+                if tabela.num_rows:
+                    escritor.write_table(tabela.cast(escritor.schema), row_group_size=LINHAS_POR_GRUPO)
+                total += tabela.num_rows
+            print(f"  gravação: {fatia or 'sem data'} -> {total:,} linhas", flush=True)
+    finally:
+        if escritor is not None:
+            escritor.close()
+    return total
+
+
+def montar_dim_municipios(con, pasta_partes: Path) -> pd.DataFrame:
+    """Um nome e uma UF por código de município (o valor mais frequente; no empate, o menor,
+    como o mode() do pandas), juntando os municípios do paciente e do estabelecimento."""
+    origem = f"read_parquet('{pasta_partes}/dim_*.parquet')"
+    con.execute(f"""
+        CREATE OR REPLACE TEMP VIEW mun AS
+        SELECT codigo_municipio_paciente AS codigo_municipio, municipio_paciente AS municipio, uf_paciente AS uf FROM {origem}
+        UNION ALL
+        SELECT codigo_municipio_estabelecimento, municipio_estabelecimento, uf_estabelecimento FROM {origem}""")
+
+    def moda(coluna: str) -> str:
+        return f"""
+            SELECT codigo_municipio, {coluna} FROM (
+                SELECT codigo_municipio, {coluna},
+                       row_number() OVER (PARTITION BY codigo_municipio ORDER BY n DESC, {coluna}) AS r
+                FROM (SELECT codigo_municipio, {coluna}, count(*) AS n FROM mun
+                      WHERE codigo_municipio IS NOT NULL AND {coluna} IS NOT NULL GROUP BY ALL))
+            WHERE r = 1"""
+    return con.execute(f"""
+        SELECT c.codigo_municipio, m.municipio, u.uf
+        FROM (SELECT DISTINCT codigo_municipio FROM mun WHERE codigo_municipio IS NOT NULL) c
+        LEFT JOIN ({moda("municipio")}) m USING (codigo_municipio)
+        LEFT JOIN ({moda("uf")}) u USING (codigo_municipio)
+        ORDER BY c.codigo_municipio""").df()
 
 
 def main() -> None:
     arquivos = arquivos_mensais()
     print(f"{len(arquivos)} arquivos mensais: {arquivos[0][0]}-{arquivos[0][1]:02d} a {arquivos[-1][0]}-{arquivos[-1][1]:02d}")
-
-    vistos = np.empty(0, dtype=np.uint64)  # hash dos codigo_documento já gravados (dedup entre meses)
-    dim_pedacos, resumo, meses = [], {}, []
-
-    for ano, mes, arq in arquivos:
-        chave = f"{ano}-{mes:02d}"
-        df = pd.read_csv(arq, dtype=str)
-        lidas = len(df)
-        df = tratar_mes(df, ano, mes)
-        apos_diluente = len(df)
-
-        hashes = pd.util.hash_array(df["codigo_documento"].to_numpy(dtype=object))
-        duplicado = np.isin(hashes, vistos) | pd.Series(hashes).duplicated().to_numpy()
-        df = df[~duplicado]
-        vistos = np.concatenate([vistos, hashes[~duplicado]])
-
-        dim_pedacos.append(df[["codigo_municipio_paciente", "municipio_paciente", "uf_paciente",
-                               "codigo_municipio_estabelecimento", "municipio_estabelecimento", "uf_estabelecimento"]])
-        meses.append(df.drop(columns=["codigo_documento", "codigo_documento_substituido",
-                                      "municipio_paciente", "municipio_estabelecimento"]))
-
-        resumo[chave] = {
-            "linhas_csv": lidas, "diluentes_removidos": lidas - apos_diluente,
-            "duplicadas_removidas": int(duplicado.sum()), "linhas_finais": len(df),
-            "vacinacao_fora_do_mes": int(df["vacinacao_fora_do_mes"].sum()),
-        }
-        print(chave, resumo[chave])
-
-    silver = numerar_doses_por_paciente(pd.concat(meses, ignore_index=True))
-    del meses
     SILVER_DIR.mkdir(parents=True, exist_ok=True)
+    pasta_partes, pasta_tmp = SILVER_DIR / "_partes", SILVER_DIR / "_duckdb_tmp"
+    pasta_num = SILVER_DIR / "_numeracao"
+    resumo_partes = pasta_partes / "_resumo.json"
+    # --retomar: reaproveita a 1ª etapa (as partes por mês) se ela terminou numa execução anterior.
+    if "--retomar" in sys.argv and resumo_partes.exists():
+        resumo = json.loads(resumo_partes.read_text(encoding="utf-8"))
+        print(f"Retomando: {len(resumo)} meses já processados em {pasta_partes}")
+    else:
+        shutil.rmtree(pasta_partes, ignore_errors=True)
+        pasta_partes.mkdir()
+        resumo = processar_meses(arquivos, pasta_partes)
+        resumo_partes.write_text(json.dumps(resumo, indent=2, ensure_ascii=False), encoding="utf-8")
+    for pasta in (pasta_tmp, pasta_num):
+        shutil.rmtree(pasta, ignore_errors=True)
+        pasta.mkdir()
+    con = conectar(pasta_tmp)
     tmp = SAIDA.with_suffix(".tmp")
-    silver.to_parquet(tmp, index=False, compression="zstd", compression_level=9, row_group_size=1_000_000)
+    total = gravar_silver(con, pasta_partes, pasta_num, tmp)
     tmp.replace(SAIDA)
+    montar_dim_municipios(con, pasta_partes).to_csv(SAIDA_MUNICIPIOS, index=False, encoding="utf-8", lineterminator="\n")
+    con.close()
+    for pasta in (pasta_partes, pasta_tmp, pasta_num):
+        shutil.rmtree(pasta)
 
-    montar_dim_municipios(dim_pedacos).to_csv(SAIDA_MUNICIPIOS, index=False, encoding="utf-8")
     SAIDA_RESUMO.parent.mkdir(parents=True, exist_ok=True)
     SAIDA_RESUMO.write_text(json.dumps(resumo, indent=2, ensure_ascii=False), encoding="utf-8")
-    total = sum(r["linhas_finais"] for r in resumo.values())
+    if total != sum(r["linhas_finais"] for r in resumo.values()):
+        raise SystemExit(f"silver com {total} linhas, mas o funil soma outro total")
     print(f"\n{SAIDA.name}: {total} linhas, {SAIDA.stat().st_size / 1e6:.0f} MB")
 
 

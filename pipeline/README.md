@@ -2,7 +2,7 @@
 
 Este diretório tem todo o código que baixa e trata os dados do projeto. Os scripts são
 numerados na ordem em que devem rodar: primeiro todas as fontes na **bronze** (01-04),
-depois a limpeza na **silver** (05-08) e por fim as tabelas de análise na **gold** (09-12).
+depois a limpeza na **silver** (05-08) e por fim as tabelas de análise na **gold** (09-14).
 A gold tem tudo o que os notebooks precisam: quem tiver só a pasta `data/gold/` (ela vai
 para o git) roda todos os notebooks, sem baixar nem tratar nada.
 
@@ -22,6 +22,8 @@ pipeline/
 ├── 10_gold_sipni_todas_vacinas.py retrato da base mensal completa, todas as vacinas (notebooks 02-03)
 ├── 11_gold_sinan.py               notificações do SINAN prontas para análise (notebook 01)
 ├── 12_gold_ibge.py                malhas e população copiadas para a gold (notebook 09)
+├── 13_gold_sipni_historico.py     SI-PNI 1994-2019 (doses e cobertura) + série anual consolidada 1994-hoje
+├── 14_gold_validacao.py           compara a gold com as referências oficiais do MS (data/referencia/)
 ├── comum/
 │   ├── datasus.py                 download do FTP, .dbc -> .dbf -> .csv, leitura da bronze
 │   ├── dbc_puro.py                conversão .dbc -> .dbf em Python puro (se o pyreaddbc não instalar)
@@ -40,7 +42,7 @@ Sempre a partir da raiz do projeto, com o venv ativado:
 
 ```
 python pipeline/executar_pipeline.py --listar          # mostra os passos encontrados
-python pipeline/executar_pipeline.py                   # 01 -> 12
+python pipeline/executar_pipeline.py                   # 01 -> 14
 python pipeline/executar_pipeline.py --camada bronze   # só os downloads
 python pipeline/executar_pipeline.py --passos 07 09    # só refaz silver e gold das doses
 python pipeline/03_bronze_sipni_doses.py --meses 2026-01   # reprocessa um mês (ver passo 10)
@@ -76,8 +78,15 @@ Cuidados:
 |---|---|---|
 | 01 | SINAN, ficha EXAN (sarampo/rubéola), base preliminar, `EXANBR{AA}.dbc` | `sinan_sarampo/sinan_sarampo_exames_{AAAA}.{dbc,dbf,csv}` |
 | 02 | SI-PNI CPNI (cobertura anual) e DPNI (doses mensais por faixa etária), `CPNIBR{AA}.DBF` e `DPNIBR{AA}.DBF` | `sipni_historico/sipni_cobertura_vacinal_{AAAA}.*` e `sipni_doses_aplicadas_agregado_{AAAA}.*` |
-| 03 | SI-PNI/RNDS nominal anonimizado, `vacinacao_{mmm}_{AAAA}_csv.zip` | `sipni_doses/sipni_doses_sarampo_sipni_{AAAA}_{mmm}.csv`, a junção `..._completo.csv`, `_auditoria/` (manifesto e log) e `_perfil_bruto/` (retrato do mês com todas as vacinas) |
+| 03 | SI-PNI/RNDS nominal anonimizado, `vacinacao_{mmm}_{AAAA}_csv.zip` | `sipni_doses/sipni_doses_sarampo_sipni_{AAAA}_{mmm}.csv`, a junção `..._completo.csv` (só com `--combinar`), `_auditoria/` (manifesto e log) e `_perfil_bruto/` (retrato do mês com todas as vacinas) |
 | 04 | IBGE: malhas GeoJSON, lista de UFs, SIDRA tabela 6579 | `ibge/{uf.json, municipios.json, uf_meta.json, populacao_sidra.json}` |
+| 15 | SINASC, nascidos vivos por residência, `DNBR{AAAA}.dbc` (definitivo) e `DN{UF}{AAAA}.dbc` (preliminar) | `sinasc/sinasc_nascidos_vivos_{AAAA}[_prelim_{UF}].dbc` |
+| 16 | População do DATASUS: `IBGE/POP` (1980-2012) e `POPSVS` (2000-2025) | `populacao/{POP,POPSVS}/*.zip` |
+
+Cada arquivo baixado do FTP tem ao lado um `<arquivo>.origem.json` (URL, data, tamanho e
+sha256). Os `.dbf` são convertidos em blocos (`comum/dbf_rapido.py`, mesma conversão do
+dbfread) e os `.dbc` com `comum/dbc_rapido.py` (numba), sem carregar o arquivo inteiro na
+memória.
 
 Os `.csv` da bronze mantêm os nomes de coluna originais da fonte. A única exceção é o passo
 03: os `.zip` do SI-PNI trazem todas as vacinas e somam dezenas de GB por ano, então o
@@ -97,6 +106,8 @@ mais delas: hoje leem a gold.
 | 06 | bronze/sipni_historico | `sipni_historico/*_{AAAA}.csv` e `*_1994_2019.csv` | colunas legíveis (`COLUNAS_CPNI`, `COLUNAS_DPNI`), séries combinadas |
 | 07 | bronze/sipni_doses | `sipni_doses/vacinacao_sarampo_sipni.parquet`, `dim_municipios.csv`, `_auditoria/processamento_resumo.json` | ver abaixo |
 | 08 | bronze/ibge | `ibge/populacao_municipios.csv` | população por município, código IBGE de 6 dígitos |
+| 17 | bronze/sinasc | `sinasc/sinasc_nascidos_vivos.parquet`, `_auditoria/sinasc_resumo.json` | nascidos vivos por ano x mês x município de residência (6 dígitos) x sexo x situação (definitivo/preliminar) |
+| 18 | bronze/populacao | `populacao/populacao_ibge_pop.parquet`, `populacao/populacao_svs.parquet` | população por ano x município x sexo x faixa (POP) ou idade simples (POPSVS) |
 
 Regras do passo 07 (1 linha = 1 dose):
 - mantém só as colunas úteis (56 -> ~30, incluindo descrição da vacina e fabricante);
@@ -106,10 +117,15 @@ Regras do passo 07 (1 linha = 1 dose):
 - marca vacinações com data fora do mês do arquivo (`vacinacao_fora_do_mes`);
 - remove documentos duplicados entre meses;
 - numera as doses de cada paciente dentro da janela (`ordem_dose_paciente`; é um mínimo,
-  porque doses anteriores a 2025 não aparecem);
+  porque doses anteriores a 2020 não aparecem);
 - tira os nomes de município da tabela de doses e cria a `dim_municipios.csv`.
 
 O `processamento_resumo.json` registra, por mês, quantas linhas cada regra removeu.
+
+A série 2020+ tem ~61 milhões de doses e não cabe na memória: cada mês é limpo em blocos e
+gravado como uma parte; a numeração por paciente e a gravação final, já ordenada por data,
+são feitas pelo duckdb em partes (`--retomar` reaproveita as partes de uma execução
+interrompida). O resultado foi conferido contra a versão anterior, em pandas: tabela idêntica.
 
 ### Gold: tabelas prontas para análise
 
@@ -161,6 +177,55 @@ notebooks somam a coluna `doses` em vez de contar linhas da silver.
 
 **Passo 12, `data/gold/ibge/`**: `uf.json`, `municipios.json`, `uf_meta.json` e
 `populacao_municipios.csv`, cópias da bronze/silver do IBGE para os mapas (notebook 09).
+
+**Passo 13, `data/gold/sipni_historico/`** (vacinas com componente de sarampo, série longa).
+Lê a silver do SI-PNI histórico **ano a ano**: o layout muda em 2004 (DPNI passa a ser mensal) e
+em 2013 (CPNI perde faixa etária e dose e passa a usar vírgula decimal), e os combinados
+`*_1994_2019.csv` da silver usam o cabeçalho de 1994 para todos os anos.
+
+| Tabela | Granularidade |
+|---|---|
+| `gold_hist_doses_municipio_ano` | ano x município (6 dígitos) x imunobiológico x dose, 1994-2019 |
+| `gold_hist_doses_uf_mes` | mês x UF x tipo de vacina, 2004-2019 |
+| `gold_hist_cobertura_municipio_ano` | ano x município x imunobiológico x dose x faixa (como vieram), com `indicador_d1_sarampo` |
+| `gold_hist_cobertura_d1_uf_ano` | cobertura da 1ª dose contra sarampo por UF e Brasil: monovalente até 2002, SCR D1 depois |
+| `gold_serie_anual_doses_uf` | ano x UF de aplicação x tipo de vacina, SI-PNI agregado (1994-2019) + nominal (2020+) |
+| `gold_serie_fontes` | um ano por linha (1994-hoje): fonte, granularidade e situação (completo, incompleto, lacuna) |
+
+O CPNI só publica a cobertura da 2ª dose (código 098) a partir de 2013; antes disso só há a D1.
+
+**Passo 19, `data/gold/demografia/`** (denominadores e cobertura 2020+):
+
+| Tabela | Granularidade |
+|---|---|
+| `gold_nascidos_vivos_municipio_ano` / `_uf_ano` | nascidos vivos (SINASC) por município de residência / UF e Brasil, 1994-hoje |
+| `gold_populacao_municipio_ano` / `_uf_ano` | população total, <1, 1, 1-4 e <5 anos, 1980-2025 (IBGE/POP até 1999, SVS depois) |
+| `gold_cobertura_nominal_municipio_ano` / `_uf_ano` | 2020+: doses D1 e D2 de SCR em crianças de 1 ano (município de aplicação), população-alvo (SINASC do ano anterior) e cobertura |
+| `gold_serie_cobertura_uf_ano` | cobertura D1 e D2 por UF e Brasil, 1994-hoje: CPNI do FTP até 2016, TabNet (oficial) em 2017-2022, nominal a partir de 2023 (coluna `fonte`) |
+
+A cobertura segue a nota técnica do PNI no TabNet (local de aplicação, nascidos vivos do ano
+anterior como população-alvo de 1 ano, ano corrente proporcional aos meses com dados).
+
+**Passo 20, `data/gold/sinan/gold_serie_casos_obitos_uf_ano`**: casos confirmados e óbitos por
+UF e Brasil, 1990-hoje: tabela oficial do MS até 2006 (o SINAN do FTP começa em 2007) e SINAN
+depois, com as colunas oficiais ao lado em todos os anos.
+
+**Passo 14, `data/gold/validacao/`** (roda por último): compara a gold com as referências
+oficiais de `data/referencia/` (ver o README de lá): casos confirmados e óbitos por UF e ano
+contra a tabela do MS (1990-2026), e cobertura vacinal por UF e ano contra o TabNet
+(1994-2022: CPNI recalculado até 2019, cobertura nominal em 2020-2022).
+
+| Tabela | Granularidade |
+|---|---|
+| `gold_validacao_referencias` | métrica x nível (UF/Brasil) x ano: valor da gold, valor oficial, diferença, tolerância e status |
+| `gold_validacao_resumo` | métrica x nível x status (OK, PRELIMINAR, EXPLICADA, DIVERGENTE, SEM_REFERENCIA) |
+
+`DIVERGENTE` é diferença fora da tolerância (o maior entre 10 e 5% do oficial) sem
+justificativa em `data/referencia/divergencias_conhecidas.csv`. Com
+`SARAMPO_VALIDACAO_ESTRITA=1` o passo falha se houver alguma.
+
+Lacunas: 2019 está incompleto na fonte (SI-PNI agregado descontinuado). O ano da data de
+corte é parcial em todas as fontes.
 
 Todos os notebooks (01-09) leem só `data/gold/`.
 
