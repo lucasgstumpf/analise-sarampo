@@ -1,0 +1,57 @@
+nivel,codigo_uf,uf,nome,ano,renda_per_capita_reais,indice_gini,fonte,consultado_em
+brasil,00,BR,Brasil,2024,2017.0,0.504,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,11,RO,Rondônia,2024,1724.0,0.442,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,12,AC,Acre,2024,1250.0,0.502,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,13,AM,Amazonas,2024,1237.0,0.474,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,14,RR,Roraima,2024,1531.0,0.53,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,15,PA,Pará,2024,1322.0,0.49,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,16,AP,Amapá,2024,1530.0,0.509,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,17,TO,Tocantins,2024,1736.0,0.477,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,21,MA,Maranhão,2024,1079.0,0.487,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,22,PI,Piauí,2024,1351.0,0.493,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,23,CE,Ceará,2024,1202.0,0.487,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,24,RN,Rio Grande do Norte,2024,1552.0,0.522,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,25,PB,Paraíba,2024,1377.0,0.496,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,26,PE,Pernambuco,2024,1407.0,0.53,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,27,AL,Alagoas,2024,1318.0,0.516,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,28,SE,Sergipe,2024,1426.0,0.498,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,29,BA,Bahia,2024,1329.0,0.477,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,31,MG,Minas Gerais,2024,1952.0,0.447,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,32,ES,Espírito Santo,2024,2054.0,0.48,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,33,RJ,Rio de Janeiro,2024,2431.0,0.522,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,35,SP,São Paulo,2024,2582.0,0.489,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,41,PR,Paraná,2024,2408.0,0.473,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,42,SC,Santa Catarina,2024,2552.0,0.43,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,43,RS,Rio Grande do Sul,2024,2526.0,0.458,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,50,MS,Mato Grosso do Sul,2024,2114.0,0.454,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,51,MT,Mato Grosso,2024,2245.0,0.442,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,52,GO,Goiás,2024,2051.0,0.462,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,53,DF,Distrito Federal,2024,3281.0,0.547,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+brasil,00,BR,Brasil,2025,2264.0,0.511,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,11,RO,Rondônia,2025,1970.0,0.458,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,12,AC,Acre,2025,1372.0,0.509,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,13,AM,Amazonas,2025,1450.0,0.488,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,14,RR,Roraima,2025,1870.0,0.506,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,15,PA,Pará,2025,1435.0,0.492,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,16,AP,Amapá,2025,1675.0,0.496,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,17,TO,Tocantins,2025,1979.0,0.472,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,21,MA,Maranhão,2025,1231.0,0.491,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,22,PI,Piauí,2025,1534.0,0.508,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,23,CE,Ceará,2025,1379.0,0.506,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,24,RN,Rio Grande do Norte,2025,1779.0,0.54,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,25,PB,Paraíba,2025,1542.0,0.507,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,26,PE,Pernambuco,2025,1568.0,0.52,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,27,AL,Alagoas,2025,1401.0,0.512,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,28,SE,Sergipe,2025,1688.0,0.532,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,29,BA,Bahia,2025,1452.0,0.466,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,31,MG,Minas Gerais,2025,2289.0,0.473,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,32,ES,Espírito Santo,2025,2209.0,0.48,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,33,RJ,Rio de Janeiro,2025,2732.0,0.543,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,35,SP,São Paulo,2025,2862.0,0.491,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,41,PR,Paraná,2025,2687.0,0.47,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,42,SC,Santa Catarina,2025,2752.0,0.425,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,43,RS,Rio Grande do Sul,2025,2772.0,0.468,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,50,MS,Mato Grosso do Sul,2025,2369.0,0.457,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,51,MT,Mato Grosso,2025,2297.0,0.439,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,52,GO,Goiás,2025,2378.0,0.479,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23
+uf,53,DF,Distrito Federal,2025,4401.0,0.57,IBGE/SIDRA PNAD Contínua Anual (tabelas 7531 e 7435),2026-11-23

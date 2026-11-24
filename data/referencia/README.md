@@ -68,3 +68,49 @@ A validação marca como `EXPLICADA` cada comparação que aparece aqui (`codigo
 todas as UFs daquele ano e métrica); as que estão fora da
 tolerância e não aparecem aqui ficam como `DIVERGENTE`. Só entra uma linha depois de a
 diferença ser investigada; não é lugar para silenciar alertas.
+
+## `ibge_renda_gini_uf_2024_2025.csv`
+
+Rendimento médio mensal real domiciliar per capita (R$) e Índice de Gini por UF e Brasil,
+anos de 2024 e 2025, obtidos diretamente da API oficial do **IBGE / SIDRA** (PNAD Contínua Anual).
+
+| | |
+|---|---|
+| Fonte | IBGE — PNAD Contínua Anual (API v3 de Agregados / SIDRA) |
+| Renda per capita | Tabela `7531`, variável `10824`, classificação `1019[49243]` (Total) |
+| Índice de Gini | Tabela `7435`, variável `10681` |
+| Consultado em | 23/11/2026 |
+| Como foi obtida | `python pipeline/utilitarios/baixar_referencias_socioeconomicas.py` |
+
+Colunas: `nivel` (`brasil`, `uf`), `codigo_uf`, `uf`, `nome`, `ano`, `renda_per_capita_reais`,
+`indice_gini`, `fonte`, `consultado_em`.
+
+Arquivos originais (`sha256`):
+
+```
+bcab35448bafc88d572ad39329fb8bb858a64312ef62308de6df9cc8a796431a  fontes/ibge_sidra_7531_renda_per_capita_2024_2025_2026-11-23.json
+5e92e24405017066ba7760869865a8d2ee03a0bb69b791dbe9ebaa3b24044041  fontes/ibge_sidra_7435_gini_2024_2025_2026-11-23.json
+```
+
+## `tse_eleicao_2022_2turno_uf.csv`
+
+Resultado oficial do 2º turno das Eleições Presidenciais de 2022 por UF, Exterior (`ZZ`) e Brasil,
+agregado a partir do arquivo oficial do **Portal de Dados Abertos do TSE**.
+
+| | |
+|---|---|
+| Fonte | Tribunal Superior Eleitoral (TSE) — Dados Abertos (`resultados-2022`) |
+| Arquivo de origem | `votacao_partido_munzona_2022.zip` -> `votacao_partido_munzona_2022_BR.csv` (`NR_TURNO == 2`, `CD_CARGO == 1`, `QT_VOTOS_NOMINAIS_VALIDOS`) |
+| Consultado em | 23/11/2026 |
+| Como foi obtida | `python pipeline/utilitarios/baixar_referencias_socioeconomicas.py` |
+
+Colunas: `nivel` (`brasil`, `uf`, `exterior`), `uf`, `votos_lula_pt`, `votos_bolsonaro_pl`,
+`votos_validos`, `pct_lula_pt`, `pct_bolsonaro_pl`, `vencedor`, `fonte`, `consultado_em`.
+A linha `BR` soma todos os votos válidos (incluindo `ZZ`, batendo exatamente com o total oficial
+divulgado pelo TSE: 60.345.999 votos para Lula / 50,90% e 58.206.354 para Bolsonaro / 49,10%).
+
+Arquivo original comprimido (`sha256`):
+
+```
+660bdd73a0afe36c9d7d90231a21ae3d8e1015859c1706bba98d598ced355643  fontes/tse_votacao_partido_munzona_2022_BR_2026-11-23.csv.gz
+```

@@ -8,8 +8,7 @@ Análise de dados de vacinação (SI-PNI) e de casos/exames de sarampo (SINAN) n
 ```
 pipeline/    código de extração e tratamento, em passos numerados (arquitetura medalhão)
 data/        dados gerados pelo pipeline, separados em bronze / silver / gold
-notebooks/   análises 01-09 (leem só data/gold, que vai para o git)
-notebooks/   análises 01-10 (leem data/gold e data/silver, versionados no git)
+notebooks/   análises 01-11 (leem data/gold, versionados no git)
 ```
 
 Os dados passam por três camadas:
@@ -49,6 +48,7 @@ A documentação completa de cada passo (fonte, entradas, saídas e regras) est�
 - `08-eda-completa-vacinacao-sarampo.ipynb`: Panorama analítico completo da vacinação contra sarampo.
 - `09-mapas-brasil-vacinacao-sarampo.ipynb`: Mapas coropléticos gerais de doses, fluxos e rankings municipais.
 - `10-small-multiples-geograficos.ipynb`: **Small Multiples em Mapas Geográficos e Cartogramas Hexagonais** (fundamentação teórica Tufte, Munzner e Ware; matrizes de tempo, completude D1/D2, demografia/bloqueio, latência do RNDS e insumos SCR/SCRV).
+- `11-small-multiples-sarampo-social-politico-demografico.ipynb`: **Sarampo no Brasil (1990–2026) — Small Multiples Epidemiológicos, Políticos, Sociais e Demográficos** (ondas de incidência SINAN, ciclos político-sanitários da cobertura real D1/D2 vs. meta de 95%, cruzamento com referências auditadas IBGE SIDRA PNAD 2025 e TSE 2022 em `data/referencia/`, desigualdade racial/SUS e transição demográfica SINASC).
 
 ## Fontes oficiais de referência
 
