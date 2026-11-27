@@ -284,11 +284,12 @@ pop = pd.read_csv(CAMINHO_POP, dtype={"codigo_municipio": str})
 pop["uf"] = pop["codigo_municipio"].str[:2].map(ID_PARA_SIGLA)
 pop_uf = pop.groupby("uf")["populacao"].sum()
 
-# 2. Tabelas Analíticas Gold
-uf_mes = pd.read_parquet(CAMINHO_GOLD / "gold_doses_uf_mes.parquet")
+# 2. Tabelas Analíticas Gold (recorte 2025-2026 para o estudo da megacampanha;
+#    a série histórica completa 1990-2026 está no Notebook 11)
+uf_mes = pd.read_parquet(CAMINHO_GOLD / "gold_doses_uf_mes.parquet").query("ano_mes >= '2025-01'").copy()
 coorte = pd.read_parquet(CAMINHO_GOLD / "gold_coorte_criancas_municipio.parquet")
-perfil = pd.read_parquet(CAMINHO_GOLD / "gold_perfil.parquet")
-atraso = pd.read_parquet(CAMINHO_GOLD / "gold_atraso_registro.parquet")
+perfil = pd.read_parquet(CAMINHO_GOLD / "gold_perfil.parquet").query("ano_mes >= '2025-01'").copy()
+atraso = pd.read_parquet(CAMINHO_GOLD / "gold_atraso_registro.parquet").query("ano_mes >= '2025-01'").copy()
 
 periodo = f"{uf_mes['ano_mes'].min()} a {uf_mes['ano_mes'].max()}"
 total_doses = uf_mes["doses"].sum()
@@ -445,14 +446,14 @@ md("""## 5. Matriz 2: Efetividade do Esquema e Abandono (D1 × D2 × Coorte 1–
 
 ### Constatação dos Dados
 O calendário básico preconiza a 1ª dose da tríplice viral (D1) aos 12 meses e a 2ª dose (D2/SCRV) aos 15 meses.
-* A análise longitudinal da tabela `gold_coorte_criancas_municipio.parquet` revela um **forte abismo regional na retenção da 2ª dose**:
-  * **Altas taxas de completude vacinal:** Minas Gerais (59,6%), Ceará (57,1%), Espírito Santo (56,4%) e Alagoas (56,1%).
-  * **Desertos de completude vacinal:** Roraima (38,3%), Acre (42,4%), Amapá (42,8%) e Pará (43,5%).
+* A análise longitudinal da tabela `gold_coorte_criancas_municipio.parquet` (série 2020–2026) revela um **forte abismo regional na retenção da 2ª dose**:
+  * **Altas taxas de completude vacinal:** Paraná (76,1%), Distrito Federal (75,0%), Minas Gerais (74,9%) e Ceará (74,7%).
+  * **Desertos de completude vacinal:** Roraima (54,8%), Amapá (55,2%), Pará (61,3%) e Rio de Janeiro (62,1%).
 
 ### Decisão de Visualização (Grade 2×2)
-* **Painel A (D1 por 1.000 hab.):** Mede a porta de entrada da população infantil no sistema.
-* **Painel B (D2 por 1.000 hab.):** Compartilha **estritamente a mesma escala de D1**, demonstrando visualmente o degrau de deserção.
-* **Painel C (% Coorte 1-4 anos com 2+ doses):** Utiliza **escala divergente (`RdYlBu`)** centrada na mediana nacional (~51%), destacando em tons quentes os desertos de completude e em tons azuis os polos de retenção.
+* **Painel A (D1 por 1.000 hab.):** Mede a porta de entrada da população no sistema (todas as idades, 2025–2026).
+* **Painel B (D2 por 1.000 hab.):** Compartilha **estritamente a mesma escala de D1**, demonstrando visualmente o degrau de queda.
+* **Painel C (% Coorte 1-4 anos com 2+ doses):** Utiliza **escala divergente (`RdYlBu`)** centrada na mediana nacional (~72%), destacando em tons quentes os desertos de completude e em tons azuis os polos de retenção.
 * **Painel D (Cartograma Hexagonal da Coorte):** Exibe os percentuais exatos em cada federação com igual peso visual.""")
 code("""# Calcula taxas de D1 e D2 por 1.000 hab.
 d1_uf = uf_mes[uf_mes["dose_grupo"] == "1ª dose"].groupby("uf_paciente")["doses"].sum()
@@ -468,9 +469,11 @@ pct_coorte = (coorte_uf["criancas_com_2_ou_mais_doses"] / coorte_uf["criancas_va
 vmax_d1d2 = max(taxa_d1.quantile(0.95), taxa_d2.quantile(0.95))
 norm_d1d2 = mcolors.Normalize(vmin=0, vmax=vmax_d1d2)
 
-# 2. Escala divergente centrada na mediana nacional da coorte
+# 2. Escala divergente centrada na mediana nacional da coorte (dinâmica para 2020-2026)
 mediana_coorte = pct_coorte.median()
-norm_div = mcolors.TwoSlopeNorm(vcenter=mediana_coorte, vmin=35, vmax=65)
+vmin_c = np.floor(pct_coorte.min() / 5) * 5
+vmax_c = np.ceil(pct_coorte.max() / 5) * 5
+norm_div = mcolors.TwoSlopeNorm(vcenter=mediana_coorte, vmin=vmin_c, vmax=vmax_c)
 
 fig, axes = plt.subplots(2, 2, figsize=(16, 13))
 
@@ -486,8 +489,9 @@ anotacao_direcionada(axes[0, 1], "AM", "Deserção severa\\nda 2ª dose", xytext
 # Painel C: % Coorte 1 a 4 anos com 2+ doses (Divergente)
 coropletico(axes[1, 0], pct_coorte.to_dict(), norm=norm_div, cmap="RdYlBu", colorbar=False,
             titulo=f"C. Coorte 1-4 anos com 2+ doses (Divergente, Centro={mediana_coorte:.1f}%)")
-anotacao_direcionada(axes[1, 0], "RR", f"RR: {pct_coorte['RR']:.1f}% (Pior completude)", xytext=(15, 20), cor=RED)
-anotacao_direcionada(axes[1, 0], "MG", f"MG: {pct_coorte['MG']:.1f}% (Melhor completude)", xytext=(15, -15), cor=BLUE)
+pior_uf, melhor_uf = pct_coorte.idxmin(), pct_coorte.idxmax()
+anotacao_direcionada(axes[1, 0], pior_uf, f"{pior_uf}: {pct_coorte[pior_uf]:.1f}% (Pior completude)", xytext=(15, 20), cor=RED)
+anotacao_direcionada(axes[1, 0], melhor_uf, f"{melhor_uf}: {pct_coorte[melhor_uf]:.1f}% (Melhor completude)", xytext=(22, -16), cor=BLUE)
 
 # Painel D: Cartograma Hexagonal da Coorte de Crianças
 cartograma_hexagonal(axes[1, 1], pct_coorte.to_dict(), norm=norm_div, cmap="RdYlBu",
@@ -529,12 +533,10 @@ md("""## 6. Matriz 3: Demografia e Intencionalidade (Crianças de Rotina × Adul
   * **Polos de Bloqueio e Campanhas Adultas:** Em **Roraima (47,5%)**, **São Paulo (46,0%)** e **Distrito Federal (43,1%)**, quase metade de todas as doses aplicadas destinaram-se a adultos de 20 a 59 anos (migração em RR, rastreamento urbano de surtos e campanhas ocupacionais em SP e DF).
   * **Polos de Rotina Pediátrica Estrita:** No **Rio Grande do Sul (27,4%)**, **Pernambuco (27,5%)** e **Paraná (28,5%)**, mais de 70% da imunização concentra-se no público infantil.
 
-### Decisão de Visualização (Grade 2×2 por Macrofaixas Etárias)
-* **Painel A:** Crianças de 0 a 4 anos (% do total da UF) — Rotina Primária.
-* **Painel B:** Crianças e Jovens de 5 a 19 anos (%) — Atualização Escolar.
-* **Painel C:** Adultos Jovens de 20 a 39 anos (%) — Principal alvo de bloqueios epidemiológicos.
-* **Painel D:** Adultos Maduros de 40 a 59 anos (%) — Reforços ocupacionais e viajantes.
-* **Insight Visual:** A vacinação infantil apresenta distribuição relativamente uniforme em todo o território nacional, enquanto a vacinação adulta acende *hotspots* nítidos em polos de migração e grandes metrópoles cosmopolitas.""")
+### Decisão de Visualização (Grade 2×2 com Paleta e Escala Única Compartilhada)
+* **Rigor de *Small Multiples* (Tufte & Munzner):** Como as 4 macrofaixas são partes do mesmo total estadual (`% das doses da UF`), todos os 4 painéis usam **estritamente a mesma paleta (`YlGnBu`) e a mesma escala compartilhada (`0%` a `70%`)**, com uma única barra de cores à direita (eliminando 3 barras redundantes e maximizando a razão dado-tinta).
+* **Classes não-lineares (`0, 5, 10, 15, 20, 30, 45, 70%`):** Preserva contraste fino nas faixas menores (`5–19` e `40–59 anos`) **sem perder** a comparação visual honesta de magnitude com o domínio pediátrico (`0–4 anos`).
+* **Insight Visual:** Em uma única varredura ocular, vê-se que `0–4 anos` domina o território nacional, `20–39 anos` é a segunda maior força (acendendo em RR, SP e DF), `40–59` tem peso moderado e `5–19 anos` é residual em quase todo o Brasil — acendendo quase exclusivamente em **Roraima (24,5%)**.""")
 code("""# Agrupa doses por macrofaixa etária a partir de gold_perfil
 tot_perfil = perfil[perfil["uf_paciente"].isin(sigla_uf)].groupby("uf_paciente")["doses"].sum()
 
@@ -548,39 +550,46 @@ faixa_20_39 = calcular_pct_faixas(["20-29", "30-39"])
 faixa_40_59 = calcular_pct_faixas(["40-49", "50-59"])
 adultos_20_59 = calcular_pct_faixas(["20-29", "30-39", "40-49", "50-59"])
 
-fig, axes = plt.subplots(2, 2, figsize=(16, 12.5))
+# Paleta única e escala compartilhada (0% a 70% com classes não-lineares p/ boa resolução)
+bins_faixa = [0, 5, 10, 15, 20, 30, 45, 70]
+cmap_faixa = plt.get_cmap("YlGnBu")
+norm_faixa = mcolors.BoundaryNorm(bins_faixa, cmap_faixa.N)
+
+fig, axes = plt.subplots(2, 2, figsize=(16.5, 12.2))
 
 # Painel A: Crianças de 0 a 4 anos (Rotina Infantil)
-norm_inf = mcolors.Normalize(vmin=faixa_0_4.min(), vmax=faixa_0_4.max())
-coropletico(axes[0, 0], faixa_0_4.to_dict(), norm=norm_inf, cmap="YlGnBu",
-            titulo="A. Crianças de 0 a 4 anos (% do total da UF) — Rotina PNI",
-            rotulo="%", fmt="{:.1f}%", cbar_kw={"shrink": 0.55})
-anotacao_direcionada(axes[0, 0], "RS", f"RS: {faixa_0_4['RS']:.1f}% (Predomínio pediátrico)", xytext=(-40, -25), cor=BLUE)
+coropletico(axes[0, 0], faixa_0_4.to_dict(), norm=norm_faixa, cmap=cmap_faixa, colorbar=False,
+            titulo="A. Crianças de 0 a 4 anos (% da UF) — Rotina PNI")
+anotacao_direcionada(axes[0, 0], "RS", f"RS: {faixa_0_4['RS']:.1f}% (Predomínio pediátrico)", xytext=(-72, -18), cor=BLUE)
+anotacao_direcionada(axes[0, 0], "RR", f"RR: {faixa_0_4['RR']:.1f}% (Menor fatia infantil)", xytext=(16, 12), cor=RED)
 
-# Painel B: 5 a 19 anos (Público Escolar)
-norm_jov = mcolors.Normalize(vmin=faixa_5_19.min(), vmax=faixa_5_19.max())
-coropletico(axes[0, 1], faixa_5_19.to_dict(), norm=norm_jov, cmap="YlGnBu",
-            titulo="B. Jovens de 5 a 19 anos (% do total da UF) — Atualização Escolar",
-            rotulo="%", fmt="{:.1f}%", cbar_kw={"shrink": 0.55})
+# Painel B: 5 a 19 anos (Público Escolar / Jovens)
+coropletico(axes[0, 1], faixa_5_19.to_dict(), norm=norm_faixa, cmap=cmap_faixa, colorbar=False,
+            titulo="B. Jovens de 5 a 19 anos (% da UF) — Atualização Escolar")
+anotacao_direcionada(axes[0, 1], "RR", f"RR: {faixa_5_19['RR']:.1f}% (Único destaque nacional)", xytext=(16, 12), cor=RED)
 
 # Painel C: Adultos Jovens de 20 a 39 anos (Bloqueio Epidemiológico Ativo)
-norm_ad1 = mcolors.Normalize(vmin=faixa_20_39.min(), vmax=faixa_20_39.max())
-coropletico(axes[1, 0], faixa_20_39.to_dict(), norm=norm_ad1, cmap="Oranges",
-            titulo="C. Adultos Jovens de 20 a 39 anos (%) — Bloqueio de Surtos",
-            rotulo="%", fmt="{:.1f}%", cbar_kw={"shrink": 0.55})
-anotacao_direcionada(axes[1, 0], "SP", f"SP: {faixa_20_39['SP']:.1f}% (Alvo em surtos urbanos)", xytext=(-80, -20), cor=RED)
-anotacao_direcionada(axes[1, 0], "RR", f"RR: {faixa_20_39['RR']:.1f}% (Fronteira migratória)", xytext=(15, 20), cor=RED)
+coropletico(axes[1, 0], faixa_20_39.to_dict(), norm=norm_faixa, cmap=cmap_faixa, colorbar=False,
+            titulo="C. Adultos Jovens de 20 a 39 anos (%) — Bloqueio de Surtos")
+anotacao_direcionada(axes[1, 0], "SP", f"SP: {faixa_20_39['SP']:.1f}% (Surtos urbanos)", xytext=(-88, -20), cor=RED)
+anotacao_direcionada(axes[1, 0], "RR", f"RR: {faixa_20_39['RR']:.1f}% (Fronteira migratória)", xytext=(16, 14), cor=RED)
 
 # Painel D: Adultos de 40 a 59 anos
-norm_ad2 = mcolors.Normalize(vmin=faixa_40_59.min(), vmax=faixa_40_59.max())
-coropletico(axes[1, 1], faixa_40_59.to_dict(), norm=norm_ad2, cmap="Oranges",
-            titulo="D. Adultos de 40 a 59 anos (%) — Campanhas Corporativas / Reforço",
-            rotulo="%", fmt="{:.1f}%", cbar_kw={"shrink": 0.55})
-anotacao_direcionada(axes[1, 1], "DF", f"DF: {faixa_40_59['DF']:.1f}%", xytext=(20, -10), cor=ORANGE)
+coropletico(axes[1, 1], faixa_40_59.to_dict(), norm=norm_faixa, cmap=cmap_faixa, colorbar=False,
+            titulo="D. Adultos de 40 a 59 anos (%) — Campanhas / Reforço")
+anotacao_direcionada(axes[1, 1], "SP", f"SP: {faixa_40_59['SP']:.1f}%", xytext=(-70, -18), cor=ORANGE)
+anotacao_direcionada(axes[1, 1], "DF", f"DF: {faixa_40_59['DF']:.1f}%", xytext=(20, 8), cor=ORANGE)
 
-fig.suptitle("Matriz 3: Demografia e Intencionalidade (Crianças de Rotina × Adultos em Bloqueio)",
-             x=0.06, ha="left", fontweight="bold", fontsize=15)
-plt.tight_layout()
+# Barra de cores única e compartilhada entre os 4 painéis
+fig.subplots_adjust(left=0.03, right=0.89, top=0.90, bottom=0.04, hspace=0.14, wspace=0.05)
+cax = fig.add_axes([0.91, 0.22, 0.015, 0.56])
+sm_faixa = plt.cm.ScalarMappable(cmap=cmap_faixa, norm=norm_faixa)
+cb_faixa = fig.colorbar(sm_faixa, cax=cax, ticks=bins_faixa)
+cb_faixa.ax.set_yticklabels([f"{b}%" for b in bins_faixa])
+cb_faixa.set_label("% das doses aplicadas na UF (Escala Única Compartilhada)", fontsize=10, fontweight="bold")
+
+fig.suptitle("Matriz 3: Demografia e Intencionalidade — Escala e Paleta Únicas (0% a 70%)",
+             x=0.03, y=0.96, ha="left", fontweight="bold", fontsize=15)
 plt.show()
 
 print("Estados com Maior Proporção de Vacinação em Adultos (20 a 59 anos):")
